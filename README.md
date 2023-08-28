@@ -31,4 +31,5 @@ This repository and its projects are open-source and available under the [MIT Li
 ## Connect with Me
 
 Find me on YouTube: [Stack Tips](https://www.youtube.com/@OfficialStackTips/videos)
+
 Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a4a/)
