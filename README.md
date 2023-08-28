@@ -12,15 +12,6 @@ This repository is designed to provide you with practical examples of building w
 2. Watch the accompanying YouTube video to follow along with the development process.
 3. Use these projects as references, learning materials, or starting points for your own projects.
 
-## Project List
-
-1. **Drop Zone**
-   - Description: Upload your files using Drag and Drop.
-   <!-- - YouTube Video: [Link to YouTube Video](https://youtube.com/your-video-link) -->
-   ![Project Screenshot](./images/Drag_drop.png)
-
-...
-
 ## Contributions
 
 Contributions to this repository are welcome! If you have ideas for new projects, improvements, or bug fixes, feel free to open an issue or submit a pull request.
@@ -34,3 +25,12 @@ This repository and its projects are open-source and available under the [MIT Li
 Find me on YouTube: [Stack Tips](https://www.youtube.com/@OfficialStackTips/videos)
 
 Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a4a/)
+
+## Project List
+
+1. **Drop Zone**
+   - Description: Upload your files using Drag and Drop.
+   <!-- - YouTube Video: [Link to YouTube Video](https://youtube.com/your-video-link) -->
+   ![Project Screenshot](./images/Drag_drop.png)
+
+...
