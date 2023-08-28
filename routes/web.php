@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DropZoneController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Drop Zone Routes
+Route::view('drop-zone', 'DropZone.index');
+Route::post('/drop-zone', [DropZoneController::class, 'upload']);

@@ -17,6 +17,7 @@ This repository is designed to provide you with practical examples of building w
 1. **Drop Zone**
    - Description: Upload your files using Drag and Drop.
    <!-- - YouTube Video: [Link to YouTube Video](https://youtube.com/your-video-link) -->
+   ![Project Screenshot](./images/Drag_drop.png)
 
 ...
 
