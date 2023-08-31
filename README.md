@@ -33,8 +33,8 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
    - YouTube Video: (https://youtu.be/SdwA3YKW35g)
    ![Project Screenshot](./images/Drag_drop.png)
 
-<!-- 2. **Autocomplete Search**
-   - Description: Auto Complete the search result like google.
-   - YouTube Video: (https://youtu.be/SdwA3YKW35g)
-   ![Project Screenshot](./images/Drag_drop.png) -->
+2. **Auto Suggest Search**
+   - Description: Auto Suggest the search result like google.
+   <!-- - YouTube Video: (https://youtu.be/SdwA3YKW35g) -->
+   ![Project Screenshot](./images/AutoSuggestSearch.png)
 ...

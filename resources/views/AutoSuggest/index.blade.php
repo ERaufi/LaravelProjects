@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Laravel Autocomplete Search</title>
+    <title>Laravel Auto Suggest Search</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <style>
@@ -27,7 +27,7 @@
 <body>
     <div class="container text-center">
         <h1>Stack Tips</h1>
-        <h1>Laravel Autocomplete Search</h1>
+        <h1>Laravel Auto Suggest Search</h1>
         <input id="searchInput" class="form-control" type="text">
     </div>
 </body>
