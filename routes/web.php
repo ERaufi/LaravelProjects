@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DropZoneController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Drop Zone Routes
+//Start Drop Zone Routes
 Route::view('drop-zone', 'DropZone.index');
 Route::post('/drop-zone', [DropZoneController::class, 'upload']);
+//End Drop Zone Routes
+
+//Start Auto-Suggest Search
+Route::view('auto-suggest', 'AutoSuggest.index');
+Route::get('/search', [ProductsController::class, 'search']);
+//End Auto-Suggest Search

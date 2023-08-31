@@ -132,13 +132,11 @@
                         progressBar.style.width = '0%';
                         progressBar.textContent = '0%';
 
-                        // Display the uploaded image's thumbnail
                         var imageThumbnail = document.createElement('img');
                         imageThumbnail.src = `{{ URL::asset('images') }}/` + response.filename;
                         imageThumbnail.className = 'img-thumbnail mr-2';
                         uploadedImages.appendChild(imageThumbnail);
 
-                        // Recursively upload the next image
                         uploadImages(files, index + 1);
                     }
                 });
