@@ -3,6 +3,7 @@
 /public/build
 /public/hot
 /public/storage
+/public/images
 /storage/*.key
 /vendor
 .env
@@ -17,4 +18,3 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-projectList.php

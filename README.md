@@ -37,4 +37,9 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
    - Description: Auto Suggest the search result like google.
    - YouTube Video: ([https://youtu.be/SdwA3YKW35g](https://youtu.be/7nvN0q77P-k))
    ![Project Screenshot](./images/AutoSuggestSearch.png)
+
+3. **Auto Suggest Search**
+- Description: Add Lazy Loading to your images to Load images as you scroll the page.
+<!-- - YouTube Video: ([https://youtu.be/SdwA3YKW35g](https://youtu.be/7nvN0q77P-k)) -->
+![Project Screenshot](./images/LazyLoad.png)
 ...

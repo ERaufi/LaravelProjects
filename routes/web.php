@@ -28,3 +28,8 @@ Route::post('/drop-zone', [DropZoneController::class, 'upload']);
 Route::view('auto-suggest', 'AutoSuggest.index');
 Route::get('/search', [ProductsController::class, 'search']);
 //End Auto-Suggest Search
+
+//start Lazy Load
+Route::view('lazy-load', 'LazyLoad.index');
+Route::get('/lazy-load-data', [DropZoneController::class, 'index']);
+//End Lazy Load

@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\DB;
 class DropZoneController extends Controller
 {
     //
+
+    //start for Lazy Load
+    public function index()
+    {
+        $images = DropZone::all();
+        return response()->json($images);
+    }
+    // End Lazy Load
+
     public function upload(Request $request)
     {
         try {
