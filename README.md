@@ -40,6 +40,6 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 
 3. **Lazy Loading Images**
 - Description: Add Lazy Loading to your images to Load images as you scroll the page.
-<!-- - YouTube Video: ([https://youtu.be/SdwA3YKW35g](https://youtu.be/7nvN0q77P-k)) -->
+- YouTube Video: (https://youtu.be/5eG3PIriMgU)
 ![Project Screenshot](./images/LazyLoad.png)
 ...
