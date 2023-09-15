@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 //Start Drop Zone Routes
 Route::view('drop-zone', 'DropZone.index');
 Route::post('/drop-zone', [DropZoneController::class, 'upload']);
@@ -33,3 +35,10 @@ Route::get('/search', [ProductsController::class, 'search']);
 Route::view('lazy-load', 'LazyLoad.index');
 Route::get('/lazy-load-data', [DropZoneController::class, 'index']);
 //End Lazy Load
+
+//Start Excel Import and Export
+Route::view('import-export', 'ImportExport.index');
+Route::get('prodcts/export/', [ProductsController::class, 'export']);
+Route::post('/products/import', [ProductsController::class, 'import']);
+
+//End Excel Import and Export
