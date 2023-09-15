@@ -42,4 +42,9 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 - Description: Add Lazy Loading to your images to Load images as you scroll the page.
 - YouTube Video: (https://youtu.be/5eG3PIriMgU)
 ![Project Screenshot](./images/LazyLoad.png)
+
+3. **Laravel Excel Import and Export Tutorial with Validation and Toastr Notifications**
+- Description: In this comprehensive Laravel tutorial, you'll learn how to build a robust data import and export system using Laravel Excel. We'll cover the entire process, from importing Excel data with validation to exporting data seamlessly. Plus, we'll integrate Toastr notifications to keep your users informed about the import status.
+- YouTube Video: (https://youtu.be/BKPkN7XEwxA)
+![Project Screenshot](./images/LaravelExcelImportAndExport.png)
 ...
