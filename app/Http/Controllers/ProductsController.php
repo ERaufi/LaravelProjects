@@ -7,6 +7,8 @@ use App\Imports\ProductsImport;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
+
 
 class ProductsController extends Controller
 {
@@ -50,4 +52,34 @@ class ProductsController extends Controller
         }
     }
     // End Import From Excel
+
+
+
+    public function generatePDF()
+    {
+        // Get products from the database
+        $products = Products::limit(100)->get();
+
+        // Generate the PDF view
+        $pdf = PDF::loadView('PDF.Products', compact('products'));
+
+        // Customize the PDF settings (optional)
+        $pdf->setOptions([
+            'isHtml5ParserEnabled' => true,
+            'isPhpEnabled' => true,
+            'isFontSubsettingEnabled' => true,
+        ]);
+        $pdf->getDomPDF()->setHttpContext(
+            stream_context_create([
+                'ssl' => [
+                    'allow_self_signed' => TRUE,
+                    'verify_peer' => FALSE,
+                    'verify_peer_name' => FALSE,
+                ]
+            ])
+        );
+
+        // Save or display the PDF (as needed)
+        return $pdf->stream('product_list.pdf');
+    }
 }

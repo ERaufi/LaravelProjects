@@ -41,3 +41,7 @@ Route::view('import-export', 'ImportExport.index');
 Route::get('prodcts/export/', [ProductsController::class, 'export']);
 Route::post('/products/import', [ProductsController::class, 'import']);
 //End Excel Import and Export
+
+// Start PDF Generate
+Route::get('generate-pdf', [ProductsController::class, 'generatePDF']);
+// End PDF Generate
