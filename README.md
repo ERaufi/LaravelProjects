@@ -47,4 +47,8 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 - Description: In this comprehensive Laravel tutorial, you'll learn how to build a robust data import and export system using Laravel Excel. We'll cover the entire process, from importing Excel data with validation to exporting data seamlessly. Plus, we'll integrate Toastr notifications to keep your users informed about the import status.
 - YouTube Video: (https://youtu.be/BKPkN7XEwxA)
 ![Project Screenshot](./images/LaravelExcelImportandExport.png)
+
+5. **Generate PDF**
+- YouTube Video: (https://youtu.be/my9XgQHQoKM)
+![Project Screenshot](./images/generate_pdf.png)
 ...
