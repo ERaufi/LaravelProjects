@@ -17,11 +17,18 @@ class ProductsController extends Controller
         return response()->json($products);
     }
 
+
+
+
+    //Start Export To Excel
     public function export()
     {
         return Excel::download(new ProductExport, 'Products.xlsx');
     }
+    // End Export to Excel
 
+
+    //Start Import From Excel
     public function import(Request $request)
     {
         $request->validate([
@@ -42,4 +49,5 @@ class ProductsController extends Controller
             ]);
         }
     }
+    // End Import From Excel
 }
