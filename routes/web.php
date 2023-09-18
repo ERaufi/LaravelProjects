@@ -21,27 +21,32 @@ Route::get('/', function () {
 
 
 
-//Start Drop Zone Routes
+//Start Drop Zone Routes==============================================================
 Route::view('drop-zone', 'DropZone.index');
 Route::post('/drop-zone', [DropZoneController::class, 'upload']);
-//End Drop Zone Routes
+//End Drop Zone Routes==============================================================
 
-//Start Auto-Suggest Search
+//Start Auto-Suggest Search==============================================================
 Route::view('auto-suggest', 'AutoSuggest.index');
 Route::get('/search', [ProductsController::class, 'search']);
-//End Auto-Suggest Search
+//End Auto-Suggest Search==============================================================
 
-//start Lazy Load
+//start Lazy Load======================================================================
 Route::view('lazy-load', 'LazyLoad.index');
 Route::get('/lazy-load-data', [DropZoneController::class, 'index']);
-//End Lazy Load
+//End Lazy Load======================================================================
 
-//Start Excel Import and Export
+//Start Excel Import and Export========================================================
 Route::view('import-export', 'ImportExport.index');
 Route::get('prodcts/export/', [ProductsController::class, 'export']);
 Route::post('/products/import', [ProductsController::class, 'import']);
-//End Excel Import and Export
+//End Excel Import and Export========================================================
 
-// Start PDF Generate
+// Start PDF Generate===================================================================
 Route::get('generate-pdf', [ProductsController::class, 'generatePDF']);
-// End PDF Generate
+// End PDF Generate===================================================================
+
+
+// Start CRUD===========================================================================
+Route::resource('products', ProductsController::class);
+// End CRUD===========================================================================

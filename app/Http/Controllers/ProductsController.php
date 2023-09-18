@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ProductExport;
+use App\Http\Requests\ProductRequest;
 use App\Imports\ProductsImport;
 use App\Models\Products;
 use Illuminate\Http\Request;
@@ -20,17 +21,15 @@ class ProductsController extends Controller
     }
 
 
-
-
-    //Start Export To Excel
+    //Start Export To Excel=============================================================
     public function export()
     {
         return Excel::download(new ProductExport, 'Products.xlsx');
     }
-    // End Export to Excel
+    // End Export to Excel=============================================================
 
 
-    //Start Import From Excel
+    //Start Import From Excel=================================================================
     public function import(Request $request)
     {
         $request->validate([
@@ -51,10 +50,10 @@ class ProductsController extends Controller
             ]);
         }
     }
-    // End Import From Excel
+    // End Import From Excel=================================================================
 
 
-
+    // Start Generate PDF==========================================================================
     public function generatePDF()
     {
         // Get products from the database
@@ -82,4 +81,72 @@ class ProductsController extends Controller
         // Save or display the PDF (as needed)
         return $pdf->stream('product_list.pdf');
     }
+    // End Generate PDF==========================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Start CRUD=====================================================================================
+    public function index()
+    {
+        $products = Products::paginate(10);
+        return view('CRUD.index', compact('products'));
+    }
+
+    public function create()
+    {
+        return view('CRUD.create');
+    }
+
+    public function store(ProductRequest $request)
+    {
+        Products::create($request->all());
+        return redirect()->route('products.index')->with('success', 'Product created successfully');
+    }
+
+    public function edit(Products $product)
+    {
+        return view('CRUD.edit', compact('product'));
+    }
+
+    public function update(ProductRequest $request, Products $product)
+    {
+        $product->update($request->all());
+        return redirect()->route('products.index')->with('success', 'Product updated successfully');
+    }
+
+    public function destroy(Products $product)
+    {
+        $product->delete();
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully');
+    }
+    // Start CRUD=====================================================================================
 }
