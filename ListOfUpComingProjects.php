@@ -5,3 +5,4 @@
 // ! 4 Generate PDF with Laravel
 // ! 5 Laravel Localization
 // ! 6 laravel CSV Export
+// ! 7 laravel CRUD with Notify
