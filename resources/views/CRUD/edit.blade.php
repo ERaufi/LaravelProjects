@@ -12,6 +12,7 @@
 
 <body>
     <div class="container">
+        <a href="/products">Products</a>
         <h1>Edit Product</h1>
         <form method="POST" action="{{ route('products.update', $product->id) }}">
             @csrf

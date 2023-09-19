@@ -13,7 +13,10 @@
 
 <body>
     <div class="container">
+        <a href="/products">Products</a>
+
         <h1>Create Product</h1>
+
         <form method="POST" action="{{ route('products.store') }}">
             @csrf
             <div class="row">
