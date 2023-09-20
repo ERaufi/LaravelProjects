@@ -51,4 +51,9 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 5. **Generate PDF**
 - YouTube Video: (https://youtu.be/my9XgQHQoKM)
 ![Project Screenshot](./images/generate_pdf.png)
+
+6. **Mastering Laravel CRUD Operations with Form Validation and Notify js**
+- Description: In this comprehensive Laravel tutorial, you'll learn how to build a laravel CRUD with Form request validation and notify js
+- YouTube Video: (https://youtu.be/5eG3PIriMgU)
+![Project Screenshot](./images/crud.png)
 ...
