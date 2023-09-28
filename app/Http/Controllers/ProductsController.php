@@ -7,8 +7,10 @@ use App\Http\Requests\ProductRequest;
 use App\Imports\ProductsImport;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProductsController extends Controller
@@ -87,6 +89,100 @@ class ProductsController extends Controller
 
 
 
+    // Start Export From CSV=====================================================================
+
+    public function exportToCSV()
+    {
+        $products = Products::all();
+
+        if ($products->isEmpty()) {
+            return redirect()->back()->with('error', 'No data to export.');
+        }
+
+        $csvFileName = 'products.csv';
+
+        // Check if the file exists
+        if (!Storage::exists($csvFileName)) {
+            // Create a new empty CSV file with the header row
+            $csvHeader = [
+                'ID',
+                'Name',
+                'Quantity',
+                'Buying Price',
+                'Selling Price',
+                'Description',
+                'Image URL',
+                'Weight',
+                'Created At',
+                'Updated At',
+            ];
+
+            Storage::put($csvFileName, implode(',', $csvHeader));
+        }
+
+        // Append the CSV data to the file
+        foreach ($products as $product) {
+            $csvData = [
+                $product->id,
+                $product->name,
+                $product->quantity,
+                $product->buyingPrice,
+                $product->sellingPrice,
+                $product->description,
+                $product->image_url,
+                $product->weight,
+                $product->created_at,
+                $product->updated_at,
+            ];
+
+            Storage::append($csvFileName, implode(',', $csvData));
+        }
+
+        // Get the path to the saved CSV file
+        $csvFilePath = Storage::path($csvFileName);
+
+        // Provide the path to the saved CSV file for download
+        return response()->download($csvFilePath)->deleteFileAfterSend(true);
+    }
+
+
+    public function importCSV(Request $request)
+    {
+        $request->validate([
+            'csv_file' => 'required|file|mimes:csv,txt',
+        ]);
+
+        if ($request->hasFile('csv_file')) {
+            $file = $request->file('csv_file');
+            $path = $file->getRealPath();
+            $data = array_map('str_getcsv', file($path));
+
+            // Assuming the first row contains headers
+            $headers = array_shift($data);
+
+            foreach ($data as $row) {
+                $product = new Products();
+                $product->name = $row[0];
+                $product->quantity = $row[1];
+                $product->buyingPrice = $row[2];
+                $product->sellingPrice = $row[3];
+                $product->description = $row[4] ?? null;
+                $product->image_url = $row[5] ?? null;
+                if ($row[6] == '' || $row[6] == null) {
+                    $product->weight = null;
+                } else {
+                    $product->weight = $row[6] ?? null;
+                }
+
+                $product->save();
+            }
+
+            return redirect('csv')->with('success', 'CSV data imported successfully.');
+        }
+
+        return redirect()->route('showImportForm')->with('error', 'Please provide a valid CSV file.');
+    }
+    // End Export From CSV=====================================================================
 
 
 
