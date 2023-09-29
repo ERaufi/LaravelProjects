@@ -46,12 +46,12 @@ Route::post('/products/import', [ProductsController::class, 'import']);
 Route::get('generate-pdf', [ProductsController::class, 'generatePDF']);
 // End PDF Generate===================================================================
 
+// Start CRUD===========================================================================
+Route::resource('products', ProductsController::class);
+// End CRUD===========================================================================
+
 // Start CSV Import and Export===========================================================
 Route::view('csv', 'ImportExport.csv');
 Route::get('export-csv', [ProductsController::class, 'exportToCSV']);
 Route::post('import-csv', [ProductsController::class, 'importCSV']);
 // End CSV Import and Export===========================================================
-
-// Start CRUD===========================================================================
-Route::resource('products', ProductsController::class);
-// End CRUD===========================================================================
