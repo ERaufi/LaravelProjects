@@ -47,8 +47,8 @@ Route::get('generate-pdf', [ProductsController::class, 'generatePDF']);
 // End PDF Generate===================================================================
 
 // Start CSV Import and Export===========================================================
-Route::get('export-csv', [ProductsController::class, 'exportToCSV']);
 Route::view('csv', 'ImportExport.csv');
+Route::get('export-csv', [ProductsController::class, 'exportToCSV']);
 Route::post('import-csv', [ProductsController::class, 'importCSV']);
 // End CSV Import and Export===========================================================
 
