@@ -9,9 +9,10 @@
 </head>
 
 <body>
+    <p>Export and Import From CSV</p>
     <br>
     <br>
-    <a href="{{ URL('export-csv') }}">Export To CSV</a>
+    <a href="{{ URL('export-csv') }}">Export</a>
     <br>
     <br>
 
