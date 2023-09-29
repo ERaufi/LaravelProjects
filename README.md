@@ -56,4 +56,9 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 - Description: In this comprehensive Laravel tutorial, you'll learn how to build a laravel CRUD with Form request validation and notify js
 - YouTube Video: (https://youtu.be/5eG3PIriMgU)
 ![Project Screenshot](./images/crud.png)
+
+7. **Laravel CSV Data Import and Export**
+- Description: In this comprehensive Laravel tutorial, you'll learn how to Import and Export Data using CSV
+- YouTube Video: (https://youtu.be/6tEsCSatPXE)
+![Project Screenshot](./images/csv.png)
 ...
