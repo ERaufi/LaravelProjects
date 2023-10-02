@@ -11,7 +11,6 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "laravel/ui": "^4.2",
         "maatwebsite/excel": "^3.1"
     },
     "require-dev": {
