@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DropZoneController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
@@ -55,3 +57,16 @@ Route::view('csv', 'ImportExport.csv');
 Route::get('export-csv', [ProductsController::class, 'exportToCSV']);
 Route::post('import-csv', [ProductsController::class, 'importCSV']);
 // End CSV Import and Export===========================================================
+// Auth::routes();
+
+
+
+Route::view('login', 'auth.login');
+Route::post('login', [LoginController::class, 'login'])->name('login')->middleware('throttle:5,1');
+
+Route::view('register', 'auth.register');
+Route::post('register', [RegisterController::class, 'create'])->name('register');
+
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
