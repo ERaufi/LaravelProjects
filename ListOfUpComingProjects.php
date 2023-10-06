@@ -6,4 +6,8 @@
 // ! 5 laravel CRUD with Validations And Notify (Done)
 // ! 6 Laravel Localization
 // ! 7 laravel CSV Export (Done)
-// ! 8 laravel Login using phone number or email
+// ! 8 laravel Login using phone number or email (Done)
+// ! 9 Laravel Take and upload Screen shot
+// ! 10 Laravel Crop, Resize Image and upload
+// ! 11 Implement Google reCaptcha
+// ! 12 Get Location Information With IP Address In Laravel
