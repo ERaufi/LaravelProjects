@@ -61,4 +61,9 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 - Description: In this comprehensive Laravel tutorial, you'll learn how to Import and Export Data using CSV
 - YouTube Video: (https://youtu.be/6tEsCSatPXE)
 ![Project Screenshot](./images/csv.png)
+
+8. **Laravel Multi-Login Authentication Tutorial: Email, Name, and Mobile Number Login**
+- Description: In this Laravel tutorial, we'll show you how to implement a multi-login authentication system, allowing users to log in using their email, name, or mobile number. You'll learn step-by-step how to set up Laravel authentication, customize the User model, and modify the login controller to support multiple login methods. By the end of this tutorial, you'll have a secure and flexible authentication system for your Laravel project.
+- YouTube Video: (https://www.youtube.com/watch?v=ktTK2LZcyk4)
+![Project Screenshot](./images/login.png)
 ...
