@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DropZoneController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,6 +58,41 @@ Route::view('csv', 'ImportExport.csv');
 Route::get('export-csv', [ProductsController::class, 'exportToCSV']);
 Route::post('import-csv', [ProductsController::class, 'importCSV']);
 // End CSV Import and Export===========================================================
+
+
+// Start Full Calender=================================================================
+Route::get('fullcalender', [ScheduleController::class, 'index']);
+Route::get('/events', [ScheduleController::class, 'getEvents']);
+Route::delete('/schedule/{id}', [ScheduleController::class, 'deleteEvent']);
+Route::put('/schedule/{id}', [ScheduleController::class, 'update']);
+Route::put('/schedule/{id}/resize', [ScheduleController::class, 'resize']);
+Route::get('/events/search', [ScheduleController::class, 'search']);
+// End Full Calender=================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Auth::routes();
 
 

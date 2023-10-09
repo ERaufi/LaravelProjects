@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
+@extends('layouts.app')
+@section('head')
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,9 +40,8 @@
             background-color: #f2f2f2;
         }
     </style>
-</head>
-
-<body>
+@endsection
+@section('content')
     <div class="header">
         {{-- To Display Logo Image --}}
         <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/images/logo.png'))) }}">
@@ -77,6 +74,4 @@
             @endforeach
         </tbody>
     </table>
-</body>
-
-</html>
+@endsection

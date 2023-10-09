@@ -66,4 +66,9 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 - Description: In this Laravel tutorial, we'll show you how to implement a multi-login authentication system, allowing users to log in using their email, name, or mobile number. You'll learn step-by-step how to set up Laravel authentication, customize the User model, and modify the login controller to support multiple login methods. By the end of this tutorial, you'll have a secure and flexible authentication system for your Laravel project.
 - YouTube Video: (https://www.youtube.com/watch?v=ktTK2LZcyk4)
 ![Project Screenshot](./images/login.png)
+
+9. **Build a Dynamic Event Calendar with FullCalendar, Laravel and Bootstrap | Web Development Tutorial**
+- Description: In this comprehensive web development tutorial, we'll build a dynamic event calendar application from scratch using FullCalendar and Bootstrap. Learn how to create, update, and delete events seamlessly, implement search and filtering functionalities, enhance user experience with interactive design elements, and even export your calendar data to an Excel spreadsheet. Join us to explore the step-by-step process of developing a feature-rich calendar app that's perfect for personal or professional use. Whether you're new to web development or looking to enhance your skills, this tutorial has you covered with hands-on coding examples and user-friendly design tips. Unlock the power of creating stunning event calendars that cater to your needs..
+- YouTube Video: (https://youtu.be/KzZR9A7Xk14)
+![Project Screenshot](./images/fullcalender.png)
 ...

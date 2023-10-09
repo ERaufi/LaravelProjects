@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
+@section('head')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Upload</title>
@@ -58,9 +57,9 @@
             margin-bottom: 10px;
         }
     </style>
-</head>
+@endsection
 
-<body>
+@section('content')
     <div class="container mt-5">
         <div class="card">
             <div class="card-body">
@@ -143,7 +142,4 @@
             }
         });
     </script>
-
-</body>
-
-</html>
+@endsection

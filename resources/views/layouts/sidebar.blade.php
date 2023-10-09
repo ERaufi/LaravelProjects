@@ -55,6 +55,62 @@
                 {{-- <div class="menu-inner-shadow"></div> --}}
 
                 <ul class="menu-inner py-1">
+                    <li class="menu-item">
+                        <a href="{{ URL('drop-zone') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-collection"></i>
+                            <div data-i18n="Basic">Drop Zone</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ URL('auto-suggest') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-copy"></i>
+                            Auto Suggest
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ URL('lazy-load') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-detail"></i>
+                            Lazy Load
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ URL('import-export') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-grid"></i>
+                            Excel Import and Export
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ URL('generate-pdf') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-envelope"></i>
+                            Generate PDF
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ URL('products') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-list-check"></i>
+                            CRUD
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ URL('csv') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-store"></i>
+                            Import Export CSV
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item">
+                        <a href="{{ URL('fullcalender') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-grid"></i>
+                            Full Calander
+                        </a>
+                    </li>
                     <!-- Dashboards -->
                     {{-- <li class="menu-item active open">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">

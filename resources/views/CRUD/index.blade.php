@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
+@section('head')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+@endsection
 
-</head>
-
-<body>
+@section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -67,25 +65,23 @@
         {{-- End Pagination============================================================ --}}
     </div>
 
-</body>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="{{ asset('assets/notify.min.js') }}"></script>
-<script>
-    $(document).ready(function($) {
-        // Start Show Validation Error messages==========================================================
-        @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                $.notify("{{ $error }}", "error");
-            @endforeach
-        @endif
-        // End Show Validation Error messages==========================================================
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="{{ asset('assets/notify.min.js') }}"></script>
+    <script>
+        $(document).ready(function($) {
+            // Start Show Validation Error messages==========================================================
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    $.notify("{{ $error }}", "error");
+                @endforeach
+            @endif
+            // End Show Validation Error messages==========================================================
 
-        // Start Show Success message ====================================================================
-        @if (session('success'))
-            $.notify("{{ session('success') }}", "success");
-        @endif
-        // End Show Success message ====================================================================
-    });
-</script>
-
-</html>
+            // Start Show Success message ====================================================================
+            @if (session('success'))
+                $.notify("{{ session('success') }}", "success");
+            @endif
+            // End Show Success message ====================================================================
+        });
+    </script>
+@endsection
