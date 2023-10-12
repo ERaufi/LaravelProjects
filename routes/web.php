@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DropZoneController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,8 +71,10 @@ Route::get('/events/search', [ScheduleController::class, 'search']);
 // End Full Calender=================================================================
 
 
-
-
+// Start Weather========================================================================
+Route::view('weather', 'Weather.index');
+Route::get('get-weather', [WeatherController::class, 'index']);
+// Start Weather========================================================================
 
 
 
