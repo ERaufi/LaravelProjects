@@ -71,4 +71,9 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 - Description: In this comprehensive web development tutorial, we'll build a dynamic event calendar application from scratch using FullCalendar and Bootstrap. Learn how to create, update, and delete events seamlessly, implement search and filtering functionalities, enhance user experience with interactive design elements, and even export your calendar data to an Excel spreadsheet. Join us to explore the step-by-step process of developing a feature-rich calendar app that's perfect for personal or professional use. Whether you're new to web development or looking to enhance your skills, this tutorial has you covered with hands-on coding examples and user-friendly design tips. Unlock the power of creating stunning event calendars that cater to your needs..
 - YouTube Video: (https://youtu.be/KzZR9A7Xk14)
 ![Project Screenshot](./images/fullcalender.png)
+
+10. **Building a Weather Information App**
+- In this tutorial, we'll guide you through creating a Weather Information web application with a stylish user interface using HTML, CSS, and JavaScript. Learn how to fetch weather data from an API, display it beautifully, and allow users to select cities and units. Perfect for web developers looking to enhance their web development skills.
+- YouTube Video: (https://youtu.be/Hyw8w65Ru5U)
+![Project Screenshot](./images/weather.png)
 ...
