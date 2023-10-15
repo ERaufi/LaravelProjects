@@ -11,12 +11,12 @@ class NotesController extends Controller
     public function index()
     {
         $notes = Notes::all();
-        return view('notes.index', compact('notes'));
+        return view('EncryptAndDecrypt.index', compact('notes'));
     }
 
     public function create()
     {
-        return view('notes.create');
+        return view('EncryptAndDecrypt.create');
     }
 
     public function store(Request $request)
@@ -33,12 +33,12 @@ class NotesController extends Controller
 
     public function show(Notes $note)
     {
-        return view('notes.show', compact('note'));
+        return view('EncryptAndDecrypt.show', compact('note'));
     }
 
     public function edit(Notes $note)
     {
-        return view('notes.edit', compact('note'));
+        return view('EncryptAndDecrypt.edit', compact('note'));
     }
 
     public function update(Request $request, Notes $note)

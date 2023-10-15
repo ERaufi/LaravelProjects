@@ -113,9 +113,16 @@
                     </li>
 
                     <li class="menu-item">
-                        <a href="{{ URL('fullcalender') }}" class="menu-link">
+                        <a href="{{ URL('weather') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-sun"></i>
                             Weather API
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ URL('notes') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-key"></i>
+                            Encrypt and Decrypt
                         </a>
                     </li>
                 </ul>
