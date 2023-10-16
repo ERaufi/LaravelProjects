@@ -76,4 +76,9 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 - In this tutorial, we'll guide you through creating a Weather Information web application with a stylish user interface using HTML, CSS, and JavaScript. Learn how to fetch weather data from an API, display it beautifully, and allow users to select cities and units. Perfect for web developers looking to enhance their web development skills.
 - YouTube Video: (https://youtu.be/Hyw8w65Ru5U)
 ![Project Screenshot](./images/weather.png)
+
+11. **Building a Weather Information App**
+- Explore the world of data security with our in-depth "Laravel Encrypt and Decrypt Your Data Tutorial." This step-by-step guide will take you through the process of securing your data in a Laravel application, ensuring your sensitive information remains confidential and protected.
+- YouTube Video: (https://youtu.be/E40z1dDL0YY)
+![Project Screenshot](./images/encdec.png)
 ...

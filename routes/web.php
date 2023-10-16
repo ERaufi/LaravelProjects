@@ -108,7 +108,7 @@ Route::get('get-weather', [WeatherController::class, 'index']);
 // End Weather========================================================================
 
 
-
+// Video Link https://youtu.be/E40z1dDL0YY
 // Start Encrypt and Decrypt===========================================================
 Route::get('notes', [NotesController::class, 'index']);
 Route::get('notes/create', [NotesController::class, 'create']);
