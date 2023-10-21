@@ -82,3 +82,23 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 - YouTube Video: (https://youtu.be/E40z1dDL0YY)
 ![Project Screenshot](./images/encdec.png)
 ...
+1. Drop Zone
+2. Auto Suggest Search
+3. Lazy Loading Images
+4. Laravel Excel Import and Export Tutorial with Validation and Toastr Notifications
+5. Generate PDF
+6. Mastering Laravel CRUD Operations with Form Validation and Notify js
+7. Laravel CSV Data Import and Export
+8. Laravel Multi-Login Authentication Tutorial: Email, Name, and Mobile Number Login
+9. Build a Dynamic Event Calendar with FullCalendar, Laravel and Bootstrap | Web Development Tutorial
+10. Building a Weather Information App
+11. Building a Weather Information App
+12. Laravel websocket
+13. laravel with chart js
+14. laraveljobs
+15. laravel components
+16. laravel CRUD
+17. Sending Emails and Notifications
+18. Consuming APIs in Laravel
+19. joins in Eloquent
+20. Laravel and Vue.js
