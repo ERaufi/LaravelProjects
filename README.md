@@ -81,4 +81,9 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 - Explore the world of data security with our in-depth "Laravel Encrypt and Decrypt Your Data Tutorial." This step-by-step guide will take you through the process of securing your data in a Laravel application, ensuring your sensitive information remains confidential and protected.
 - YouTube Video: (https://youtu.be/E40z1dDL0YY)
 ![Project Screenshot](./images/encdec.png)
+
+12. **Finding the Slowest SQL Query in Your Application**
+- In this tutorial, we'll show you how to set up query logging in Laravel and uncover the slowest SQL queries in your application. We'll guide you through extracting the controller context, database connection, query parameters, and execution plan for each query, highlighting their respective query times. Discover how to identify and optimize the slowest queries, ultimately improving your application's performance.
+- YouTube Video: (https://youtu.be/vDFaZ5YZ4pY)
+![Project Screenshot](./images/slow.png)
 ...
