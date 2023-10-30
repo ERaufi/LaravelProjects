@@ -3,6 +3,8 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DropZoneController;
+use App\Http\Controllers\FormBuilderController;
+use App\Http\Controllers\FormsController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ScheduleController;
@@ -120,8 +122,14 @@ Route::delete('notes/{note}', [NotesController::class, 'destroy']);
 // End Encrypt and Decrypt=============================================================
 
 
-
-
+// Start Form Builder===============================================================
+Route::get('form-builder', [FormBuilderController::class, 'index']);
+Route::view('formbuilder', 'FormBuilder.create');
+Route::post('save-form-builder', [FormBuilderController::class, 'create']);
+Route::view('read-form-builder', 'FormBuilder.read');
+Route::get('get-form-builder', [FormBuilderController::class, 'read']);
+Route::post('save-form-transaction', [FormsController::class, 'create']);
+// End Form Builder===============================================================
 
 // Auth::routes();
 

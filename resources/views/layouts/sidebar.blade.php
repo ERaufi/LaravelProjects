@@ -125,5 +125,12 @@
                             Encrypt and Decrypt
                         </a>
                     </li>
+
+                    <li class="menu-item">
+                        <a href="{{ URL('form-builder') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-key"></i>
+                            Form Builder
+                        </a>
+                    </li>
                 </ul>
             </aside>
