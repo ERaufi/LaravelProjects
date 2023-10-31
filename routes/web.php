@@ -123,12 +123,20 @@ Route::delete('notes/{note}', [NotesController::class, 'destroy']);
 
 
 // Start Form Builder===============================================================
+// Step 1
 Route::get('form-builder', [FormBuilderController::class, 'index']);
+// Step 2
 Route::view('formbuilder', 'FormBuilder.create');
+// Step 3
 Route::post('save-form-builder', [FormBuilderController::class, 'create']);
-Route::view('read-form-builder', 'FormBuilder.read');
+Route::view('read-form-builder/{id}', 'FormBuilder.read');
 Route::get('get-form-builder', [FormBuilderController::class, 'read']);
 Route::post('save-form-transaction', [FormsController::class, 'create']);
+Route::delete('form-delete/{id}', [FormBuilderController::class, 'destroy']);
+
+Route::view('edit-form-builder/{id}', 'FormBuilder.edit');
+Route::get('get-form-builder-edit', [FormBuilderController::class, 'editData']);
+Route::post('update-form-builder', [FormBuilderController::class, 'update']);
 // End Form Builder===============================================================
 
 // Auth::routes();

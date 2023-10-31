@@ -13,12 +13,14 @@ class FormBuilderController extends Controller
         $forms = FormBuilder::all();
         return view('FormBuilder.index', compact('forms'));
     }
+
     public function read(Request $request)
     {
         $item = FormBuilder::findOrFail($request->id);
 
         return $item;
     }
+
     public function create(Request $request)
     {
         $item = new FormBuilder();
@@ -27,5 +29,27 @@ class FormBuilderController extends Controller
         $item->save();
 
         return response()->json('added successfully');
+    }
+
+    public function editData(Request $request)
+    {
+        return FormBuilder::where('id', $request->id)->first();
+    }
+
+    public function update(Request $request)
+    {
+        $item = FormBuilder::findOrFail($request->id);
+        $item->name = $request->name;
+        $item->content = $request->form;
+        $item->update();
+        return response()->json('updated successfully');
+    }
+
+    public function destroy($id)
+    {
+        $form = FormBuilder::findOrFail($id);
+        $form->delete();
+
+        return redirect('form-builder')->with('success', 'Form deleted successfully');
     }
 }

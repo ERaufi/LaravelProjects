@@ -8,7 +8,7 @@
         <div class="card-body">
             <form method="POST" action="{{ URL('save-form-transaction') }}">
                 @csrf
-                <input type="number" id="form_id" name="form_id" />
+                <input type="number" id="form_id" name="form_id" hidden/>
                 <div id="fb-reader"></div>
                 <input type="submit" value="Save" class="btn btn-success" />
             </form>
@@ -27,7 +27,7 @@
                 },
                 url: '{{ URL('get-form-builder') }}',
                 data: {
-                    'id': 1
+                    'id': {{ $id }}
                 },
                 success: function(data) {
                     $("#form_id").val(data.id);

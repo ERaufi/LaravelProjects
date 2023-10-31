@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FormBuilder;
 use App\Models\Forms;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,8 @@ class FormsController extends Controller
         $request->request->remove('form_id');
         $item->form = $request->all();
         $item->save();
-        return back();
+        return redirect('form-builder')->with('success', 'Form deleted successfully');
     }
+
+
 }
