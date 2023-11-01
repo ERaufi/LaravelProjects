@@ -87,7 +87,7 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 - YouTube Video: (https://youtu.be/vDFaZ5YZ4pY)
 ![Project Screenshot](./images/slow.png)
 
-13. **Finding the Slowest SQL Query in Your Application**
+13. **Laravel Dynamic form builder**
 - In this tutorial, we'll explore the world of dynamic form creation in a Laravel application. Learn how to build custom forms that adapt to your needs, and implement the essential CRUD (Create, Read, Update, Delete) operations seamlessly.
 
 We'll guide you through setting up a dynamic form builder in your Laravel project, showing you how to create, read, update, and delete data efficiently. Whether you're a seasoned developer or just getting started, this tutorial equips you with the skills to master dynamic forms and build versatile applications. Join us and take your Laravel development to the next level!
