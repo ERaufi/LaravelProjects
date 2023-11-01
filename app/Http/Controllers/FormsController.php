@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 class FormsController extends Controller
 {
     //
+    public function read(Request $request)
+    {
+        $item = FormBuilder::findOrFail($request->id);
+        return $item;
+    }
+
     public function create(Request $request)
     {
         $request->request->remove('_token');
@@ -19,6 +25,4 @@ class FormsController extends Controller
         $item->save();
         return redirect('form-builder')->with('success', 'Form deleted successfully');
     }
-
-
 }

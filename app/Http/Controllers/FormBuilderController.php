@@ -14,13 +14,6 @@ class FormBuilderController extends Controller
         return view('FormBuilder.index', compact('forms'));
     }
 
-    public function read(Request $request)
-    {
-        $item = FormBuilder::findOrFail($request->id);
-
-        return $item;
-    }
-
     public function create(Request $request)
     {
         $item = new FormBuilder();
