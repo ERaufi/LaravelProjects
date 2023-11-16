@@ -37,4 +37,27 @@ class DropZoneController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
+    public function uploadCroppedImage(Request $request)
+    {
+        $imageData = $request->input('image');
+
+        // Decode the base64 image data
+        $imageData = str_replace('data:image/png;base64,', '', $imageData);
+        $imageData = str_replace(' ', '+', $imageData);
+        $imageData = base64_decode($imageData);
+
+        // Generate a unique filename
+        $filename = 'cropped_image_' . time() . '.png';
+
+        // Save the image to the server
+        file_put_contents(public_path('uploads/' . $filename), $imageData);
+
+        // You can save the filename to the database or perform any other necessary actions
+
+        $item = new DropZone();
+        $item->filename = $filename;
+        $item->save();
+        return response()->json(['success' => true, 'filename' => $filename]);
+    }
 }

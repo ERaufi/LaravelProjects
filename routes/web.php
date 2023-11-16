@@ -144,6 +144,14 @@ Route::post('save-form-transaction', [FormsController::class, 'create']);
 
 // End Form Builder===============================================================
 
+
+
+// Start Image Cropper=============================================================
+Route::view('crop', 'cropperjs.index');
+Route::post('/upload-cropped-image', [DropZoneController::class, 'uploadCroppedImage']);
+
+// End Image Cropper===============================================================
+
 // Auth::routes();
 
 
