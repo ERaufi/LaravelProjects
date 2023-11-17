@@ -132,5 +132,12 @@
                             Form Builder
                         </a>
                     </li>
+
+                    <li class="menu-item">
+                        <a href="{{ URL('crop') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-store"></i>
+                            Image Crop
+                        </a>
+                    </li>
                 </ul>
             </aside>
