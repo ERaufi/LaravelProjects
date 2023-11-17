@@ -58,8 +58,10 @@
 
                         // Initialize a new Cropper instance on the selected image
                         cropper = new Cropper(image, {
-                            aspectRatio: 1, // Set the aspect ratio of the crop box (square in this case)
-                            viewMode: 3, // Set the view mode of the cropper (3 means display within the container, no restrictions)
+                            // Set the aspect ratio of the crop box (square in this case)
+                            aspectRatio: 1,
+                            // Set the view mode of the cropper (3 means display within the container, no restrictions)
+                            viewMode: 3,
                         });
                     };
 
@@ -83,7 +85,7 @@
                     // Send the cropped image data to the server using AJAX
                     $.ajax({
                         type: "POST",
-                        url: "{{ url('upload-cropped-image') }}", // Change this URL to your Laravel route
+                        url: "{{ url('upload-cropped-image') }}",
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
