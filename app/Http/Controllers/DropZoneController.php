@@ -54,7 +54,6 @@ class DropZoneController extends Controller
         file_put_contents(public_path('uploads/' . $filename), $imageData);
 
         // You can save the filename to the database or perform any other necessary actions
-
         $item = new DropZone();
         $item->filename = $filename;
         $item->save();

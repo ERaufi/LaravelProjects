@@ -24,7 +24,7 @@
             Select Image
         </label>
 
-        <button type="button" class="btn btn-primary" id="crop">Save And Upload</button>
+        <button type="button" class="btn btn-primary" id="saveAndUpload">Save And Upload</button>
     </div>
 @endsection
 
@@ -71,7 +71,7 @@
             });
 
             // Event handler for the "Save And Upload" button
-            $("#crop").on('click', function() {
+            $("#saveAndUpload").on('click', function() {
                 var canvas;
                 if (cropper) {
                     canvas = cropper.getCroppedCanvas({
