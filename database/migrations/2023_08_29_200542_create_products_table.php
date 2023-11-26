@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('sellingPrice')->nullable(false);
             $table->text('description')->nullable();
             $table->string('image_url')->nullable();
-            $table->decimal('weight', 8, 2)->nullable();
+            $table->integer('weight')->nullable();
             $table->timestamps();
         });
     }

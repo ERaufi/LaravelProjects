@@ -44,11 +44,11 @@
                                 <td>{{ $product->sellingPrice }}</td>
                                 <td>{{ $product->description }}</td>
                                 <td>
-                                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary editButton">Edit</a>
                                     <form method="POST" action="{{ route('products.destroy', $product->id) }}" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"
+                                        <button type="submit" class="btn btn-danger deleteButton"
                                             onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
                                     </form>
                                 </td>
@@ -59,7 +59,7 @@
             </div>
         </div>
         {{-- Start Pagination============================================================ --}}
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" id="paginiation">
             {{ $products->links('pagination::bootstrap-5') }}
         </div>
         {{-- End Pagination============================================================ --}}
@@ -82,6 +82,8 @@
                 $.notify("{{ session('success') }}", "success");
             @endif
             // End Show Success message ====================================================================
+            $('.notifyjs-corner').css('z-index', 999999);
+
         });
     </script>
 @endsection
