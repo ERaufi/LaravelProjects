@@ -139,5 +139,12 @@
                             Image Crop
                         </a>
                     </li>
+
+                    <li class="menu-item">
+                        <a href="{{ URL('dusk-test') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-test-tube"></i>
+                            Dusk Test
+                        </a>
+                    </li>
                 </ul>
             </aside>

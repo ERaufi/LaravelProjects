@@ -28,8 +28,7 @@ class CheckCRUDTest extends DuskTestCase
                 ->press('Create')
                 ->waitForLocation('/products')
                 ->waitForText('Product created successfully')
-                ->assertSee('Product created successfully')
-                ->pause(10000);
+                ->assertSee('Product created successfully');
         });
     }
 
@@ -41,8 +40,8 @@ class CheckCRUDTest extends DuskTestCase
                 ->click('#paginiation > nav > div.d-none.flex-sm-fill.d-sm-flex.align-items-sm-center.justify-content-sm-between > div:nth-child(2) > ul > li:nth-child(14) > a')
                 ->waitForLocation('/products')
                 ->click('tbody tr:last-child td:last-child .editButton')
-                ->pause(2000)
-                ->assertSee('Edit Product')
+                ->pause(3000)
+                ->waitForText('Edit Product')
                 ->assertInputValue('name', 'test Name')
                 ->assertInputValue('quantity', '12')
                 ->assertInputValue('buyingPrice', 20)
@@ -50,6 +49,39 @@ class CheckCRUDTest extends DuskTestCase
                 ->assertInputValue('image_url', 'https://unsplash.com/photos/a-box-filled-with-lots-of-different-colored-ornaments-vqUnGm6vkXA')
                 ->assertInputValue('weight', '23')
                 ->assertInputValue('description', 'this is from Laravel DUSK');
+        });
+    }
+
+    public function testCheckValidations()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->type('name', '')
+                ->type('quantity', '')
+                ->type('buyingPrice', '')
+                ->type('sellingPrice', '')
+                ->type('image_url', '')
+                ->type('weight', '')
+                ->type('description', '')
+                ->press('Update')
+                ->waitForText('The selling price field is required.')
+                ->assertSee('The buying price field is required.')
+                ->assertSee('The quantity field is required.')
+                ->assertSee('The name field is required');
+        });
+    }
+
+    public function testDeleting()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('http://127.0.0.1:8000/products')
+                ->scrollIntoView('#paginiation')
+                ->pause(2000)
+                ->click('#paginiation > nav > div.d-none.flex-sm-fill.d-sm-flex.align-items-sm-center.justify-content-sm-between > div:nth-child(2) > ul > li:nth-child(14) > a')
+                ->waitForLocation('/products')
+                ->click('tbody tr:last-child td:last-child .deleteButton')
+                ->acceptDialog()
+                ->waitForText('Product deleted successfully')
+                ->assertSee('Product deleted successfully');
         });
     }
 }

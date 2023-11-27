@@ -152,6 +152,11 @@ Route::post('/upload-cropped-image', [DropZoneController::class, 'uploadCroppedI
 
 // End Image Cropper===============================================================
 
+
+// Start Laravel Dusk Test=======================================================
+Route::view('dusk-test', 'Dusk.index');
+
+// End Laravel Dusk Test========================================================
 // Auth::routes();
 
 
