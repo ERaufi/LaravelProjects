@@ -9,14 +9,14 @@
 
         <!-- Text Input -->
         <div class="mb-3">
-            <label for="modal_text_input" class="form-label">Text Input:</label>
-            <input type="text" class="form-control" id="modal_text_input" name="modal_text_input" placeholder="Enter text">
+            <label for="text_input" class="form-label">Text Input:</label>
+            <input type="text" class="form-control" id="text_input" name="text_input" placeholder="Enter text">
         </div>
 
         <!-- Select Option -->
         <div class="mb-3">
-            <label for="modal_select_option" class="form-label">Select Option:</label>
-            <select class="form-select" id="modal_select_option" name="modal_select_option">
+            <label for="select_option" class="form-label">Select Option:</label>
+            <select class="form-select" id="select_option" name="select_option">
                 <option value="option1">Option 1</option>
                 <option value="option2">Option 2</option>
                 <option value="option3">Option 3</option>
@@ -27,12 +27,12 @@
         <div class="mb-3">
             <label class="form-label">Radio Buttons:</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="modal_radio_options" id="modal_radio_option1" value="option1">
-                <label class="form-check-label" for="modal_radio_option1">Radio Option 1</label>
+                <input class="form-check-input" type="radio" name="radio_options" id="radio_option1" value="option1">
+                <label class="form-check-label" for="radio_option1">Radio Option 1</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="modal_radio_options" id="modal_radio_option2" value="option2">
-                <label class="form-check-label" for="modal_radio_option2">Radio Option 2</label>
+                <input class="form-check-input" type="radio" name="radio_options" id="radio_option2" value="option2">
+                <label class="form-check-label" for="radio_option2">Radio Option 2</label>
             </div>
         </div>
 
@@ -40,43 +40,26 @@
         <div class="mb-3">
             <label class="form-label">Checkboxes:</label>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="modal_checkbox1" id="modal_checkbox1" name="modal_checkbox_options[]">
-                <label class="form-check-label" for="modal_checkbox1">Checkbox 1</label>
+                <input class="form-check-input" type="checkbox" value="checkbox1" id="checkbox1" name="checkbox_options[]">
+                <label class="form-check-label" for="checkbox1">Checkbox 1</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="modal_checkbox2" id="modal_checkbox2" name="modal_checkbox_options[]">
-                <label class="form-check-label" for="modal_checkbox2">Checkbox 2</label>
+                <input class="form-check-input" type="checkbox" value="checkbox2" id="checkbox2" name="checkbox_options[]">
+                <label class="form-check-label" for="checkbox2">Checkbox 2</label>
             </div>
         </div>
 
         <!-- Date Picker -->
         <div class="mb-3">
-            <label for="modal_date_picker" class="form-label">Date Picker:</label>
-            <input type="text" class="form-control datepicker" id="modal_date_picker" name="modal_date_picker" placeholder="Select a date">
+            <label for="date_picker" class="form-label">Date Picker:</label>
+            <input type="text" class="form-control datepicker" id="date_picker" name="date_picker" placeholder="Select a date">
         </div>
 
         <!-- File Upload -->
         <div class="mb-3">
-            <label for="modal_file_upload" class="form-label">File Upload:</label>
-            <input type="file" class="form-control" id="modal_file_upload" name="modal_file_upload">
+            <label for="file_upload" class="form-label">File Upload:</label>
+            <input type="file" class="form-control" id="file_upload" name="file_upload">
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <!-- Bootstrap Modal Trigger Button -->
         <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -114,11 +97,11 @@
                             <div class="mb-3">
                                 <label class="form-label">Radio Buttons:</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="modal_radio_options" id="modal_radio_option1" value="option1">
+                                    <input class="form-check-input" type="radio" name="modal_radio_options" value="option1">
                                     <label class="form-check-label" for="modal_radio_option1">Radio Option 1</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="modal_radio_options" id="modal_radio_option2" value="option2">
+                                    <input class="form-check-input" type="radio" name="modal_radio_options" value="option2">
                                     <label class="form-check-label" for="modal_radio_option2">Radio Option 2</label>
                                 </div>
                             </div>
