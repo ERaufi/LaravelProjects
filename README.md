@@ -100,7 +100,7 @@ We'll guide you through setting up a dynamic form builder in your Laravel projec
 - YouTube Video: (https://youtu.be/zT3somYJGAE)
 ![Project Screenshot](./images/imagecrop.jpg)
 
-14. **Mastering Laravel Dusk: End-to-End Testing Made Easy | Laravel Dusk Tutorial**
+15. **Mastering Laravel Dusk: End-to-End Testing Made Easy | Laravel Dusk Tutorial**
 - Laravel Dusk provides an expressive, easy-to-use browser automation and testing API. By default, Dusk does not require you to install JDK or Selenium on your local computer. Instead, Dusk uses a standalone ChromeDriver installation. However, you are free to utilize any other Selenium compatible driver you wish.
 
 - YouTube Video: (https://youtu.be/zT3somYJGAE)
