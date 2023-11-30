@@ -93,4 +93,16 @@ Follow me on Linkedin: [Linkedin](https://www.linkedin.com/in/edris-raufi-93416a
 We'll guide you through setting up a dynamic form builder in your Laravel project, showing you how to create, read, update, and delete data efficiently. Whether you're a seasoned developer or just getting started, this tutorial equips you with the skills to master dynamic forms and build versatile applications. Join us and take your Laravel development to the next level!
 - YouTube Video: (https://youtu.be/VXFSe-D5SCA)
 ![Project Screenshot](./images/form_builder.png)
+
+14. **Building an Image Upload and Crop Feature with Laravel and Cropper.js**
+- In this tutorial, we'll guide you through the process of building a dynamic image upload and crop feature using Laravel on the backend and Cropper.js on the frontend. Learn how to create an intuitive and user-friendly interface for uploading, cropping, and saving images seamlessly.
+
+- YouTube Video: (https://youtu.be/zT3somYJGAE)
+![Project Screenshot](./images/imagecrop.jpg)
+
+14. **Mastering Laravel Dusk: End-to-End Testing Made Easy | Laravel Dusk Tutorial**
+- Laravel Dusk provides an expressive, easy-to-use browser automation and testing API. By default, Dusk does not require you to install JDK or Selenium on your local computer. Instead, Dusk uses a standalone ChromeDriver installation. However, you are free to utilize any other Selenium compatible driver you wish.
+
+- YouTube Video: (https://youtu.be/zT3somYJGAE)
+![Project Screenshot](./images/dusk.jpg)
 ...
