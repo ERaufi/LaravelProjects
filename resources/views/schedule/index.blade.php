@@ -24,6 +24,10 @@
                 <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
                     <button id="exportButton" class="btn btn-success">Export Calendar</button>
                 </div>
+                <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
+                    <a href="{{ URL('add-schedule') }}" class="btn btn-success">Add</a>
+                </div>
+
             </div>
         </div>
 
@@ -122,6 +126,9 @@
                 $.ajax({
                     method: 'PUT',
                     url: `/schedule/${eventId}/resize`,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     data: {
                         end_date: newEndDateUTC
                     },

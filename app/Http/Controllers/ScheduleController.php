@@ -16,6 +16,20 @@ class ScheduleController extends Controller
         return view('schedule.index');
     }
 
+    public function create(Request $request)
+    {
+        $item = new Schedule();
+        $item->title = $request->title;
+        $item->start = $request->start;
+        $item->end = $request->end;
+        $item->description = $request->description;
+        $item->color = $request->color;
+        $item->save();
+
+        return redirect('/fullcalender');
+    }
+
+
     public function getEvents()
     {
         $schedules = Schedule::all();

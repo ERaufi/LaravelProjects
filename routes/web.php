@@ -36,6 +36,9 @@ Route::delete('/schedule/{id}', [ScheduleController::class, 'deleteEvent']);
 Route::put('/schedule/{id}', [ScheduleController::class, 'update']);
 Route::put('/schedule/{id}/resize', [ScheduleController::class, 'resize']);
 Route::get('/events/search', [ScheduleController::class, 'search']);
+
+Route::view('add-schedule', 'schedule.add');
+Route::post('create-schedule', [ScheduleController::class, 'create']);
 // End Full Calender=================================================================
 
 
@@ -155,8 +158,34 @@ Route::post('/upload-cropped-image', [DropZoneController::class, 'uploadCroppedI
 
 // Start Laravel Dusk Test=======================================================
 Route::view('dusk-test', 'Dusk.index');
-
 // End Laravel Dusk Test========================================================
+
+// Start CKEditor===============================================================
+Route::view('ck-editor', 'CKEditor.index');
+// End CKEditor=================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Auth::routes();
 
 
