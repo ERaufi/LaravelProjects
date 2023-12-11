@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\DropZoneController;
 use App\Http\Controllers\FormBuilderController;
 use App\Http\Controllers\FormsController;
@@ -160,12 +161,12 @@ Route::post('/upload-cropped-image', [DropZoneController::class, 'uploadCroppedI
 Route::view('dusk-test', 'Dusk.index');
 // End Laravel Dusk Test========================================================
 
-// Start CKEditor===============================================================
-Route::view('ck-editor', 'CKEditor.index');
-// End CKEditor=================================================================
-
-
-
+// Start Jquery Datatable========================================================
+Route::view('datatable', 'Datatable.index');
+Route::get('countries', [CountriesController::class, 'index']);
+Route::post('countries/update', [CountriesController::class, 'update']);
+Route::post('countries/reordering', [CountriesController::class, 'reOrder']);
+// End Jquery Datatable==========================================================
 
 
 
