@@ -125,5 +125,13 @@
     "Additional Elements for Testing:": "عناصر إضافية للاختبار:",
     "Show Alert": "إظهار التنبيه",
     "Show Confirm Dialog": "إظهار مربع الحوار للتأكيد",
-    "Wellcome": "مرحباً"
+    "Wellcome": "مرحباً",
+    "The name field is required.": "الحقل الاسم مطلوب.",
+    "The quantity field is required.": "حقل الكمية مطلوب.",
+    "The quantity must be an integer.": "يجب أن تكون الكمية عدد صحيح.",
+    "The buying price field is required.": "حقل سعر الشراء مطلوب.",
+    "The buying price must be a numeric value.": "يجب أن يكون سعر الشراء قيمة رقمية.",
+    "The selling price field is required.": "حقل سعر البيع مطلوب.",
+    "The selling price must be a numeric value.": "يجب أن يكون سعر البيع قيمة رقمية.",
+    "The weight must be a numeric value.": "يجب أن يكون الوزن قيمة رقمية."
 }

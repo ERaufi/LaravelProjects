@@ -15,17 +15,17 @@
                 <div class="input-group mb-3">
                     <input type="text" id="searchInput" class="form-control" placeholder="Search events">
                     <div class="input-group-append">
-                        <button id="searchButton" class="btn btn-primary">Search</button>
+                        <button id="searchButton" class="btn btn-primary">{{__('Search')}}</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
-                    <button id="exportButton" class="btn btn-success">Export Calendar</button>
+                    <button id="exportButton" class="btn btn-success">{{__('Export Calendar')}}</button>
                 </div>
                 <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
-                    <a href="{{ URL('add-schedule') }}" class="btn btn-success">Add</a>
+                    <a href="{{ URL('add-schedule') }}" class="btn btn-success">{{__('Add')}}</a>
                 </div>
 
             </div>

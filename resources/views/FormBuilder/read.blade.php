@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('head')
-    <title>Example formBuilder</title>
+    <title>{{__('Example formBuilder')}}</title>
 @endsection
 
 @section('content')

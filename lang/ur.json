@@ -125,5 +125,13 @@
     "Additional Elements for Testing:": "ٹیسٹنگ کے لیے اضافی عناصر:",
     "Show Alert": "الرٹ دکھائیں",
     "Show Confirm Dialog": "تصدیق ڈائیلاگ دکھائیں",
-    "Wellcome": "خوش آمدید"
+    "Wellcome": "خوش آمدید",
+    "The name field is required.": "نام کا فیلڈ درکار ہے۔",
+    "The quantity field is required.": "مقدار کا میدان درکار ہے۔",
+    "The quantity must be an integer.": "مقدار ایک عدد صحیح ہونا چاہیے۔",
+    "The buying price field is required.": "خرید قیمت کا فیلڈ درکار ہے۔,",
+    "The buying price must be a numeric value.": "خریدنے کی قیمت ایک عددی قدر ہونی چاہیے۔,",
+    "The selling price field is required.": "فروخت کی قیمت کا فیلڈ درکار ہے۔,",
+    "The selling price must be a numeric value.": "فروخت کی قیمت ایک عددی قدر ہونی چاہیے۔,",
+    "The weight must be a numeric value.": "وزن ایک عددی قدر ہونا چاہیے۔,"
 }

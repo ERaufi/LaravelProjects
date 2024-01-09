@@ -80,59 +80,59 @@
 
 @section('content')
     <div class="container">
-        <h1>Weather Information</h1>
+        <h1>{{__('Weather Information')}}</h1>
         <div class="weather-info">
-            <div class="label">Description:</div>
+            <div class="label">{{__('Description:')}}</div>
             <div class="value" id="description"></div>
         </div>
         <div class="weather-info">
-            <div class="label">Temperature:</div>
+            <div class="label">{{__('Temperature:')}}</div>
             <div class="value">
                 <i class="fas fa-thermometer-half weather-icon temperature-icon"></i>
                 <span id="temperature"></span>
             </div>
         </div>
         <div class="weather-info">
-            <div class="label">Feels Like:</div>
+            <div class="label">{{__('Feels Like:')}}</div>
             <div class="value">
                 <i class="fas fa-temperature-low weather-icon feels-like-icon"></i>
                 <span id="feels-like"></span>
             </div>
         </div>
         <div class="weather-info">
-            <div class="label">Pressure:</div>
+            <div class="label">{{__('Pressure:')}}</div>
             <div class="value">
                 <i class="fas fa-tachometer-alt weather-icon pressure-icon"></i>
                 <span id="pressure"></span>
             </div>
         </div>
         <div class="weather-info">
-            <div class="label">Humidity:</div>
+            <div class="label">{{__('Humidity:')}}</div>
             <div class="value">
                 <i class="fas fa-tint weather-icon humidity-icon"></i>
                 <span id="humidity"></span>
             </div>
         </div>
         <div class="weather-info">
-            <div class="label">Wind Speed:</div>
+            <div class="label">{{__('Wind Speed:')}}</div>
             <div class="value">
                 <i class="fas fa-wind weather-icon wind-speed-icon"></i>
                 <span id="wind-speed"></span>
             </div>
         </div>
         <div class="select-container">
-            <label for="city-select">Select City: </label>
+            <label for="city-select">{{__('Select City:')}} </label>
             <select id="city-select">
-                <option value="London">London</option>
-                <option value="New York">New York</option>
-                <option value="Tokyo">Tokyo</option>
+                <option value="London">{{__('London')}}</option>
+                <option value="New York">{{__('New York')}}</option>
+                <option value="Tokyo">{{__('Tokyo')}}</option>
             </select>
-            <label for="unit-select">Select Unit: </label>
+            <label for="unit-select">{{__('Select Unit:')}} </label>
             <select id="unit-select">
-                <option value="metric">Celsius</option>
-                <option value="imperial">Fahrenheit</option>
+                <option value="metric">{{__('Celsius')}}</option>
+                <option value="imperial">{{__('Fahrenheit')}}</option>
             </select>
-            <button id="update-weather-btn">Update Weather</button>
+            <button id="update-weather-btn">{{__('Update Weather')}}</button>
         </div>
     </div>
 

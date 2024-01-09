@@ -25,7 +25,7 @@
 @section('content')
     <div class="container text-center">
         <h1>Stack Tips</h1>
-        <h1>Laravel Auto Suggest Search</h1>
+        <h1>{{__('Laravel Auto Suggest Search')}}</h1>
         <input id="searchInput" class="form-control" type="text">
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

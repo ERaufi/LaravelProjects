@@ -58,49 +58,49 @@
                     <li class="menu-item">
                         <a href="{{ URL('drop-zone') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-collection"></i>
-                            <div data-i18n="Basic">Drop Zone</div>
+                            <div data-i18n="Basic">{{__('Drop Zone')}}</div>
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="{{ URL('auto-suggest') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-copy"></i>
-                            Auto Suggest
+                            {{__('Auto Suggest')}}
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="{{ URL('lazy-load') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-detail"></i>
-                            Lazy Load
+                            {{__('Lazy Load')}}
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="{{ URL('import-export') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-grid"></i>
-                            Excel Import and Export
+                            {{__('Excel Import and Export')}}
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="{{ URL('generate-pdf') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-envelope"></i>
-                            Generate PDF
+                            {{__('Generate PDF')}}
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="{{ URL('products') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-list-check"></i>
-                            CRUD
+                            {{__('CRUD')}}
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="{{ URL('csv') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-store"></i>
-                            Import Export CSV
+                            {{__('Import Export CSV')}}
                         </a>
                     </li>
 
@@ -108,42 +108,42 @@
                     <li class="menu-item">
                         <a href="{{ URL('fullcalender') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-grid"></i>
-                            Full Calander
+                            {{__('Full Calander')}}
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="{{ URL('weather') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-sun"></i>
-                            Weather API
+                            {{__('Weather API')}}
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="{{ URL('notes') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-key"></i>
-                            Encrypt and Decrypt
+                            {{__('Encrypt and Decrypt')}}
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="{{ URL('form-builder') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-key"></i>
-                            Form Builder
+                            {{__('Form Builder')}}
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="{{ URL('crop') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-store"></i>
-                            Image Crop
+                            {{__('Image Crop')}}
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="{{ URL('dusk-test') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-test-tube"></i>
-                            Dusk Test
+                            {{__('Dusk Test')}}
                         </a>
                     </li>
                 </ul>

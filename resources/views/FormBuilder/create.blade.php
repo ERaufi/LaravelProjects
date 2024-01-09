@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('head')
-    <title>Example formBuilder</title>
+    <title>{{__('Example formBuilder')}}</title>
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            <label for="name">Name</label>
+            <label for="name">{{__('Name')}}</label>
             <input type="text" id="name" name="name" class="form-control" />
             <div id="fb-editor"></div>
         </div>

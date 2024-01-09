@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 @endsection
 @section('content')
-    <label>Export</label>
+    <label>{{ __('Export') }}</label>
     <input type="button" value="Export" onclick="exportExcel()" />
 
 
     <form id="importForm" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="file" name="file" accept=".xlsx, .xls">
-        <button type="button" onclick="importExcel()">Import</button>
+        <button type="button" onclick="importExcel()">{{ __('Import') }}</button>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

@@ -121,5 +121,13 @@
     "Additional Elements for Testing:": "Additional Elements for Testing:",
     "Show Alert": "Show Alert",
     "Show Confirm Dialog": "Show Confirm Dialog",
-    "Wellcome": "Wellcome"
+    "Wellcome": "Wellcome",
+    "The name field is required.": "The name field is required.",
+    "The quantity field is required.": "The quantity field is required.",
+    "The quantity must be an integer.": "The quantity must be an integer.",
+    "The buying price field is required.": "The buying price field is required.",
+    "The buying price must be a numeric value.": "The buying price must be a numeric value.",
+    "The selling price field is required.": "The selling price field is required.",
+    "The selling price must be a numeric value.": "The selling price must be a numeric value.",
+    "The weight must be a numeric value.": "The weight must be a numeric value."
 }

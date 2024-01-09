@@ -9,7 +9,7 @@
 
 @section('content')
     <div id="image-container"></div>
-    <button id="load-images">Load Images</button>
+    <button id="load-images">{{__('Load Images')}}</button>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
     <script>

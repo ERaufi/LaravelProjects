@@ -49,18 +49,18 @@
     </div>
 
     <div class="company-info">
-        <p><strong>Company Name:</strong> Stack Tips</p>
-        <p><strong>Address:</strong> 123 Company St, City, Country</p>
-        <p><strong>Phone:</strong> +123456789</p>
+        <p><strong>{{__('Company Name:')}}</strong> Stack Tips</p>
+        <p><strong>{{__('Address:')}}</strong> 123 Company St, City, Country</p>
+        <p><strong>{{__('Phone:')}}</strong> +123456789</p>
     </div>
 
     <table>
         <thead>
             <tr>
-                <th>Product Name</th>
-                <th>Quantity</th>
-                <th>Buying Price</th>
-                <th>Selling Price</th>
+                <th>{{__('Product Name')}}</th>
+                <th>{{__('Quantity')}}</th>
+                <th>{{__('Buying Price')}}</th>
+                <th>{{__('Selling Price')}}</th>
             </tr>
         </thead>
         <tbody>

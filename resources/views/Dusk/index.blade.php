@@ -5,65 +5,65 @@
 @endsection
 @section('content')
     <div class="container mt-5">
-        <h2>Test Page for Laravel Dusk</h2>
+        <h2>{{__('Test Page for Laravel Dusk')}}</h2>
 
         <!-- Text Input -->
         <div class="mb-3">
-            <label for="text_input" class="form-label">Text Input:</label>
+            <label for="text_input" class="form-label">{{__('Text Input:')}}</label>
             <input type="text" class="form-control" id="text_input" name="text_input" placeholder="Enter text">
         </div>
 
         <!-- Select Option -->
         <div class="mb-3">
-            <label for="select_option" class="form-label">Select Option:</label>
+            <label for="select_option" class="form-label">{{__('Select Option:')}}</label>
             <select class="form-select" id="select_option" name="select_option">
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                <option value="option1">{{__('Option 1')}}</option>
+                <option value="option2">{{__('Option 2')}}</option>
+                <option value="option3">{{__('Option 3')}}</option>
             </select>
         </div>
 
         <!-- Radio Buttons -->
         <div class="mb-3">
-            <label class="form-label">Radio Buttons:</label>
+            <label class="form-label">{{__('Radio Buttons:')}}</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="radio_options" id="radio_option1" value="option1">
-                <label class="form-check-label" for="radio_option1">Radio Option 1</label>
+                <label class="form-check-label" for="radio_option1">{{__('Radio Option 1')}}</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="radio_options" id="radio_option2" value="option2">
-                <label class="form-check-label" for="radio_option2">Radio Option 2</label>
+                <label class="form-check-label" for="radio_option2">{{__('Radio Option 2')}}</label>
             </div>
         </div>
 
         <!-- Checkboxes -->
         <div class="mb-3">
-            <label class="form-label">Checkboxes:</label>
+            <label class="form-label">{{__('Checkboxes:')}}</label>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="checkbox1" id="checkbox1" name="checkbox_options[]">
-                <label class="form-check-label" for="checkbox1">Checkbox 1</label>
+                <label class="form-check-label" for="checkbox1">{{__('Checkbox 1')}}</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="checkbox2" id="checkbox2" name="checkbox_options[]">
-                <label class="form-check-label" for="checkbox2">Checkbox 2</label>
+                <label class="form-check-label" for="checkbox2">{{__('Checkbox 2')}}</label>
             </div>
         </div>
 
         <!-- Date Picker -->
         <div class="mb-3">
-            <label for="date_picker" class="form-label">Date Picker:</label>
+            <label for="date_picker" class="form-label">{{__('Date Picker:')}}</label>
             <input type="text" class="form-control datepicker" id="date_picker" name="date_picker" placeholder="Select a date">
         </div>
 
         <!-- File Upload -->
         <div class="mb-3">
-            <label for="file_upload" class="form-label">File Upload:</label>
+            <label for="file_upload" class="form-label">{{__('File Upload:')}}</label>
             <input type="file" class="form-control" id="file_upload" name="file_upload">
         </div>
 
         <!-- Bootstrap Modal Trigger Button -->
         <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Open Bootstrap Modal
+            {{__('Open Bootstrap Modal')}}
         </button>
 
         <!-- Bootstrap Modal -->
@@ -71,7 +71,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">{{__('Modal Title')}}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -79,53 +79,53 @@
                         <form id="modalForm">
                             <!-- Text Input -->
                             <div class="mb-3">
-                                <label for="modal_text_input" class="form-label">Text Input:</label>
+                                <label for="modal_text_input" class="form-label">{{__('Text Input:')}}</label>
                                 <input type="text" class="form-control" id="modal_text_input" name="modal_text_input" placeholder="Enter text">
                             </div>
 
                             <!-- Select Option -->
                             <div class="mb-3">
-                                <label for="modal_select_option" class="form-label">Select Option:</label>
+                                <label for="modal_select_option" class="form-label">{{__('Select Option:')}}</label>
                                 <select class="form-select" id="modal_select_option" name="modal_select_option">
-                                    <option value="option1">Option 1</option>
-                                    <option value="option2">Option 2</option>
-                                    <option value="option3">Option 3</option>
+                                    <option value="option1">{{__('Option 1')}}</option>
+                                    <option value="option2">{{__('Option 2')}}</option>
+                                    <option value="option3">{{__('Option 3')}}</option>
                                 </select>
                             </div>
 
                             <!-- Radio Buttons -->
                             <div class="mb-3">
-                                <label class="form-label">Radio Buttons:</label>
+                                <label class="form-label">{{__('Radio Buttons:')}}</label>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="modal_radio_options" value="option1">
-                                    <label class="form-check-label" for="modal_radio_option1">Radio Option 1</label>
+                                    <label class="form-check-label" for="modal_radio_option1">{{__('Radio Option 1')}}</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="modal_radio_options" value="option2">
-                                    <label class="form-check-label" for="modal_radio_option2">Radio Option 2</label>
+                                    <label class="form-check-label" for="modal_radio_option2">{{__('Radio Option 2')}}</label>
                                 </div>
                             </div>
 
                             <!-- Checkboxes -->
                             <div class="mb-3">
-                                <label class="form-label">Checkboxes:</label>
+                                <label class="form-label">{{__('Checkboxes:')}}</label>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="modal_checkbox1" id="modal_checkbox1"
                                         name="modal_checkbox_options[]">
-                                    <label class="form-check-label" for="modal_checkbox1">Checkbox 1</label>
+                                    <label class="form-check-label" for="modal_checkbox1">{{__('Checkbox 1')}}</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="modal_checkbox2" id="modal_checkbox2"
                                         name="modal_checkbox_options[]">
-                                    <label class="form-check-label" for="modal_checkbox2">Checkbox 2</label>
+                                    <label class="form-check-label" for="modal_checkbox2">{{__('Checkbox 2')}}</label>
                                 </div>
                             </div>
 
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="submitModalForm()">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Close')}}</button>
+                        <button type="button" class="btn btn-primary" onclick="submitModalForm()">{{__('Save changes')}}</button>
                     </div>
                 </div>
             </div>
@@ -136,12 +136,12 @@
 
         <!-- Additional Elements for Testing -->
         <div class="mt-3">
-            <label>Additional Elements for Testing:</label>
+            <label>{{__('Additional Elements for Testing:')}}</label>
             <!-- Alert Button -->
-            <button type="button" class="btn btn-warning" onclick="showAlert()">Show Alert</button>
+            <button type="button" class="btn btn-warning" onclick="showAlert()">{{__('Show Alert')}}</button>
 
             <!-- Confirm Dialog Button -->
-            <button type="button" class="btn btn-danger" onclick="showConfirmDialog()">Show Confirm Dialog</button>
+            <button type="button" class="btn btn-danger" onclick="showConfirmDialog()">{{__('Show Confirm Dialog')}}</button>
         </div>
     </div>
 @endsection

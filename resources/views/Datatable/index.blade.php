@@ -14,18 +14,18 @@
 @endsection
 
 @section('content')
-    <h2>Countries DataTable</h2>
+    <h2>{{__('Countries DataTable')}}</h2>
     <div class="card">
         <div class="card-body">
             <table id="countries-table" class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Order Number</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
-                        <th>Action</th>
+                        <th>{{__('ID')}}</th>
+                        <th>{{__('Name')}}</th>
+                        <th>{{__('Order Number')}}</th>
+                        <th>{{__('Created At')}}</th>
+                        <th>{{__('Updated At')}}</th>
+                        <th>{{__('Action')}}</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

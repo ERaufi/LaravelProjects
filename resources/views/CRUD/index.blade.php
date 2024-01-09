@@ -12,13 +12,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Product List</h1>
+                <h1>{{__('Product List')}}</h1>
             </div>
         </div>
         {{-- Start Create Button================================================================== --}}
         <div class="row mb-3">
             <div class="col-md-12">
-                <a href="{{ route('products.create') }}" class="btn btn-success">Create Product</a>
+                <a href="{{ route('products.create') }}" class="btn btn-success">{{__('Create Product')}}</a>
             </div>
         </div>
         {{-- End Create Button================================================================== --}}
@@ -27,12 +27,12 @@
                 <table class="table table-striped table-bordered" width="100%">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Buying Price</th>
-                            <th>Selling Price</th>
-                            <th>Description</th>
-                            <th>Actions</th>
+                            <th>{{__('Name')}}</th>
+                            <th>{{__('Quantity')}}</th>
+                            <th>{{__('Buying Price')}}</th>
+                            <th>{{__('Selling Price')}}</th>
+                            <th>{{__('Description')}}</th>
+                            <th>{{__('Actions')}}</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -13,7 +13,7 @@
 
 @section('content')
     <div class="container my-5">
-        <h1>Upload cropped image to server</h1>
+        <h1>{{__('Upload cropped image to server')}}</h1>
 
         <div class="img-container">
             <img class="rounded" id="profile-img">
@@ -21,10 +21,10 @@
 
         <label class="label custom-file-upload btn btn-primary ml-3">
             <input type="file" class="d-none" id="file-input" name="image" accept="image/*">
-            Select Image
+            {{__('Select Image')}}
         </label>
 
-        <button type="button" class="btn btn-primary" id="saveAndUpload">Save And Upload</button>
+        <button type="button" class="btn btn-primary" id="saveAndUpload">{{__('Save And Upload')}}</button>
     </div>
 @endsection
 

@@ -124,5 +124,13 @@
     "Additional Elements for Testing:": "عناصر اضافی برای آزمایش:",
     "Show Alert": "نمایش هشدار",
     "Show Confirm Dialog": "نمایش جعبه دیالوگ تأیید",
-    "Wellcome": "خوش آمدید"
+    "Wellcome": "خوش آمدید",
+    "The name field is required.": "فیلد نام الزامی است.",
+    "The quantity field is required.": "فیلد مقدار الزامی است.",
+    "The quantity must be an integer.": "مقدار باید عدد صحیح باشد.",
+    "The buying price field is required.": "فیلد قیمت خرید الزامی است.",
+    "The buying price must be a numeric value.": "قیمت خرید باید یک مقدار عددی باشد.",
+    "The selling price field is required.": "فیلد قیمت فروش الزامی است.",
+    "The selling price must be a numeric value.": "قیمت فروش باید یک مقدار عددی باشد.",
+    "The weight must be a numeric value.": "وزن باید یک مقدار عددی باشد."
 }

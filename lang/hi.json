@@ -125,5 +125,13 @@
     "Additional Elements for Testing:": "टेस्टिंग के लिए अतिरिक्त तत्व:",
     "Show Alert": "हेरफेर दिखाएं",
     "Show Confirm Dialog": "पुष्टि संवाद दिखाएं",
-    "Wellcome": "वेलकम"
+    "Wellcome": "वेलकम",
+    "The name field is required.": "नाम का फील्ड आवश्यक है।",
+    "The quantity field is required.": "मात्रा फ़ील्ड आवश्यक है.",
+    "The quantity must be an integer.": "मात्रा पूर्णांक होनी चाहिए.",
+    "The buying price field is required.": "खरीद मूल्य फ़ील्ड आवश्यक है।,",
+    "The buying price must be a numeric value.": "खरीद मूल्य एक संख्यात्मक मान होना चाहिए।,",
+    "The selling price field is required.": "विक्रय मूल्य फ़ील्ड आवश्यक है।,",
+    "The selling price must be a numeric value.": "विक्रय मूल्य एक संख्यात्मक मान होना चाहिए।,",
+    "The weight must be a numeric value.": "वजन एक संख्यात्मक मान होना चाहिए।,"
 }
