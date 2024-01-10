@@ -18,8 +18,20 @@
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <!-- Place this tag where you want the button to render. -->
                             <li class="nav-item lh-1 me-3">
-                                <a class="github-button" href="https://github.com/ERaufi/LaravelProjects" data-icon="octicon-star"
-                                    data-size="large" data-show-count="true" aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
+                                <form id="langForm" method="post" action="{{ url('change-lang') }}">
+                                    @csrf
+                                    <select class="form-control" name="lang" id="lang" onchange="this.form.submit()">
+                                        <option value="en" {{ Auth::check() && Auth::user()->lang == 'en' ? 'selected' : '' }}>{{ __('English') }}</option>
+                                        <option value="fa" {{ Auth::check() && Auth::user()->lang == 'fa' ? 'selected' : '' }}>{{ __('Farsi') }}</option>
+                                        <option value="ur" {{ Auth::check() && Auth::user()->lang == 'ur' ? 'selected' : '' }}>{{ __('Urdu') }}</option>
+                                        <option value="ar" {{ Auth::check() && Auth::user()->lang == 'ar' ? 'selected' : '' }}>{{ __('Arabic') }}</option>
+                                        <option value="hi" {{ Auth::check() && Auth::user()->lang == 'hi' ? 'selected' : '' }}>{{ __('Hindi') }}</option>
+                                    </select>
+                                </form>
+                            </li>
+                            <li class="nav-item lh-1 me-3">
+                                <a class="github-button" href="https://github.com/ERaufi/LaravelProjects" data-icon="octicon-star" data-size="large"
+                                    data-show-count="true" aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
                             </li>
 
                             <!-- User -->

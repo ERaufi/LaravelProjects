@@ -6,6 +6,7 @@ use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\DropZoneController;
 use App\Http\Controllers\FormBuilderController;
 use App\Http\Controllers\FormsController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ScheduleController;
@@ -169,7 +170,9 @@ Route::post('countries/reordering', [CountriesController::class, 'reOrder']);
 // End Jquery Datatable==========================================================
 
 
-
+//Start Change Langauge=============================================================
+Route::post('change-lang', [LanguageController::class, 'change']);
+// End Change Language========================================================
 
 
 
