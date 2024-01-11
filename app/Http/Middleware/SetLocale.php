@@ -18,11 +18,7 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check()) {
-            // If the user is logged in, set the locale from the user's table
-            App::setLocale(Auth::user()->lang);
-        } elseif ($request->session()->has('lang')) {
-            // If the language is set in the session, use it
+        if ($request->session()->has('lang')) {
             App::setLocale($request->session()->get('lang'));
         }
 
