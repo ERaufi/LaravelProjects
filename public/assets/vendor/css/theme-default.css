@@ -5,7 +5,7 @@
   height: 0.75rem;
   position: fixed;
   top: 0px;
-  z-index: 10;
+  z-index: 1;
 }
 
 .bg-menu-theme .menu-header {

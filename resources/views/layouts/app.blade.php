@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <script src="{{ URL::asset('assets/vendor/js/helpers.js') }}"></script>
     <script src="{{ URL::asset('assets/js/config.js') }}"></script>
+    <style>
+        .notifyjs-corner {
+            position: fixed;
+            margin: 5px;
+            z-index: 999999 !important;
+        }
+    </style>
     @yield('head')
 </head>
 
@@ -58,8 +65,17 @@
     <script src="{{ URL::asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
     <script src="{{ URL::asset('assets/vendor/js/menu.js') }}"></script>
     <script src="{{ URL::asset('assets/js/main.js') }}"></script>
+    <script src="{{ URL::asset('assets/notify.js') }}"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
+<script>
+    var source = new EventSource("{{ url('/sse-updates') }}");
+
+    source.onmessage = function(event) {
+        let ac = JSON.parse(event.data)
+        $.notify(ac.message, "success");
+    };
+</script>
 @yield('script')
 
 </html>

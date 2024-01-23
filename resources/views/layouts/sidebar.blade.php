@@ -155,5 +155,12 @@
                         </a>
                     </li>
 
+
+                    <li class="menu-item">
+                        <a href="{{ URL('send-notification') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-test-tube"></i>
+                            {{ __('Real Time Notification') }}
+                        </a>
+                    </li>
                 </ul>
             </aside>

@@ -8,8 +8,10 @@ use App\Http\Controllers\FormBuilderController;
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NotesController;
+use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\SSEController;
 use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Route;
 
@@ -178,7 +180,9 @@ Route::post('change-lang', [LanguageController::class, 'change']);
 
 
 
-
+Route::get('send-notification', [SSEController::class, 'index']);
+Route::post('create-notification', [NotificationsController::class, 'create']);
+Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
 
 
 
