@@ -48,8 +48,8 @@ class LoginController extends Controller
         $password = $request->password;
 
         $user = User::where('email', $username)
-            ->orWhere('name', $username)
-            ->orWhere('phone', $username)
+            // ->orWhere('name', $username)
+            // ->orWhere('phone', $username)
             ->first();
 
         if ($user == null || !Hash::check($password, $user->password)) {

@@ -150,18 +150,19 @@ Route::post('save-form-transaction', [FormsController::class, 'create']);
 // End Form Builder===============================================================
 
 
-
+// Video Link https://youtu.be/zT3somYJGAE
 // Start Image Cropper=============================================================
 Route::view('crop', 'cropperjs.index');
 Route::post('/upload-cropped-image', [DropZoneController::class, 'uploadCroppedImage']);
 
 // End Image Cropper===============================================================
 
-
+// Video Link https://youtu.be/wNQxHo7Xj6M
 // Start Laravel Dusk Test=======================================================
 Route::view('dusk-test', 'Dusk.index');
 // End Laravel Dusk Test========================================================
 
+// Video Link https://youtu.be/RRS7zW2SwIg
 // Start Jquery Datatable========================================================
 Route::view('datatable', 'Datatable.index');
 Route::get('countries', [CountriesController::class, 'index']);
@@ -169,7 +170,7 @@ Route::post('countries/update', [CountriesController::class, 'update']);
 Route::post('countries/reordering', [CountriesController::class, 'reOrder']);
 // End Jquery Datatable==========================================================
 
-
+// Video Link https://youtu.be/ZrabCjtIaCg
 //Start Change Langauge=============================================================
 Route::post('change-lang', [LanguageController::class, 'change']);
 // End Change Language========================================================
