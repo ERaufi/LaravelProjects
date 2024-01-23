@@ -178,19 +178,9 @@ Route::post('change-lang', [LanguageController::class, 'change']);
 // End Change Language========================================================
 
 
-
-
-Route::get('send-notification', [SSEController::class, 'index']);
+Route::get('send-notification', [NotificationsController::class, 'index']);
 Route::post('create-notification', [NotificationsController::class, 'create']);
 Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
-
-
-
-
-
-
-
-
 
 
 

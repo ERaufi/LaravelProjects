@@ -42,13 +42,5 @@
                 }
             });
         }
-
-
-        var source = new EventSource("{{ url('/sse-updates') }}");
-
-        source.onmessage = function(event) {
-            let ac = JSON.parse(event.data)
-            $.notify(ac.message, "success");
-        };
     </script>
 @endsection

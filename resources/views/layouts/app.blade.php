@@ -69,12 +69,12 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 <script>
-    var source = new EventSource("{{ url('/sse-updates') }}");
+    var source = new EventSource("{{ URL('/sse-updates') }}");
 
     source.onmessage = function(event) {
-        let ac = JSON.parse(event.data)
-        $.notify(ac.message, "success");
-    };
+        let ac = JSON.parse(event.data);
+        $.notify(ac.message, 'success');
+    }
 </script>
 @yield('script')
 
