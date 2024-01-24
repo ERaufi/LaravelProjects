@@ -2,6 +2,7 @@
 
 @section('content')
     <h1>Server-Sent Events Demo</h1>
+    <h3>Please login before using Real time notifications</h3>
     <div class="row">
         <div class="col-md-4">
             <select id="users_id" class="form-control">
@@ -19,9 +20,6 @@
             <input type="button" class="btn btn-success" value="Send" onclick="sendNotification()" />
         </div>
     </div>
-
-
-
 @endsection
 @section('script')
     <script>
