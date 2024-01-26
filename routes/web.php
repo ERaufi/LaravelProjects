@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\DropZoneController;
 use App\Http\Controllers\FormBuilderController;
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\ProductsController;
@@ -177,12 +179,19 @@ Route::post('countries/reordering', [CountriesController::class, 'reOrder']);
 Route::post('change-lang', [LanguageController::class, 'change']);
 // End Change Language========================================================
 
-// Start Laravel SSE (Real time Notification)
+// Start Laravel SSE (Real time Notification)============================================
 Route::get('send-notification', [NotificationsController::class, 'index']);
 Route::post('create-notification', [NotificationsController::class, 'create']);
 Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
-// End Laravel SSE (Real time Notification)
+// End Laravel SSE (Real time Notification)==============================================
 
+
+
+// Start Chat Application===============================================================
+Route::view('chat', 'Chat.Index');
+Route::post('send-message', [ChatsController::class, 'sendMessage']);
+Route::get('get-new-messages', [ChatsController::class, 'getNewMessages']);
+// End Chat Application=================================================================
 
 
 // Auth::routes();
