@@ -177,11 +177,11 @@ Route::post('countries/reordering', [CountriesController::class, 'reOrder']);
 Route::post('change-lang', [LanguageController::class, 'change']);
 // End Change Language========================================================
 
-
+// Start Laravel SSE (Real time Notification)
 Route::get('send-notification', [NotificationsController::class, 'index']);
 Route::post('create-notification', [NotificationsController::class, 'create']);
 Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
-
+// End Laravel SSE (Real time Notification)
 
 
 
