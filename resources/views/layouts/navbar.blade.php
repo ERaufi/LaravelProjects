@@ -18,13 +18,13 @@
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             @guest
                                 @if (Route::has('login'))
-                                    <li class="nav-item">
+                                    <li class="nav-item" id="loginButton">
                                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                     </li>
                                 @endif
 
                                 @if (Route::has('register'))
-                                    <li class="nav-item">
+                                    <li class="nav-item" id="registerButton">
                                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </li>
                                 @endif
@@ -62,9 +62,14 @@
 
 
                             </li>
-                            <li class="nav-item lh-1 me-3">
+                            <li class="nav-item lh-1 me-3" id="githubLink">
                                 <a class="github-button" href="https://github.com/ERaufi/LaravelProjects" data-icon="octicon-star" data-size="large"
                                     data-show-count="true" aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
+                            </li>
+                            <li lass="nav-item lh-1 me-3" id="youtubeLink">
+                                <a href="https://www.youtube.com/@OfficialStackTips?sub_confirmation=1" target="_blank">
+                                    <img src="{{ URL::asset('images/youtube-svgrepo-com.svg') }}" alt="YouTube Icon" class="youtube-icon">
+                                </a>
                             </li>
 
                             <!-- User -->

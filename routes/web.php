@@ -188,9 +188,12 @@ Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
 
 
 // Start Chat Application===============================================================
-Route::view('chat', 'Chat.Index');
+// Route::view('chat', 'Chat.Index');
+Route::get('chat', [ChatsController::class, 'index'])->middleware('auth');
 Route::post('send-message', [ChatsController::class, 'sendMessage']);
-Route::get('get-new-messages', [ChatsController::class, 'getNewMessages']);
+Route::get('get-new-messages/{user_id}', [ChatsController::class, 'getNewMessages']);
+Route::get('chat-history', [ChatsController::class, 'getChatHistory']);
+Route::post('upload-chat-photo', [ChatsController::class, 'uploadImage']);
 // End Chat Application=================================================================
 
 

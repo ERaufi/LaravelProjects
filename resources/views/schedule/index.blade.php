@@ -73,7 +73,7 @@
                         var eventId = info.event.id;
                         $.ajax({
                             method: 'DELETE',
-                            url: '/schedule/' + eventId,
+                            url: '/schedule/delete/' + eventId,
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
