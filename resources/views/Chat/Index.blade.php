@@ -18,8 +18,8 @@
         /* Style for sender messages */
         .send_messages {
             /* display: flex;
-                                                                                                                                                                                                                                                                                justify-content: flex-end;
-                                                                                                                                                                                                                                                                                margin-bottom: 15px; */
+                                                                                                                                                                                                                                                                                                                justify-content: flex-end;
+                                                                                                                                                                                                                                                                                                                margin-bottom: 15px; */
             display: flex;
             justify-content: flex-start;
             margin-bottom: 15px;
@@ -141,8 +141,6 @@
                     <div class="card-footer">
                         <input type="text" class="form-control" id="messageInput" placeholder="Enter your message...">
                         <button type="button" onclick="sendMessage()" class="btn btn-success" id="sendButton">Send</button>
-
-
                         <input type="file" id="imageUpload" accept="image/*" style="display:none;">
                         <button type="button" onclick="document.getElementById('imageUpload').click();" class="btn btn-info">Upload Image</button>
                     </div>
@@ -174,18 +172,7 @@
                 },
                 success: function(data) {
                     console.log(data);
-
-                    $(".card-body").append(`
-            <div class="send_messages">
-                <div class="user_image" style="background-image: url({{ URL::asset('assets/img/avatars/1.png') }})"></div>
-
-                <div class="msg-bubble">
-                    <div class="msg-text">
-                               ${checkMessageType(data.message,'text')}
-                    </div>
-                </div>
-            </div>
-        `);
+                    addMessageToBoard(data);
                 }
             });
             $("#messageInput").val('');
@@ -207,17 +194,7 @@
 
                 newMessages.onmessage = function(event) {
                     let message = JSON.parse(event.data);
-
-                    $(".card-body").append(`
-                    <div class="received_messages">
-                        <div class="user_image" style="background-image: url({{ URL::asset('assets/img/avatars/1.png') }})"></div>
-                        <div class="msg-bubble">
-                            <div class="msg-text">
-                               ${checkMessageType(message.message,message.message_type)}
-                            </div>
-                        </div>
-                    </div>
-                `);
+                    addMessageToBoard(message.item);
                 };
             }
         }
@@ -246,34 +223,8 @@
                 },
                 success: function(data) {
                     console.log(data);
-
-                    // Iterate over each message and append it to the card body
                     data.forEach(function(message) {
-                        if (message.send_by == {{ Auth::user()->id }}) {
-                            // Append sent messages
-                            $(".card-body").append(`
-                        <div class="send_messages">
-                            <div class="user_image" style="background-image: url({{ URL::asset('assets/img/avatars/1.png') }})"></div>
-                            <div class="msg-bubble">
-                                <div class="msg-text">
-                                    ${checkMessageType(message.message,message.message_type)}
-                                </div>
-                            </div>
-                        </div>
-                    `);
-                        } else {
-                            // Append received messages
-                            $(".card-body").append(`
-                        <div class="received_messages">
-                            <div class="user_image" style="background-image: url({{ URL::asset('assets/img/avatars/1.png') }})"></div>
-                            <div class="msg-bubble">
-                                <div class="msg-text">
-                                    ${checkMessageType(message.message,message.message_type)}
-                                </div>
-                            </div>
-                        </div>
-                    `);
-                        }
+                        addMessageToBoard(message);
                     });
                 }
             });
@@ -293,26 +244,43 @@
                 contentType: false,
                 processData: false,
                 success: function(response) {
-                    // Handle the success response from the server
                     console.log(response);
-                    $(".card-body").append(`
-                        <div class="send_messages">
-                            <div class="user_image" style="background-image: url({{ URL::asset('assets/img/avatars/1.png') }})"></div>
-                            <div class="msg-bubble">
-                                <div class="msg-text">
-                                    ${checkMessageType(response.image,'attachment')}
-                                </div>
-                            </div>
-                        </div>
-                    `);
-
+                    addMessageToBoard(response)
                 },
                 error: function(error) {
-                    // Handle the error response from the server
                     console.error(error);
                 }
             });
         });
+
+
+        function addMessageToBoard(message) {
+            if (message.send_by == {{ Auth::user()->id }}) {
+                // Append sent messages
+                $(".card-body").append(`
+                        <div class="send_messages">
+                            <div class="user_image" style="background-image: url({{ URL::asset('assets/img/avatars/1.png') }})"></div>
+                            <div class="msg-bubble">
+                                <div class="msg-text">
+                                    ${checkMessageType(message.message,message.message_type)}
+                                </div>
+                            </div>
+                        </div>
+                    `);
+            } else {
+                // Append received messages
+                $(".card-body").append(`
+                        <div class="received_messages">
+                            <div class="user_image" style="background-image: url({{ URL::asset('assets/img/avatars/1.png') }})"></div>
+                            <div class="msg-bubble">
+                                <div class="msg-text">
+                                    ${checkMessageType(message.message,message.message_type)}
+                                </div>
+                            </div>
+                        </div>
+                    `);
+            }
+        }
 
         function checkMessageType(message, type) {
             if (type == 'text') {

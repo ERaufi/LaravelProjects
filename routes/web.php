@@ -192,8 +192,6 @@ Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
 
 
 // Start Chat Application===============================================================
-// Route::view('chat', 'Chat.Index');
-// Route::get('chats', [ChatsController::class, 'index']);
 Route::get('communications', [ChatsController::class, 'index'])->middleware('auth');
 Route::post('send-message', [ChatsController::class, 'sendMessage']);
 Route::get('get-new-messages/{user_id}', [ChatsController::class, 'getNewMessages']);

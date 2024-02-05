@@ -23,10 +23,11 @@ class ChatsController extends Controller
         $item->date_time = now();
         $item->send_by = Auth::user()->id;
         $item->send_to = $request->user;
+        $item->message_type = 'text';
         $item->message = e($request->input('message')); // Use the e helper
         $item->save();
 
-        return response()->json(['message' => $item->message]);
+        return $item;
     }
 
     public function getNewMessages($user_id)
@@ -43,9 +44,7 @@ class ChatsController extends Controller
 
         if ($message) {
             $eventData = [
-                'message' => $message->message,
-                'sender' => $message->sender->name,
-                'message_type' => $message->message_type,
+                'item' => $message,
             ];
 
             echo "data:" . json_encode($eventData) . "\n\n";
@@ -110,7 +109,7 @@ class ChatsController extends Controller
             $chat->message_type = 'attachment';
             $chat->save();
             // Return a response, e.g., the file path or a success message
-            return response()->json(['status' => 'success', 'image' => $chat->message]);
+            return $chat;
         }
 
         // Return an error response if no file is found
