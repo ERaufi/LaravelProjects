@@ -1,23 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Server-Sent Events Demo</h1>
-    <h3>Please login before using Real time notifications</h3>
-    <div class="row">
-        <div class="col-md-4">
-            <select id="users_id" class="form-control">
-                @foreach ($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                @endforeach
-            </select>
-        </div>
+    <div class="container">
+        <h1>Server-Sent Events Demo</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <select id="users_id" class="form-control">
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
+                </select>
+            </div>
 
-        <div class="col-md-4">
-            <input type="text" id="message" class="form-control" />
-        </div>
+            <div class="col-md-4">
+                <input type="text" id="message" class="form-control" />
+            </div>
 
-        <div class="col-md-2">
-            <input type="button" class="btn btn-success" value="Send" onclick="sendNotification()" />
+            <div class="col-md-2">
+                <input type="button" class="btn btn-success" value="Send" onclick="sendNotification()" />
+            </div>
         </div>
     </div>
 @endsection

@@ -184,7 +184,7 @@ Route::post('change-lang', [LanguageController::class, 'change']);
 // End Change Language========================================================
 
 // Start Laravel SSE (Real time Notification)============================================
-Route::get('send-notification', [NotificationsController::class, 'index']);
+Route::get('send-notification', [NotificationsController::class, 'index'])->middleware('auth');
 Route::post('create-notification', [NotificationsController::class, 'create']);
 Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
 // End Laravel SSE (Real time Notification)==============================================
