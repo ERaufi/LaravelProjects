@@ -131,7 +131,7 @@
                     </li>
 
                     <li class="menu-item">
-                        <a href="{{ URL('chat') }}" class="menu-link">
+                        <a href="{{ URL('communications') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-test-tube"></i>
                             {{ __('Chat') }}
                         </a>

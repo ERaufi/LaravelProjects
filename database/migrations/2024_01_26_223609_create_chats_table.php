@@ -18,8 +18,6 @@ return new class extends Migration
             $table->foreignId('send_to')->nullable(false)->constrained('users');
             $table->text('message');
             $table->enum('message_type', ['text', 'attachment'])->nullable(false)->default('text');
-            $table->string('attachment_path')->nullable();
-            $table->string('attachment_name')->nullable();
             $table->boolean('is_received')->nullable(false)->default(0);
             $table->timestamps();
         });

@@ -45,6 +45,7 @@ class ChatsController extends Controller
             $eventData = [
                 'message' => $message->message,
                 'sender' => $message->sender->name,
+                'message_type' => $message->message_type,
             ];
 
             echo "data:" . json_encode($eventData) . "\n\n";
@@ -83,7 +84,7 @@ class ChatsController extends Controller
     {
         // Validate the incoming request with necessary rules
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:1024', // Adjust the rules as needed
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:1024',
         ]);
 
         // Check if the request contains a file
@@ -95,13 +96,21 @@ class ChatsController extends Controller
             $imageName = time() . '.' . $image->getClientOriginalExtension();
 
             // Move the file to the storage path (public/images in this example)
-            $image->move(public_path('chat/images'), $imageName);
+            $image->move(public_path('communication/images'), $imageName);
 
             // You can save the file path in the database if needed
-            $filePath = 'images/' . $imageName;
+            $filePath = 'communication/images/' . $imageName;
 
+
+            $chat = new Chats();
+            $chat->message = $filePath;
+            $chat->date_time = now();
+            $chat->send_by = Auth::user()->id;
+            $chat->send_to = $request->userID;
+            $chat->message_type = 'attachment';
+            $chat->save();
             // Return a response, e.g., the file path or a success message
-            return response()->json(['status' => 'success', 'message' => 'Image uploaded successfully', 'filePath' => $filePath]);
+            return response()->json(['status' => 'success', 'image' => $chat->message]);
         }
 
         // Return an error response if no file is found

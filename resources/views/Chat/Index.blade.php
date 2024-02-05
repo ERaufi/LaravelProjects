@@ -18,8 +18,8 @@
         /* Style for sender messages */
         .send_messages {
             /* display: flex;
-                                                                                                                                                                                                                                justify-content: flex-end;
-                                                                                                                                                                                                                                margin-bottom: 15px; */
+                                                                                                                                                                                                                                                                                justify-content: flex-end;
+                                                                                                                                                                                                                                                                                margin-bottom: 15px; */
             display: flex;
             justify-content: flex-start;
             margin-bottom: 15px;
@@ -181,7 +181,7 @@
 
                 <div class="msg-bubble">
                     <div class="msg-text">
-                        ${data.message}
+                               ${checkMessageType(data.message,'text')}
                     </div>
                 </div>
             </div>
@@ -213,7 +213,7 @@
                         <div class="user_image" style="background-image: url({{ URL::asset('assets/img/avatars/1.png') }})"></div>
                         <div class="msg-bubble">
                             <div class="msg-text">
-                                ${message.message}
+                               ${checkMessageType(message.message,message.message_type)}
                             </div>
                         </div>
                     </div>
@@ -228,8 +228,8 @@
             $(`#${userId}`).addClass("active");
             $(".card-body").empty();
             userID = userId;
-            setupEventSource();
             getChatHistory();
+            setupEventSource();
         }
 
         function getChatHistory() {
@@ -240,7 +240,7 @@
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                 },
-                url: '{{ URL('chat-history') }}',
+                url: '{{ URL('communication-history') }}',
                 data: {
                     'userID': userID
                 },
@@ -256,7 +256,7 @@
                             <div class="user_image" style="background-image: url({{ URL::asset('assets/img/avatars/1.png') }})"></div>
                             <div class="msg-bubble">
                                 <div class="msg-text">
-                                    ${message.message}
+                                    ${checkMessageType(message.message,message.message_type)}
                                 </div>
                             </div>
                         </div>
@@ -268,7 +268,7 @@
                             <div class="user_image" style="background-image: url({{ URL::asset('assets/img/avatars/1.png') }})"></div>
                             <div class="msg-bubble">
                                 <div class="msg-text">
-                                    ${message.message}
+                                    ${checkMessageType(message.message,message.message_type)}
                                 </div>
                             </div>
                         </div>
@@ -280,23 +280,14 @@
         }
 
 
-
-
-
-
-
-
-
-
-
         $('#imageUpload').on('change', function() {
             var file = $(this)[0].files[0];
             var formData = new FormData();
             formData.append('image', file);
             formData.append('_token', "{{ csrf_token() }}");
-
+            formData.append('userID', userID);
             $.ajax({
-                url: '{{ URL('upload-chat-photo') }}', // Replace with your server-side endpoint
+                url: '{{ URL('upload-communication-photo') }}',
                 type: 'POST',
                 data: formData,
                 contentType: false,
@@ -304,6 +295,17 @@
                 success: function(response) {
                     // Handle the success response from the server
                     console.log(response);
+                    $(".card-body").append(`
+                        <div class="send_messages">
+                            <div class="user_image" style="background-image: url({{ URL::asset('assets/img/avatars/1.png') }})"></div>
+                            <div class="msg-bubble">
+                                <div class="msg-text">
+                                    ${checkMessageType(response.image,'attachment')}
+                                </div>
+                            </div>
+                        </div>
+                    `);
+
                 },
                 error: function(error) {
                     // Handle the error response from the server
@@ -311,5 +313,17 @@
                 }
             });
         });
+
+        function checkMessageType(message, type) {
+            if (type == 'text') {
+                return message;
+            }
+
+            if (type == 'attachment') {
+                return `
+                    <img style="width:250px" src="{{ URL::asset('/') }}${message}"/>
+                `
+            }
+        }
     </script>
 @endsection

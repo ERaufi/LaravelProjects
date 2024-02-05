@@ -15,7 +15,6 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SSEController;
 use App\Http\Controllers\WeatherController;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,10 +32,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('clear-cache', function () {
-    Artisan::call('optimize:clear');
-    return 'success';
-});
+
 
 // Video Link https://youtu.be/KzZR9A7Xk14
 // Start Full Calender=================================================================
@@ -193,12 +189,11 @@ Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
 
 // Start Chat Application===============================================================
 // Route::view('chat', 'Chat.Index');
-// Route::get('chats', [ChatsController::class, 'index']);
-Route::get('communications', [ChatsController::class, 'index'])->middleware('auth');
+Route::get('chats', [ChatsController::class, 'index']);
 Route::post('send-message', [ChatsController::class, 'sendMessage']);
 Route::get('get-new-messages/{user_id}', [ChatsController::class, 'getNewMessages']);
-Route::get('communication-history', [ChatsController::class, 'getChatHistory']);
-Route::post('upload-communication-photo', [ChatsController::class, 'uploadImage']);
+Route::get('chat-history', [ChatsController::class, 'getChatHistory']);
+Route::post('upload-chat-photo', [ChatsController::class, 'uploadImage']);
 // End Chat Application=================================================================
 
 
