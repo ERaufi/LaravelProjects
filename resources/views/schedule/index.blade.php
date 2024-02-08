@@ -72,7 +72,7 @@
                     if (confirm("Are you sure you want to delete this event?")) {
                         var eventId = info.event.id;
                         $.ajax({
-                            method: 'DELETE',
+                            method: 'get',
                             url: '/schedule/delete/' + eventId,
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -102,9 +102,10 @@
                 var newEndDateUTC = newEndDate.toISOString().slice(0, 10);
 
                 $.ajax({
-                    method: 'PUT',
+                    method: 'post',
                     url: `/schedule/${eventId}`,
                     data: {
+                        '_token': "{{ csrf_token() }}",
                         start_date: newStartDateUTC,
                         end_date: newEndDateUTC,
                     },
@@ -124,7 +125,7 @@
                 var newEndDateUTC = newEndDate.toISOString().slice(0, 10);
 
                 $.ajax({
-                    method: 'PUT',
+                    method: 'post',
                     url: `/schedule/${eventId}/resize`,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
