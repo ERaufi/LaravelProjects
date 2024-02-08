@@ -42,9 +42,9 @@ Route::get('clear-cache', function () {
 // Start Full Calender=================================================================
 Route::get('fullcalender', [ScheduleController::class, 'index']);
 Route::get('/events', [ScheduleController::class, 'getEvents']);
-Route::delete('/schedule/{id}', [ScheduleController::class, 'deleteEvent']);
-Route::put('/schedule/{id}', [ScheduleController::class, 'update']);
-Route::put('/schedule/{id}/resize', [ScheduleController::class, 'resize']);
+Route::get('/schedule/delete/{id}', [ScheduleController::class, 'deleteEvent']);
+Route::post('/schedule/{id}', [ScheduleController::class, 'update']);
+Route::post('/schedule/{id}/resize', [ScheduleController::class, 'resize']);
 Route::get('/events/search', [ScheduleController::class, 'search']);
 
 Route::view('add-schedule', 'schedule.add');
@@ -192,6 +192,8 @@ Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
 
 
 // Start Chat Application===============================================================
+// Route::view('chat', 'Chat.Index');
+// Route::get('chats', [ChatsController::class, 'index']);
 Route::get('communications', [ChatsController::class, 'index'])->middleware('auth');
 Route::post('send-message', [ChatsController::class, 'sendMessage']);
 Route::get('get-new-messages/{user_id}', [ChatsController::class, 'getNewMessages']);
