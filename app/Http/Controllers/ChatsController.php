@@ -115,4 +115,19 @@ class ChatsController extends Controller
         // Return an error response if no file is found
         return response()->json(['status' => 'error', 'message' => 'No image file found'], 400);
     }
+
+
+    public function makeCall(Request $request)
+    {
+        $chat = new Chats();
+        $chat->message = 'call';
+        $chat->date_time = now();
+        $chat->send_by = Auth::user()->id;
+        $chat->send_to = $request->userId;
+        $chat->message_type = 'call';
+        $chat->callOffer = $request->callOffer;
+        $chat->save();
+
+        return response()->json(['message' => 'Calling']);
+    }
 }

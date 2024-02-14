@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignId('send_by')->nullable(false)->constrained('users');
             $table->foreignId('send_to')->nullable(false)->constrained('users');
             $table->text('message');
-            $table->enum('message_type', ['text', 'attachment'])->nullable(false)->default('text');
+            $table->enum('message_type', ['text', 'attachment', 'call'])->nullable(false)->default('text');
+            $table->string('callOffer')->nullable();
             $table->boolean('is_received')->nullable(false)->default(0);
             $table->timestamps();
         });
