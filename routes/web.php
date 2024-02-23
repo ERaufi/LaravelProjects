@@ -202,11 +202,6 @@ Route::post('upload-communication-photo', [ChatsController::class, 'uploadImage'
 // End Chat Application=================================================================
 
 
-// Start Audio and Video Call===========================================================
-Route::post('make-call',[ChatsController::class,'makeCall']);
-// End Audio and Video Call===========================================================
-
-
 // Auth::routes();
 
 
