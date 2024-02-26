@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\CountriesController;
+use App\Http\Controllers\CustomHelperController;
 use App\Http\Controllers\DropZoneController;
 use App\Http\Controllers\FormBuilderController;
 use App\Http\Controllers\FormsController;
@@ -201,6 +202,8 @@ Route::get('communication-history', [ChatsController::class, 'getChatHistory']);
 Route::post('upload-communication-photo', [ChatsController::class, 'uploadImage']);
 // End Chat Application=================================================================
 
+
+Route::get('custome-helper', [CustomHelperController::class, 'index']);
 
 // Auth::routes();
 
