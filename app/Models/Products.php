@@ -17,4 +17,11 @@ class Products extends Model
         'weight',
         'image_url',
     ];
+
+
+    protected $appends = ['buyingPriceWithCurrency'];
+    public function getbuyingPriceWithCurrencyAttribute()
+    {
+        return formatCurrency($this->attributes['buyingPrice'], 'AFN', 6);
+    }
 }
