@@ -7,10 +7,10 @@
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
-        "axios": "^1.1.2",
+        "axios": "^1.6.4",
         "bootstrap": "^5.2.3",
-        "laravel-vite-plugin": "^0.8.0",
+        "laravel-vite-plugin": "^1.0",
         "sass": "^1.56.1",
-        "vite": "^4.0.0"
+        "vite": "^5.0"
     }
 }
