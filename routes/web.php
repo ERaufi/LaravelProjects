@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ChatsController;
@@ -18,6 +17,8 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SSEController;
 use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Artisan;
+
+use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
