@@ -211,7 +211,7 @@ Route::get('custome-helper', [CustomHelperController::class, 'index']);
 
 
 // Start Push Notification==========================================================
-Route::view('push-notification', 'PushNotification.index');
+Route::view('push-notification', 'PushNotification.Index');
 Route::post('save-push-notification-sub', [PushNotificationController::class, 'saveSubscription']);
 Route::post('send-push-notification', [PushNotificationController::class, 'sendNotification']);
 // End Push Notification==========================================================
