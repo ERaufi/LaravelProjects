@@ -136,5 +136,13 @@
                             {{ __('Chat') }}
                         </a>
                     </li>
+
+
+                    <li class="menu-item">
+                        <a href="{{ URL('push-notification') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-test-tube"></i>
+                            {{ __('Push Notification') }}
+                        </a>
+                    </li>
                 </ul>
             </aside>

@@ -13,13 +13,15 @@ use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\PushNotificationController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SSEController;
 use App\Http\Controllers\WeatherController;
+use App\Models\PushNotification;
 use Illuminate\Support\Facades\Artisan;
 
 use Illuminate\Support\Facades\Route;
-
+use Minishlink\WebPush\VAPID;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,7 +32,9 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-
+Route::get('generate-vapid', function () {
+    dd(VAPID::createVapidKeys());
+});
 
 
 Route::get('clear-cache', function () {
@@ -201,5 +205,13 @@ Route::get('communication-history', [ChatsController::class, 'getChatHistory']);
 Route::post('upload-communication-photo', [ChatsController::class, 'uploadImage']);
 // End Chat Application=================================================================
 
-
+// Start Custom Helper===============================================================
 Route::get('custome-helper', [CustomHelperController::class, 'index']);
+// End Custom Helper===============================================================
+
+
+// Start Push Notification==========================================================
+Route::view('push-notification', 'PushNotification.index');
+Route::post('save-push-notification-sub', [PushNotificationController::class, 'saveSubscription']);
+Route::post('send-push-notification', [PushNotificationController::class, 'sendNotification']);
+// End Push Notification==========================================================
