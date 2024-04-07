@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\PushNotification;
+use App\Models\PushNotificationMsgs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Minishlink\WebPush\Subscription;
 use Minishlink\WebPush\WebPush;
 
@@ -22,7 +24,22 @@ class PushNotificationController extends Controller
         ];
 
         $webPush = new WebPush($auth);
-        $payload = '{"title":"'.$request->title.'" , "body":"'.$request->body.'" , "url":"./?id='.$request->idOfProduct.'"}';
+        // $payload = '{"title":"' . $request->title . '" , "body":"' . $request->body . '" , "url":"./?id=' . $request->idOfProduct . '"}';
+
+        // Construct the payload with the logo
+        $payload = json_encode([
+            'title' => $request->title,
+            'body' => $request->body,
+            'url' => './?id=' . $request->idOfProduct,
+        ]);
+
+        $msg = new PushNotificationMsgs();
+        $msg->title = $request->title;
+        $msg->body = $request->body;
+        $msg->url = $request->idOfProduct;
+        $msg->save();
+
+
 
         $notifications = PushNotification::all();
 
