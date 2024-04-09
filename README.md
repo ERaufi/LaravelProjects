@@ -1,4 +1,4 @@
-<!-- # My Projects
+# My Projects
 
 Welcome to my collection of projects! Below is a list of projects I've worked on, each with a brief description and a link to its YouTube video.
 
@@ -32,4 +32,4 @@ YouTube: [Project 4 Video](YouTube Link)
 ## Project 5: Project Name
 Description: A brief description of the project.
 
-YouTube: [Project 5 Video](YouTube Link) -->
+YouTube: [Project 5 Video](YouTube Link)

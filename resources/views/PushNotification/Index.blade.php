@@ -81,6 +81,7 @@
                     'idOfProduct': $("#idOfProduct").val(),
                 },
                 success: function(data) {
+                    alert('send Successfull');
                     console.log(data);
                 }
             });
