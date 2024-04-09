@@ -187,6 +187,7 @@ Route::post('countries/reordering', [CountriesController::class, 'reOrder']);
 Route::post('change-lang', [LanguageController::class, 'change']);
 // End Change Language========================================================
 
+// Video Link https://youtu.be/A7I8r3Fhrww
 // Start Laravel SSE (Real time Notification)============================================
 Route::get('send-notification', [NotificationsController::class, 'index'])->middleware('auth');
 Route::post('create-notification', [NotificationsController::class, 'create']);
@@ -194,7 +195,7 @@ Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
 // End Laravel SSE (Real time Notification)==============================================
 
 
-
+// Video Link https://youtu.be/Dcnud0U5-6E
 // Start Chat Application===============================================================
 // Route::view('chat', 'Chat.Index');
 // Route::get('chats', [ChatsController::class, 'index']);
@@ -205,11 +206,12 @@ Route::get('communication-history', [ChatsController::class, 'getChatHistory']);
 Route::post('upload-communication-photo', [ChatsController::class, 'uploadImage']);
 // End Chat Application=================================================================
 
+// Video Link https://youtu.be/5F_gRvkCoNM
 // Start Custom Helper===============================================================
 Route::get('custome-helper', [CustomHelperController::class, 'index']);
 // End Custom Helper===============================================================
 
-
+// Video Link https://youtu.be/AOLigc0T5tc
 // Start Push Notification==========================================================
 Route::view('push-notification', 'PushNotification.Index');
 Route::post('save-push-notification-sub', [PushNotificationController::class, 'saveSubscription']);
