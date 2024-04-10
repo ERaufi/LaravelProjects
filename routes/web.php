@@ -32,11 +32,6 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('generate-vapid', function () {
-    dd(VAPID::createVapidKeys());
-});
-
-
 Route::get('clear-cache', function () {
     Artisan::call('optimize:clear');
     return 'success';
@@ -183,9 +178,9 @@ Route::post('countries/reordering', [CountriesController::class, 'reOrder']);
 // End Jquery Datatable==========================================================
 
 // Video Link https://youtu.be/ZrabCjtIaCg
-//Start Change Langauge=============================================================
+//Start Change Langauge (Localization)=============================================================
 Route::post('change-lang', [LanguageController::class, 'change']);
-// End Change Language========================================================
+// End Change Language (Localization)========================================================
 
 // Video Link https://youtu.be/A7I8r3Fhrww
 // Start Laravel SSE (Real time Notification)============================================
