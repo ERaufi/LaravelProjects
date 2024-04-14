@@ -14,6 +14,7 @@ use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PushNotificationController;
+use App\Http\Controllers\RolesAndPermissionController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SSEController;
 use App\Http\Controllers\WeatherController;
@@ -208,7 +209,18 @@ Route::get('custome-helper', [CustomHelperController::class, 'index']);
 
 // Video Link https://youtu.be/AOLigc0T5tc
 // Start Push Notification==========================================================
-Route::view('push-notification', 'PushNotification.Index');
+Route::view('push-notification', 'PushNotification.Index')->middleware('permission:Push Notification');
 Route::post('save-push-notification-sub', [PushNotificationController::class, 'saveSubscription']);
 Route::post('send-push-notification', [PushNotificationController::class, 'sendNotification']);
 // End Push Notification==========================================================
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Start Roles and Permissions==================================================================
+Route::get('add-permission', [RolesAndPermissionController::class, 'addPermissions']);
+Route::get('show-roles', [RolesAndPermissionController::class, 'show']);
+Route::get('create-roles', [RolesAndPermissionController::class, 'createRole']);
+Route::post('add-role', [RolesAndPermissionController::class, 'create']);
+// End Roles and Permissions==================================================================

@@ -144,5 +144,15 @@
                             {{ __('Push Notification') }}
                         </a>
                     </li>
+
+
+                    <li class="menu-item">
+                        <a href="{{ URL('show-roles') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-test-tube"></i>
+                            {{ __('Roles And Permissions') }}
+                        </a>
+                    </li>
+
+
                 </ul>
             </aside>
