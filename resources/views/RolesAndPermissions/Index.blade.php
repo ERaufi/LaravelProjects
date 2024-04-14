@@ -16,8 +16,8 @@
                     <tr>
                         <td>{{ $role->name }}</td>
                         <td>
-                            <input type="button" value="{{ __('Edit') }}" class="btn btn-success" />
-                            <input type="button" value="{{ __('Delete') }}" class="btn btn-danger" />
+                            <a href="{{ URL('edit-role') }}/{{ $role->id }}" class="btn btn-success">{{ __('Edit') }}</a>
+                            <a href="{{ URL('delete-role') }}/{{ $role->id }}" class="btn btn-danger">{{ __('Delete') }}</a>
                         </td>
                     </tr>
                 @endforeach
