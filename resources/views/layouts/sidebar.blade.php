@@ -130,21 +130,22 @@
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="{{ URL('communications') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-test-tube"></i>
-                            {{ __('Chat') }}
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item">
-                        <a href="{{ URL('push-notification') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-test-tube"></i>
-                            {{ __('Push Notification') }}
-                        </a>
-                    </li>
-
+                    @can('Chat Application')
+                        <li class="menu-item">
+                            <a href="{{ URL('communications') }}" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-test-tube"></i>
+                                {{ __('Chat') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('Push Notification')
+                        <li class="menu-item">
+                            <a href="{{ URL('push-notification') }}" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-test-tube"></i>
+                                {{ __('Push Notification') }}
+                            </a>
+                        </li>
+                    @endcan
 
                     <li class="menu-item">
                         <a href="{{ URL('show-roles') }}" class="menu-link">
