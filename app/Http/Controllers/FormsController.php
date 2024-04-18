@@ -17,11 +17,32 @@ class FormsController extends Controller
 
     public function create(Request $request)
     {
+        $formID = $request->form_id;
         $request->request->remove('_token');
-        $item = new Forms();
-        $item->form_id = $request->form_id;
         $request->request->remove('form_id');
-        $item->form = $request->all();
+        $allData = $request->all();
+
+        // Check if any file is attached to the request
+        if ($request->hasFile('*')) {
+            // Handle file upload
+            foreach ($request->allFiles() as $key => $files) {
+
+                // Check if it's a valid file
+                if ($files->isValid()) {
+                    // Generate a unique name for the file
+                    $imageName = time() . '_' . $files->getClientOriginalName();
+                    // Move the file to the desired location
+                    $files->move(public_path('images'), $imageName);
+                    // Add the file name to the validated data
+                    $allData['files'][] = ['key' => $imageName, 'path' => 'images/' . $imageName];
+                }
+            }
+        }
+
+
+        $item = new Forms();
+        $item->form_id = $formID;
+        $item->form = $allData;
         $item->save();
         return redirect('form-builder')->with('success', 'Form deleted successfully');
     }

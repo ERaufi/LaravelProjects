@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('head')
-    <title>{{__('Example formBuilder')}}</title>
+    <title>{{ __('Example formBuilder') }}</title>
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{ URL('save-form-transaction') }}">
+            <form method="POST" action="{{ URL('save-form-transaction') }}" enctype="multipart/form-data">
                 @csrf
-                <input type="number" id="form_id" name="form_id" hidden/>
+                <input type="number" id="form_id" name="form_id" hidden />
                 <div id="fb-reader"></div>
                 <input type="submit" value="Save" class="btn btn-success" />
             </form>
