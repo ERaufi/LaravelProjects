@@ -17,6 +17,7 @@ use App\Http\Controllers\PushNotificationController;
 use App\Http\Controllers\RolesAndPermissionController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SSEController;
+use App\Http\Controllers\UserDataController;
 use App\Http\Controllers\WeatherController;
 use App\Models\PushNotification;
 use Illuminate\Support\Facades\Artisan;
@@ -227,3 +228,6 @@ Route::get('edit-role/{id}', [RolesAndPermissionController::class, 'editRole']);
 Route::post('update-role', [RolesAndPermissionController::class, 'updateRole']);
 Route::get('delete-role/{id}', [RolesAndPermissionController::class, 'delete']);
 // End Roles and Permissions==================================================================
+
+
+Route::get('collect-user-data', [UserDataController::class, 'collectData']);
