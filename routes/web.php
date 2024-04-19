@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\CustomHelperController;
@@ -9,7 +7,6 @@ use App\Http\Controllers\DropZoneController;
 use App\Http\Controllers\FormBuilderController;
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\ProductsController;
@@ -17,13 +14,10 @@ use App\Http\Controllers\PushNotificationController;
 use App\Http\Controllers\RolesAndPermissionController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SSEController;
-use App\Http\Controllers\UserDataController;
 use App\Http\Controllers\WeatherController;
-use App\Models\PushNotification;
 use Illuminate\Support\Facades\Artisan;
 
 use Illuminate\Support\Facades\Route;
-use Minishlink\WebPush\VAPID;
 
 Route::get('/', function () {
     return view('welcome');
@@ -228,6 +222,3 @@ Route::get('edit-role/{id}', [RolesAndPermissionController::class, 'editRole']);
 Route::post('update-role', [RolesAndPermissionController::class, 'updateRole']);
 Route::get('delete-role/{id}', [RolesAndPermissionController::class, 'delete']);
 // End Roles and Permissions==================================================================
-
-
-Route::get('collect-user-data', [UserDataController::class, 'collectData']);
