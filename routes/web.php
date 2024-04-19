@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\CustomHelperController;
@@ -9,19 +7,17 @@ use App\Http\Controllers\DropZoneController;
 use App\Http\Controllers\FormBuilderController;
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PushNotificationController;
+use App\Http\Controllers\RolesAndPermissionController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SSEController;
 use App\Http\Controllers\WeatherController;
-use App\Models\PushNotification;
 use Illuminate\Support\Facades\Artisan;
 
 use Illuminate\Support\Facades\Route;
-use Minishlink\WebPush\VAPID;
 
 Route::get('/', function () {
     return view('welcome');
@@ -106,11 +102,11 @@ Route::post('import-csv', [ProductsController::class, 'importCSV']);
 
 // video Link https://youtu.be/ktTK2LZcyk4
 // Start Login using Name,Email or phone number====================================================
-Route::view('login', 'auth.login');
-Route::post('login', [LoginController::class, 'login'])->name('login')->middleware('throttle:5,1');
-Route::view('register', 'auth.register');
-Route::post('register', [RegisterController::class, 'create'])->name('register');
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+// Route::view('login', 'auth.login');
+// Route::post('login', [LoginController::class, 'login'])->name('login')->middleware('throttle:5,1');
+// Route::view('register', 'auth.register');
+// Route::post('register', [RegisterController::class, 'create'])->name('register');
+// Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 // End Login using Name,Email or phone number====================================================
 
 
@@ -166,7 +162,7 @@ Route::post('/upload-cropped-image', [DropZoneController::class, 'uploadCroppedI
 
 // Video Link https://youtu.be/wNQxHo7Xj6M
 // Start Laravel Dusk Test=======================================================
-Route::view('dusk-test', 'Dusk.index');
+Route::view('dusk-test', 'Dusk.index')->middleware('permission:Laravel Dusk Test');
 // End Laravel Dusk Test========================================================
 
 // Video Link https://youtu.be/RRS7zW2SwIg
@@ -212,3 +208,17 @@ Route::view('push-notification', 'PushNotification.Index');
 Route::post('save-push-notification-sub', [PushNotificationController::class, 'saveSubscription']);
 Route::post('send-push-notification', [PushNotificationController::class, 'sendNotification']);
 // End Push Notification==========================================================
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Start Roles and Permissions==================================================================
+Route::get('add-permission', [RolesAndPermissionController::class, 'addPermissions']);
+Route::get('show-roles', [RolesAndPermissionController::class, 'show']);
+Route::get('create-roles', [RolesAndPermissionController::class, 'createRole']);
+Route::post('add-role', [RolesAndPermissionController::class, 'create']);
+Route::get('edit-role/{id}', [RolesAndPermissionController::class, 'editRole']);
+Route::post('update-role', [RolesAndPermissionController::class, 'updateRole']);
+Route::get('delete-role/{id}', [RolesAndPermissionController::class, 'delete']);
+// End Roles and Permissions==================================================================
