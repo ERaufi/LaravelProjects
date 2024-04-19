@@ -213,6 +213,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+// Video Link https://youtu.be/EiZPls4UcH4
 // Start Roles and Permissions==================================================================
 Route::get('add-permission', [RolesAndPermissionController::class, 'addPermissions']);
 Route::get('show-roles', [RolesAndPermissionController::class, 'show']);
