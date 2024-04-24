@@ -10,15 +10,21 @@ use ZipArchive;
 
 class FileManagementController extends Controller
 {
-    private $filesPath = 'users-files';
-    public function getAllFilesAndFolders()
+    // private $filesPath = 'users-files';
+    public function getAllFilesAndFolders(Request $request)
     {
-        $directories = Storage::directories($this->filesPath);
-        $files = Storage::files($this->filesPath);
+        $path = 'users-files';
+        if ($request->path != '') {
+            $path = $request->path;
+        }
+
+        $directories = Storage::directories($path);
+        $files = Storage::files($path);
+
         return response()->json([
             'directories' => $directories,
             'files' => $files,
-            'path' => $this->filesPath
+            'path' => $path,
         ], 200);
     }
 
@@ -26,15 +32,13 @@ class FileManagementController extends Controller
 
     public function createFile(Request $request)
     {
-        Storage::put($this->filesPath . '/' . $request->fileName . '.txt', $request->fileContent);
+        Storage::put($request->path . '/' . $request->fileName . '.txt', $request->fileContent);
         return response()->json(['message' => 'Created Successfully'], 200);
     }
 
     public function createFolder(Request $request)
     {
-        // $folderName = $request->input('folderName');
-        // mkdir(public_path('users-files/' . $folderName));
-        Storage::makeDirectory($this->filesPath . '/' . $request->folderName);
+        Storage::makeDirectory($request->path . '/' . $request->folderName);
         return response()->json(['message' => 'Created Successfully'], 200);
     }
 
@@ -42,125 +46,115 @@ class FileManagementController extends Controller
     {
         $oldName = $request->input('oldName');
         $newName = $request->input('newName');
+        $extension = '';
 
-        // Determine if the item being renamed is a file or folder
-        if (is_file(public_path('users-files/' . $oldName))) {
+        if (!Storage::directoryExists($oldName)) {
             $extension = '.txt';
-        } else {
-            $extension = '';
         }
+        // Perform the rename operation
+        Storage::move($oldName, $request->path . '/' . $newName . $extension);
 
-        // Add extension only if it's a file
-        $oldPath = public_path('users-files/' . $oldName);
-        $newPath = public_path('users-files/' . $newName . $extension);
-
-        // Rename the file or folder
-        rename($oldPath, $newPath);
-
-        return "File/Folder renamed successfully!";
+        return response()->json(['message' => 'Renamed Successfully'], 200);
     }
 
 
 
-    public function move(Request $request)
+    public function paste(Request $request)
     {
         $source = $request->input('source');
         $destination = $request->input('destination');
-        // rename(public_path('users-files/' . $source), public_path('users-files/' . $destination . '/'));
-        // public::move(public_path('users-files/' . $source), public_path('users-files/' . $destination . '/'));
-        return "File/Folder moved successfully!";
+
+        // Get the filename or directory name from the source path
+        $filename = basename($source);
+
+        // Append the filename to the destination path
+        $destinationPath = $destination . '/' . $filename;
+
+        // Move the file or directory
+        if ($request->isCopy == 1) {
+            Storage::copy($source, $destinationPath);
+        } else {
+            Storage::move($source, $destinationPath);
+        }
+
+        return response()->json(['message' => 'File/Folder Moved Successfully'], 200);
     }
 
-    public function addFileToFolder(Request $request)
-    {
-        $folderPath = $request->input('folderPath');
-        $fileName = $request->input('fileName');
-        $fileContent = $request->input('fileContent');
-        file_put_contents(public_path($folderPath . '/' . $fileName), $fileContent);
-        return "File added to folder successfully!";
-    }
+
 
     public function zipFolder(Request $request)
     {
         $folderToZip = $request->input('folderToZip');
-        $zipFileName = $folderToZip . '.zip';
+        $zipFileName = basename($folderToZip) . '.zip'; // Get the folder name and append .zip extension
+        $zipFilePath = storage_path('app/' . $zipFileName); // Specify the path to the zip file in the app folder
         $zip = new ZipArchive;
-        $zip->open(public_path($zipFileName), ZipArchive::CREATE);
-        $files = glob(public_path($folderToZip . '/*'));
-        foreach ($files as $file) {
-            $zip->addFile($file, basename($file));
+
+        // Create the zip file
+        if ($zip->open($zipFilePath, ZipArchive::CREATE) !== TRUE) {
+            return "Failed to create zip file.";
         }
+
+        // Add the folder and its contents to the zip file
+        $files = Storage::allFiles($folderToZip);
+        foreach ($files as $file) {
+            $relativePath = str_replace($folderToZip . '/', '', $file);
+            $zip->addFile(storage_path('app/' . $file), $relativePath);
+        }
+
+        // Close the zip file
         $zip->close();
+
+        // Move the zip file back into the same folder
+        Storage::move($zipFileName, $folderToZip . '/' . $zipFileName);
+
         return "Folder zipped successfully!";
     }
 
-    public function delete(Request $request)
-    {
-        $path = $request->input('path');
-        if (file_exists(public_path($path))) {
-            if (is_dir(public_path($path))) {
-                $this->deleteDirectory(public_path($path));
-            } else {
-                unlink(public_path($path));
-            }
-            return "File/Folder deleted successfully!";
-        } else {
-            return "File/Folder does not exist!";
-        }
-    }
-
-    private function deleteDirectory($dir)
-    {
-        if (!file_exists($dir)) {
-            return true;
-        }
-
-        if (!is_dir($dir)) {
-            return unlink($dir);
-        }
-
-        foreach (scandir($dir) as $item) {
-            if ($item == '.' || $item == '..') {
-                continue;
-            }
-
-            if (!$this->deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
-                return false;
-            }
-        }
-
-        return rmdir($dir);
-    }
 
     public function download(Request $request)
     {
-        $filePath = $request->input('filePath');
-        if (file_exists(public_path($filePath))) {
-            return response()->download(public_path($filePath));
-        } else {
-            return "File does not exist!";
+        $encoded_file_name = $request->query('encoded_file_name');
+        $file_name = urldecode($encoded_file_name);
+
+        try {
+            return Storage::download($file_name);
+        } catch (\Exception $e) {
+            return abort(404);
         }
     }
 
-    public function editFile(Request $request)
+
+
+    public function delete(Request $request)
     {
-        $filePath = $request->input('filePath');
-        $newContent = $request->input('newContent');
-        if (file_exists(public_path($filePath))) {
-            file_put_contents(public_path($filePath), $newContent);
-            return "File edited successfully!";
+        $mime = Storage::mimeType($request->name);
+        if ($mime) {
+            Storage::delete($request->name);
         } else {
-            return "File does not exist!";
+            Storage::deleteDirectory($request->name);
         }
+
+        return response()->json(['message' => 'File/Folder Deleted Successfully'], 200);
     }
 
-    public function search(Request $request)
+
+
+
+    public function upload(Request $request)
     {
-        $searchTerm = $request->input('searchTerm');
-        $files = glob(public_path('*'));
-        $filteredFiles = array_filter($files, function ($file) use ($searchTerm) {
-            return strpos($file, $searchTerm) !== false;
-        });
-        return $filteredFiles;
+        if ($request->hasFile('files')) {
+            $files = $request->file('files');
+            $uploadedFiles = [];
+
+            foreach ($files as $file) {
+                $fileName = $file->getClientOriginalName();
+                $file->storeAs($request->path, $fileName);
+                $uploadedFiles[] = $fileName;
+            }
+
+            return response()->json(['message' => 'Files uploaded successfully', 'files' => $uploadedFiles]);
+        }
+
+        return response()->json(['error' => 'No files were uploaded'], 400);
     }
 }

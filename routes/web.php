@@ -231,11 +231,11 @@ Route::prefix('file-management')->controller(FileManagementController::class)->g
     Route::post('create-file', 'createFile');
     Route::post('create-folder', 'createFolder');
     Route::post('rename', 'rename');
-    Route::post('move', 'move');
-    Route::post('add-file-to-folder', 'addFileToFolder');
+    Route::post('paste', 'paste');
     Route::post('zip-folder', 'zipFolder');
     Route::post('delete', 'delete');
-    Route::post('download', 'download');
-    Route::post('edit-file', 'editFile');
+    // Route::get('download/{encoded_file_name}', 'download');
+    Route::get('download', 'download');
     Route::post('search', 'search');
+    Route::post('/upload', 'upload');
 });
