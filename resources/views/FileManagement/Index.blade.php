@@ -62,6 +62,62 @@
             padding: 6px 12px;
             cursor: pointer;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 @endsection
 @section('content')
@@ -78,8 +134,8 @@
             </div>
             <div class="col-md-10">
                 <input type="button" value="{{ __('Back') }}" id="backButton" class="btn btn-success" onclick="back()" hidden />
-                <input type="button" value="{{ __('Create File') }}" class="btn btn-success" onclick="createFile()" />
-                <input type="button" value="{{ __('Create Folder') }}" id="folderCreate" class="btn btn-success" onclick="createFolder()">
+                <input type="button" value="{{ __('Create File') }}" class="btn btn-success" onclick="openModal('createFileModal')" />
+                <input type="button" value="{{ __('Create Folder') }}" id="folderCreate" class="btn btn-success" onclick="openModal('createFolderModal')">
                 <input type="button" value="{{ __('Paste') }}" id="paste" class="btn btn-success" onclick="paste()" hidden>
                 <input type="button" value="{{ __('Zip This Folder') }}" class="btn btn-success" onclick="zipFolder()">
             </div>
@@ -99,7 +155,7 @@
         <!-- Context Menu -->
         <div class="context-menu" id="contextMenu">
             <ul>
-                <li onclick="rename()">Rename</li>
+                <li onclick="openModal('renameModel')">Rename</li>
                 <li onclick="cutAndCopy('cut')">Cut</li>
                 <li onclick="cutAndCopy('copy')">Copy</li>
                 <li onclick="paste()" id="paste" hidden>Paste</li>
@@ -108,6 +164,55 @@
             </ul>
         </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+    <!-- Create File Modal -->
+    <div id="createFileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('createFileModal')">&times;</span>
+            <h2>Create File</h2>
+            <input type="text" class="form-control" id="fileNameInput" placeholder="File Name">
+            <textarea id="fileContentInput" class="form-control" placeholder="File Content"></textarea>
+            <button onclick="createFile()" class="btn btn-success">Save</button>
+        </div>
+    </div>
+
+    <!-- Create Folder Modal -->
+    <div id="createFolderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('createFolderModal')">&times;</span>
+            <h2>Create Folder</h2>
+            <input type="text" class="form-control" id="folderNameInput" placeholder="Folder Name">
+            <button onclick="createFolder()" class="btn btn-success">Save</button>
+        </div>
+    </div>
+
+    <!-- Rename Modal -->
+    <div id="renameModel" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('renameModel')">&times;</span>
+            <h2>Rename</h2>
+            <input type="text" class="form-control" id="oldName" readonly hidden>
+            <input type="text" class="form-control" id="newName" placeholder="Name">
+            <button onclick="rename()" class="btn btn-success">Save</button>
+        </div>
     </div>
 @endsection
 
@@ -131,9 +236,9 @@
                 success: function(data) {
                     // Empty the files div
                     $('.files').empty();
+                    currentPath = data.path;
                     displayFilesAndFolders(data.directories, 'folder', data.path);
                     displayFilesAndFolders(data.files, 'file', data.path);
-                    currentPath = data.path;
 
 
                     if (currentPath != address.at(-1)) {
@@ -173,13 +278,15 @@
             var html = '';
             data.map(item => {
                 var iconClass = 'fas fa-folder';
+                let name = item.replace(currentPath + '/', '');
+
                 if (type != 'folder') {
                     iconClass = iconMappings[item.split('.').pop().toLowerCase()] || 'fas fa-file'; // Default to file icon
                 }
 
                 html += `<div class="file-item" data-name="${item}" data-type="${type}" data-path="${path}">
-            <i style="cursor:pointer" onclick="changePath('${item}')" class="${iconClass}" oncontextmenu="showContextMenu(event)"></i>
-            <span style="cursor:pointer" oncontextmenu="showContextMenu(event)">${item}</span>
+            <i style="cursor:pointer" ${type=='folder'?`onclick="changePath('${item}')`:""}" class="${iconClass}" oncontextmenu="showContextMenu(event)"></i>
+            <span style="cursor:pointer" oncontextmenu="showContextMenu(event)">${name}</span>
             </div>`;
             });
             $('.files').append(html);
@@ -223,34 +330,51 @@
         }
 
 
+        // Function to open modal
+        function openModal(modalId) {
+            var modal = document.getElementById(modalId);
+            modal.style.display = "block";
+
+            if (modalId == 'renameModel') {
+                var selectedItem = $('.context-menu').data('selectedItem');
+                var oldName = selectedItem.data('name');
+                $("#oldName").val(oldName);
+            }
+        }
+
+        // Function to close modal
+        function closeModal(modalId) {
+            var modal = document.getElementById(modalId);
+            modal.style.display = "none";
+        }
 
         function createFile() {
-            let name = 'test file';
             let data = {
-                'fileName': 'test',
-                'fileContent': 'this is just test',
+                'fileName': $("#fileNameInput").val(),
+                'fileContent': $("#fileContentInput").val(),
+                'path': currentPath,
             };
-            postAjax("{{ URL('file-management/create-file') }}", data)
+            postAjax("{{ URL('file-management/create-file') }}", data);
+            closeModal('createFileModal');
         }
 
         function createFolder() {
             let data = {
-                'folderName': 'testing',
+                'folderName': $("#folderNameInput").val(),
+                'path': currentPath,
             };
-            postAjax("{{ URL('file-management/create-folder') }}", data)
+            postAjax("{{ URL('file-management/create-folder') }}", data);
+            closeModal('createFolderModal');
         }
 
         function rename() {
-            var selectedItem = $('.context-menu').data('selectedItem');
-            var oldName = selectedItem.data('name');
-            var type = selectedItem.data('type');
-
-            let name = 'test file';
             let data = {
-                'oldName': oldName,
-                'newName': 'new_test',
+                'oldName': $("#oldName").val(),
+                'newName': $("#newName").val(),
+                'path': currentPath,
             };
             postAjax("{{ URL('file-management/rename') }}", data);
+            closeModal('renameModel');
         }
 
 

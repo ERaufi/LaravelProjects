@@ -48,8 +48,11 @@ class FileManagementController extends Controller
         $newName = $request->input('newName');
         $extension = '';
 
-        if (!Storage::directoryExists($oldName)) {
-            $extension = '.txt';
+
+        $mime = Storage::mimeType($oldName);
+
+        if ($mime) {
+            $extension = '.' . pathinfo(storage_path($oldName), PATHINFO_EXTENSION);
         }
         // Perform the rename operation
         Storage::move($oldName, $request->path . '/' . $newName . $extension);
