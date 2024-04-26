@@ -234,8 +234,6 @@ Route::prefix('file-management')->controller(FileManagementController::class)->g
     Route::post('paste', 'paste');
     Route::post('zip-folder', 'zipFolder');
     Route::post('delete', 'delete');
-    // Route::get('download/{encoded_file_name}', 'download');
     Route::get('download', 'download');
-    Route::post('search', 'search');
     Route::post('/upload', 'upload');
 });
