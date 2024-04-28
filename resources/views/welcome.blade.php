@@ -9,9 +9,8 @@
         <div class="container">
             <h1>{{ __('Welcome') }}</h1>
             <p style="font-size: 1.2em;">🎉 Check out my latest YouTube video below! 🎥</p>
-            <iframe width="1253" height="662" src="https://www.youtube.com/embed/EiZPls4UcH4"
-                title="Mastering Laravel 11 Roles and Permissions: A Comprehensive Guide" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            <iframe width="1253" height="662" src="https://www.youtube.com/embed/tt4HOOQ-rCc" title="Mastering File Management in Laravel: A Comprehensive Guide"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <p>Don't forget to <span style="font-weight: bold;">subscribe</span> to my channel for more content! 🔔</p>
         </div>
