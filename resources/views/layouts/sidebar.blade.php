@@ -151,5 +151,12 @@
                     </li>
 
 
+                    <li class="menu-item">
+                        <a href="{{ URL('file-management') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-test-tube"></i>
+                            {{ __('File Management') }}
+                        </a>
+                    </li>
+
                 </ul>
             </aside>

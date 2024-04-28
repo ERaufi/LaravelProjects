@@ -4,6 +4,7 @@ use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\CustomHelperController;
 use App\Http\Controllers\DropZoneController;
+use App\Http\Controllers\FileManagementController;
 use App\Http\Controllers\FormBuilderController;
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\LanguageController;
@@ -223,3 +224,17 @@ Route::get('edit-role/{id}', [RolesAndPermissionController::class, 'editRole']);
 Route::post('update-role', [RolesAndPermissionController::class, 'updateRole']);
 Route::get('delete-role/{id}', [RolesAndPermissionController::class, 'delete']);
 // End Roles and Permissions==================================================================
+
+
+Route::prefix('file-management')->controller(FileManagementController::class)->group(function () {
+    Route::view('/', 'FileManagement.Index');
+    Route::get('get-all', 'getAllFilesAndFolders');
+    Route::post('create-file', 'createFile');
+    Route::post('create-folder', 'createFolder');
+    Route::post('rename', 'rename');
+    Route::post('paste', 'paste');
+    Route::post('zip-folder', 'zipFolder');
+    Route::post('delete', 'delete');
+    Route::get('download', 'download');
+    Route::post('/upload', 'upload');
+});
