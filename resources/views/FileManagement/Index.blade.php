@@ -285,7 +285,7 @@
                 }
 
                 html += `<div class="file-item" data-name="${item}" data-type="${type}" data-path="${path}">
-            <i style="cursor:pointer" ${type=='folder'?`onclick="changePath('${item}')`:""}" class="${iconClass}" oncontextmenu="showContextMenu(event)"></i>
+            <i style="cursor:pointer" ${type=='folder'?`onclick="changePath('${item}')"`:""} class="${iconClass}" oncontextmenu="showContextMenu(event)"></i>
             <span style="cursor:pointer" oncontextmenu="showContextMenu(event)">${name}</span>
             </div>`;
             });
