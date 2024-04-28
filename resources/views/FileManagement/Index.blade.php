@@ -129,7 +129,7 @@
                     <label for="file-upload" class="custom-file-upload">
                         Upload your files
                     </label>
-                    <input id="file-upload" type="file" multiple />
+                    <input id="file-upload" type="file" accept=".jpg, .jpeg, .png, .gif, .pdf, .doc, .docx, .xls, .xlsx" multiple />
                 </form>
             </div>
             <div class="col-md-10">
@@ -220,6 +220,8 @@
 
 
 @section('script')
+    <script src="{{ asset('assets/notify.min.js') }}"></script>
+
     <script>
         let currentPath = '';
         let copiedItem = null;
@@ -464,12 +466,11 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
-                        console.log(response);
                         getAllFilesAndFolders();
-                        // Handle success response
                     },
-                    error: function(xhr, status, error) {
-                        console.error(error);
+                    error: function(error) {
+                        console.log(error);
+                        alert(error.responseJSON.message);
                         // Handle error
                     }
                 });

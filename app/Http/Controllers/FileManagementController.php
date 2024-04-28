@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FileManagementRequest;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use ZipArchive;
+use Illuminate\Support\Facades\Validator;
 
 
 class FileManagementController extends Controller
@@ -143,8 +145,16 @@ class FileManagementController extends Controller
 
 
 
-    public function upload(Request $request)
+    public function upload(FileManagementRequest $request)
     {
+        // $validator = Validator::make($request->all(), [
+        //     'files.*' => 'required|mimes:jpeg,jpg,png,gif,pdf,doc,docx,xls,xlsx|max:2048', // Adjust max file size as needed
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return response()->json(['error' => $validator->errors()->first()], 400);
+        // }
+
         if ($request->hasFile('files')) {
             $files = $request->file('files');
             $uploadedFiles = [];
