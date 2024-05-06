@@ -19,6 +19,9 @@ use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Artisan;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -191,7 +194,7 @@ Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
 // Start Chat Application===============================================================
 // Route::view('chat', 'Chat.Index');
 // Route::get('chats', [ChatsController::class, 'index']);
-Route::get('communications', [ChatsController::class, 'index'])->middleware('auth');
+Route::get('communications', [ChatsController::class, 'index'])->middleware(['auth','verified']);
 Route::post('send-message', [ChatsController::class, 'sendMessage']);
 Route::get('get-new-messages/{user_id}', [ChatsController::class, 'getNewMessages']);
 Route::get('communication-history', [ChatsController::class, 'getChatHistory']);
@@ -238,3 +241,21 @@ Route::prefix('file-management')->controller(FileManagementController::class)->g
     Route::get('download', 'download');
     Route::post('/upload', 'upload');
 });
+
+
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
+
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
