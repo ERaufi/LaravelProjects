@@ -26,3 +26,5 @@ Welcome to my collection of Laravel projects! Below is a table of the projects I
 | 20     | Push Notification                       | [Video](https://youtu.be/AOLigc0T5tc) |
 | 21     | Roles And Permission                    | [Video](https://youtu.be/EiZPls4UcH4) |
 | 22     | File Management                         | [Video](https://youtu.be/tt4HOOQ-rCc) |
+| 23     | Auto Complete Search                    | [Video](https://youtu.be/s362UfaMKtg) |
+

@@ -217,7 +217,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 // Video Link https://youtu.be/EiZPls4UcH4
 // Start Roles and Permissions==================================================================
 Route::get('add-permission', [RolesAndPermissionController::class, 'addPermissions']);
@@ -230,6 +229,8 @@ Route::get('delete-role/{id}', [RolesAndPermissionController::class, 'delete']);
 // End Roles and Permissions==================================================================
 
 
+// Video Link https://youtu.be/tt4HOOQ-rCc
+// Start File Management=======================================================================
 Route::prefix('file-management')->controller(FileManagementController::class)->group(function () {
     Route::view('/', 'FileManagement.Index');
     Route::get('get-all', 'getAllFilesAndFolders');
@@ -242,7 +243,16 @@ Route::prefix('file-management')->controller(FileManagementController::class)->g
     Route::get('download', 'download');
     Route::post('/upload', 'upload');
 });
+// End File Management=======================================================================
 
+
+// Video Link https://youtu.be/s362UfaMKtg
+// Start Auto Complete Search==============================================================
+Route::prefix('auto-complete-search')->group(function () {
+    Route::view('/', 'AutoCompleteSearch.index');
+    Route::get('search/{query}', [CountriesController::class, 'search']);
+});
+// End Auto Complete Search==============================================================
 
 Route::get('/email/verify', function () {
     return view('auth.verify');
@@ -261,10 +271,5 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-
-Route::prefix('auto-complete-search')->group(function () {
-    Route::view('/', 'AutoCompleteSearch.index');
-    Route::get('search/{query}', [CountriesController::class, 'search']);
-});
 
 
