@@ -7,6 +7,7 @@ use App\Http\Controllers\DropZoneController;
 use App\Http\Controllers\FileManagementController;
 use App\Http\Controllers\FormBuilderController;
 use App\Http\Controllers\FormsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationsController;
@@ -194,7 +195,7 @@ Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
 // Start Chat Application===============================================================
 // Route::view('chat', 'Chat.Index');
 // Route::get('chats', [ChatsController::class, 'index']);
-Route::get('communications', [ChatsController::class, 'index'])->middleware(['auth','verified']);
+Route::get('communications', [ChatsController::class, 'index'])->middleware(['auth', 'verified']);
 Route::post('send-message', [ChatsController::class, 'sendMessage']);
 Route::get('get-new-messages/{user_id}', [ChatsController::class, 'getNewMessages']);
 Route::get('communication-history', [ChatsController::class, 'getChatHistory']);
@@ -259,3 +260,11 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+Route::prefix('auto-complete-search')->group(function () {
+    Route::view('/', 'AutoCompleteSearch.index');
+    Route::get('search/{query}', [CountriesController::class, 'search']);
+});
+
+

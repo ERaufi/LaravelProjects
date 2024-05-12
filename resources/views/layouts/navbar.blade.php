@@ -67,7 +67,7 @@
                                     data-show-count="true" aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
                             </li>
                             <li lass="nav-item lh-1 me-3" id="youtubeLink">
-                                <a href="https://www.youtube.com/@OfficialStackTips?sub_confirmation=1" target="_blank">
+                                <a href="https://www.youtube.com/@eraufi?sub_confirmation=1" target="_blank">
                                     <img src="{{ URL::asset('images/youtube-svgrepo-com.svg') }}" alt="YouTube Icon" class="youtube-icon">
                                 </a>
                             </li>

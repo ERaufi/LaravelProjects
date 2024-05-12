@@ -19,7 +19,10 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
         Products::factory(100)->create();
         Schedule::factory(20)->create();
-        Countries::factory(195)->create();
+        $this->call([
+            CountriesSeeder::class
+        ]);
+        // Countries::factory(195)->create();
         // User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
