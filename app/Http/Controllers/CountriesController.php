@@ -55,11 +55,8 @@ class CountriesController extends Controller
 
     public function search($query)
     {
-        $data = Countries::select("name")
+        return Countries::select("name")
             ->where('name', 'LIKE', '%' . $query . '%')
-            ->take(10)
             ->get();
-
-        return $data;
     }
 }

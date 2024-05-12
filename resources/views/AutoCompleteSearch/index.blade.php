@@ -20,8 +20,6 @@
 
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
-
-
     <script>
         const autoCompleteJS = new autoComplete({
             selector: "#autoComplete",
@@ -30,7 +28,7 @@
                 src: async (query) => {
                     try {
                         // Fetch Data from external Source
-                        const source = await fetch(`{{ URL('auth-complete-search/search') }}/${query}`);
+                        const source = await fetch(`{{ URL('auto-complete-search/search') }}/${query}`);
                         // Data should be an array of `Objects` or `Strings`
                         const data = await source.json();
 
@@ -59,13 +57,12 @@
             },
             resultItem: {
                 highlight: true,
-            },
-
+            }
         });
 
         document.querySelector("#autoComplete").addEventListener("selection", function(event) {
             // "event.detail" carries the autoComplete.js "feedback" object
-            console.log(event.detail.selection.value.name);
+            console.log(event.detail);
             $("#autoComplete").val(event.detail.selection.value.name);
         });
     </script>

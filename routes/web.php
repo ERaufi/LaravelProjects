@@ -7,6 +7,7 @@ use App\Http\Controllers\DropZoneController;
 use App\Http\Controllers\FileManagementController;
 use App\Http\Controllers\FormBuilderController;
 use App\Http\Controllers\FormsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationsController;
@@ -242,12 +243,6 @@ Route::prefix('file-management')->controller(FileManagementController::class)->g
 });
 
 
-Route::prefix('auth-complete-search')->group(function () {
-    Route::view('/', 'AutoCompleteSearch.index');
-    Route::get('search/{query}', [CountriesController::class, 'search']);
-});
-
-
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->middleware('auth')->name('verification.notice');
@@ -264,3 +259,11 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+Route::prefix('auto-complete-search')->group(function () {
+    Route::view('/', 'AutoCompleteSearch.index');
+    Route::get('search/{query}', [CountriesController::class, 'search']);
+});
+
+
