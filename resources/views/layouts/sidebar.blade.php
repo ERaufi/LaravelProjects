@@ -37,7 +37,7 @@
                     </li>
 
                     <li class="menu-item">
-                        <a href="{{ URL('auth-complete-search') }}" class="menu-link">
+                        <a href="{{ URL('auto-complete-search') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-copy"></i>
                             {{ __('Auto Complete Search') }}
                         </a>
