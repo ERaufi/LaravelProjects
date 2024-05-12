@@ -37,6 +37,13 @@
                     </li>
 
                     <li class="menu-item">
+                        <a href="{{ URL('auth-complete-search') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-copy"></i>
+                            {{ __('Auto Complete Search') }}
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
                         <a href="{{ URL('lazy-load') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-detail"></i>
                             {{ __('Lazy Load') }}

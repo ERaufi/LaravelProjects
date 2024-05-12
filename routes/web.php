@@ -194,7 +194,7 @@ Route::get('/sse-updates', [SSEController::class, 'sendSSE']);
 // Start Chat Application===============================================================
 // Route::view('chat', 'Chat.Index');
 // Route::get('chats', [ChatsController::class, 'index']);
-Route::get('communications', [ChatsController::class, 'index'])->middleware(['auth','verified']);
+Route::get('communications', [ChatsController::class, 'index'])->middleware(['auth', 'verified']);
 Route::post('send-message', [ChatsController::class, 'sendMessage']);
 Route::get('get-new-messages/{user_id}', [ChatsController::class, 'getNewMessages']);
 Route::get('communication-history', [ChatsController::class, 'getChatHistory']);
@@ -239,6 +239,12 @@ Route::prefix('file-management')->controller(FileManagementController::class)->g
     Route::post('delete', 'delete');
     Route::get('download', 'download');
     Route::post('/upload', 'upload');
+});
+
+
+Route::prefix('auth-complete-search')->group(function () {
+    Route::view('/', 'AutoCompleteSearch.index');
+    Route::get('search/{query}', [CountriesController::class, 'search']);
 });
 
 

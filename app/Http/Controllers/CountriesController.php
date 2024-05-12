@@ -51,4 +51,15 @@ class CountriesController extends Controller
 
         return response()->json('Order Saved Successfully');
     }
+
+
+    public function search($query)
+    {
+        $data = Countries::select("name")
+            ->where('name', 'LIKE', '%' . $query . '%')
+            ->take(10)
+            ->get();
+
+        return $data;
+    }
 }
