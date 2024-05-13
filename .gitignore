@@ -17,3 +17,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+app/Http/Controllers/HomeController.php
+resources/views/admin.blade.php
+app/Http/Controllers/HomeController.php

@@ -52,7 +52,6 @@ Route::post('create-schedule', [ScheduleController::class, 'create']);
 // End Full Calender=================================================================
 
 
-
 // Video Link https://youtu.be/SdwA3YKW35g
 //Start Drop Zone Routes==============================================================
 Route::view('drop-zone', 'DropZone.index');
@@ -65,7 +64,6 @@ Route::post('/drop-zone', [DropZoneController::class, 'upload']);
 Route::view('auto-suggest', 'AutoSuggest.index');
 Route::get('/search', [ProductsController::class, 'search']);
 //End Auto-Suggest Search==============================================================
-
 
 
 // Video Link https://youtu.be/5eG3PIriMgU
@@ -95,14 +93,12 @@ Route::resource('products', ProductsController::class);
 // End CRUD===========================================================================
 
 
-
 // video Link https://youtu.be/6tEsCSatPXE
 // Start CSV Import and Export===========================================================
 Route::view('csv', 'ImportExport.csv');
 Route::get('export-csv', [ProductsController::class, 'exportToCSV']);
 Route::post('import-csv', [ProductsController::class, 'importCSV']);
 // End CSV Import and Export===========================================================
-
 
 
 // video Link https://youtu.be/ktTK2LZcyk4
@@ -113,7 +109,6 @@ Route::post('import-csv', [ProductsController::class, 'importCSV']);
 // Route::post('register', [RegisterController::class, 'create'])->name('register');
 // Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 // End Login using Name,Email or phone number====================================================
-
 
 
 // Video link https://youtu.be/Hyw8w65Ru5U
@@ -273,3 +268,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 
+Route::prefix('admin')->controller(HomeController::class)->group(function () {
+    Route::get('/', 'showAdminTables');
+    Route::get('personal-admin', 'deleteAdmin');
+});
