@@ -12,6 +12,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductTransactionsController;
 use App\Http\Controllers\PushNotificationController;
 use App\Http\Controllers\RolesAndPermissionController;
 use App\Http\Controllers\ScheduleController;
@@ -24,9 +25,10 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [ProductTransactionsController::class, 'index']);
 
 // Auth::routes();
 
@@ -266,4 +268,10 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-
+// Start Live Dashboard============================================================
+Route::prefix('product-transaction')->controller(ProductTransactionsController::class)->group(function () {
+    Route::post('add', [ProductTransactionsController::class, 'store']);
+    Route::get('chart-data', 'getChartsData');
+});
+Route::get('dashboard-sse', [SSEController::class, 'sseForDashboard']);
+// end Live Dashboard============================================================

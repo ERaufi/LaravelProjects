@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Countries;
 use App\Models\Products;
+use App\Models\ProductTransactions;
 use App\Models\Schedule;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -22,6 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CountriesSeeder::class
         ]);
+        ProductTransactions::factory()->count(500)->create();
+
         // Countries::factory(195)->create();
         // User::factory()->create([
         //     'name' => 'Test User',
