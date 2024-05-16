@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\NewThingAdded;
-use App\Events\NewThingAddedEvent;
 use App\Models\Products;
 use App\Models\ProductTransactions;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class ProductTransactionsController extends Controller
@@ -35,38 +34,37 @@ class ProductTransactionsController extends Controller
         $productTransaction->total_price = $validatedData['quantity'] * $validatedData['price'];
         $productTransaction->save();
 
-
-        event(new NewThingAddedEvent());
+        Cache::flush();
         return response()->json(['success' => true, 'message' => 'Transaction saved successfully']);
     }
 
-    public function getChartsData(Request $request)
-    {
-        $perMonth = ProductTransactions::select(
-            DB::raw("DATE_FORMAT(created_at, '%Y-%m') as month"),
-            DB::raw("SUM(CASE WHEN transaction_type = 'buy' THEN total_price ELSE 0 END) as total_buying"),
-            DB::raw("SUM(CASE WHEN transaction_type = 'sell' THEN total_price ELSE 0 END) as total_selling")
-        )
-            ->whereYear('created_at', Carbon::now()->year)
-            ->groupBy('month')
-            ->orderBy('month')
-            ->get();
+    // public function getChartsData(Request $request)
+    // {
+    //     $perMonth = ProductTransactions::select(
+    //         DB::raw("DATE_FORMAT(created_at, '%Y-%m') as month"),
+    //         DB::raw("SUM(CASE WHEN transaction_type = 'buy' THEN total_price ELSE 0 END) as total_buying"),
+    //         DB::raw("SUM(CASE WHEN transaction_type = 'sell' THEN total_price ELSE 0 END) as total_selling")
+    //     )
+    //         ->whereYear('created_at', Carbon::now()->year)
+    //         ->groupBy('month')
+    //         ->orderBy('month')
+    //         ->get();
 
 
-        $totalBuyingAndSelling = ProductTransactions::select(
-            'product_id',
-            DB::raw("SUM(CASE WHEN transaction_type = 'buy' THEN total_price ELSE 0 END) as total_buying"),
-            DB::raw("SUM(CASE WHEN transaction_type = 'sell' THEN total_price ELSE 0 END) as total_selling")
-        )
-            ->groupBy('product_id')
-            ->orderBy(DB::raw('SUM(CASE WHEN transaction_type = "sell" THEN total_price ELSE 0 END)'), 'desc')
-            ->take(8)
-            ->with('products')
-            ->get();
+    //     $totalBuyingAndSelling = ProductTransactions::select(
+    //         'product_id',
+    //         DB::raw("SUM(CASE WHEN transaction_type = 'buy' THEN total_price ELSE 0 END) as total_buying"),
+    //         DB::raw("SUM(CASE WHEN transaction_type = 'sell' THEN total_price ELSE 0 END) as total_selling")
+    //     )
+    //         ->groupBy('product_id')
+    //         ->orderBy(DB::raw('SUM(CASE WHEN transaction_type = "sell" THEN total_price ELSE 0 END)'), 'desc')
+    //         ->take(8)
+    //         ->with('products')
+    //         ->get();
 
-        return response()->json([
-            'perMonth' => $perMonth,
-            'totalBuyingAndSelling' => $totalBuyingAndSelling
-        ], 200);
-    }
+    //     return response()->json([
+    //         'perMonth' => $perMonth,
+    //         'totalBuyingAndSelling' => $totalBuyingAndSelling
+    //     ], 200);
+    // }
 }

@@ -21,7 +21,7 @@
                 <div class="card bg-primary text-white">
                     <div class="card-body">
                         <h5 class="card-title">Total Users</h5>
-                        <p class="card-text">500</p>
+                        <h4 style="color: white" id="totalUsers">500</h4>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <div class="card bg-success text-white">
                     <div class="card-body">
                         <h5 class="card-title">Total Products</h5>
-                        <p class="card-text">1000</p>
+                        <h4 style="color: white" id="totalProducts">1000</h4>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 <div class="card bg-warning text-white">
                     <div class="card-body">
                         <h5 class="card-title">Total Countries</h5>
-                        <p class="card-text">50</p>
+                        <h4 style="color: white" id="totalCountries">50</h4>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <div class="card bg-secondary text-white">
                     <div class="card-body">
                         <h5 class="card-title">Fourth Card</h5>
-                        <p class="card-text">Content Here</p>
+                        <h4 style="color: white">Content Here</h4>
                     </div>
                 </div>
             </div>
@@ -133,11 +133,37 @@
     <script>
         // Start SEE Connection=================================================
         var sseSource = new EventSource("{{ URL('/dashboard-sse') }}");
+        var randomNumber = 0;
 
-        sseSource.onmessage = function(event) {
-            let eventData = JSON.parse(event.data);
-            console.log(eventData);
+        // Function to establish SSE connection
+        function establishSSEConnection() {
+            sseSource = new EventSource("{{ URL('/dashboard-sse') }}");
+
+            sseSource.onmessage = function(event) {
+                let eventData = JSON.parse(event.data);
+                console.log(eventData);
+                if (eventData.randomNumber != randomNumber) {
+                    randomNumber = eventData.randomNumber;
+                    $("#totalUsers").text(eventData.totalUsers);
+                    $("#totalProducts").text(eventData.totalProducts);
+                    $("#totalCountries").text(eventData.totalCountries);
+                    totalBuyingAndSellingChart(eventData.perMonth);
+                    topProductsBuyAndSellChart(eventData.totalBuyingAndSelling);
+                }
+            };
+
+            // Handle SSE connection errors
+            sseSource.onerror = function(event) {
+                if (sseSource.readyState === EventSource.CLOSED) {
+                    // Connection was closed, attempt to reconnect
+                    console.log("Attempting to reconnect...");
+                    establishSSEConnection();
+                }
+            };
         }
+
+        establishSSEConnection(); // Initial connection establishment
+
         // End SEE Connection=================================================
 
 
@@ -168,22 +194,6 @@
             const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             return months[monthNumber - 1];
         }
-
-        $(function() {
-            $.ajax({
-                type: 'get',
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
-                },
-                url: '{{ URL('product-transaction/chart-data') }}',
-                success: function(data) {
-                    console.log(data);
-                    totalBuyingAndSellingChart(data.perMonth);
-                    topProductsBuyAndSellChart(data.totalBuyingAndSelling)
-                }
-            });
-        });
-
 
         function totalBuyingAndSellingChart(data) {
 

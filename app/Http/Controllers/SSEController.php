@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Countries;
 use App\Models\Notifications;
+use App\Models\Products;
+use App\Models\ProductTransactions;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 
 class SSEController extends Controller
@@ -44,23 +51,74 @@ class SSEController extends Controller
 
     public function sseForDashboard()
     {
-        // Set headers for SSE
+
         header('Content-Type: text/event-stream');
         header('Cache-Control: no-cache');
         header('Connection: keep-alive');
 
-        // Flush the output buffer to send the headers
+
+        if (Cache::has('perMonth') && Cache::has('totalBuyingAndSelling')) {
+            $eventData = [
+                'perMonth' => Cache::get('perMonth'),
+                'totalBuyingAndSelling' => Cache::get('totalBuyingAndSelling'),
+                'randomNumber' => Cache::get('randomNumber'),
+                'totalUsers' => Cache::get('totalUsers'),
+                'totalProducts' => Cache::get('totalProducts'),
+                'totalCountries' => Cache::get('totalCountries'),
+            ];
+
+            echo "data:" . json_encode($eventData) . "\n\n";
+        } else {
+
+            Cache::rememberForever('perMonth', function () {
+                return ProductTransactions::select(
+                    DB::raw("DATE_FORMAT(created_at, '%Y-%m') as month"),
+                    DB::raw("SUM(CASE WHEN transaction_type = 'buy' THEN total_price ELSE 0 END) as total_buying"),
+                    DB::raw("SUM(CASE WHEN transaction_type = 'sell' THEN total_price ELSE 0 END) as total_selling")
+                )
+                    ->whereYear('created_at', Carbon::now()->year)
+                    ->groupBy('month')
+                    ->orderBy('month')
+                    ->get();
+            });
+
+            Cache::rememberForever('totalBuyingAndSelling', function () {
+                return ProductTransactions::select(
+                    'product_id',
+                    DB::raw("SUM(CASE WHEN transaction_type = 'buy' THEN total_price ELSE 0 END) as total_buying"),
+                    DB::raw("SUM(CASE WHEN transaction_type = 'sell' THEN total_price ELSE 0 END) as total_selling")
+                )
+                    ->groupBy('product_id')
+                    ->orderBy(DB::raw('SUM(CASE WHEN transaction_type = "sell" THEN total_price ELSE 0 END)'), 'desc')
+                    ->take(8)
+                    ->with('products')
+                    ->get();
+            });
+
+
+
+
+            Cache::rememberForever('totalUsers', function () {
+                return User::count();
+            });
+            Cache::rememberForever('totalProducts', function () {
+                return Products::count();
+            });
+            Cache::rememberForever('totalCountries', function () {
+                return Countries::count();
+            });
+
+
+            Cache::rememberForever('randomNumber', function () {
+                return rand(0000, 999999);
+            });
+
+            echo "\n\n";
+        }
+
         ob_flush();
         flush();
 
-        // Keep the connection open
-        while (true) {
-            echo "\n\n"; // Send a ping event to keep the connection alive
-            ob_flush();
-            flush();
-
-            // Wait for a short period before sending the next ping event
-            usleep(1000000); // Sleep for 1 second (1000000 microseconds = 1 second)
-        }
+        sleep(20);
     }
 }

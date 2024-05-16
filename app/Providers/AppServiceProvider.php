@@ -13,12 +13,6 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    protected $listen = [
-        NewThingAddedEvent::class => [
-            NewThingAddedListener::class,
-        ],
-    ];
-
     public function register(): void
     {
         //

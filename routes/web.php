@@ -271,7 +271,6 @@ Route::post('/email/verification-notification', function (Request $request) {
 // Start Live Dashboard============================================================
 Route::prefix('product-transaction')->controller(ProductTransactionsController::class)->group(function () {
     Route::post('add', [ProductTransactionsController::class, 'store']);
-    Route::get('chart-data', 'getChartsData');
 });
 Route::get('dashboard-sse', [SSEController::class, 'sseForDashboard']);
 // end Live Dashboard============================================================
