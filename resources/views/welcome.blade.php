@@ -164,7 +164,7 @@
             e.preventDefault();
             var formData = $(this).serialize();
             $.ajax({
-                url: '{{ URL('product-transaction/add') }}',
+                url: '{{ URL('product-transaction-add') }}',
                 type: 'POST',
                 data: formData,
                 success: function(response) {

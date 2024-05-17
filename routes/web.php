@@ -269,8 +269,6 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 // Start Live Dashboard============================================================
-Route::prefix('product-transaction')->controller(ProductTransactionsController::class)->group(function () {
-    Route::post('add', [ProductTransactionsController::class, 'store']);
-});
+Route::post('product-transaction-add', [ProductTransactionsController::class, 'store']);
 Route::get('dashboard-sse', [SSEController::class, 'sseForDashboard']);
 // end Live Dashboard============================================================
