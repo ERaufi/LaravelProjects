@@ -37,34 +37,4 @@ class ProductTransactionsController extends Controller
         Cache::flush();
         return response()->json(['success' => true, 'message' => 'Transaction saved successfully']);
     }
-
-    // public function getChartsData(Request $request)
-    // {
-    //     $perMonth = ProductTransactions::select(
-    //         DB::raw("DATE_FORMAT(created_at, '%Y-%m') as month"),
-    //         DB::raw("SUM(CASE WHEN transaction_type = 'buy' THEN total_price ELSE 0 END) as total_buying"),
-    //         DB::raw("SUM(CASE WHEN transaction_type = 'sell' THEN total_price ELSE 0 END) as total_selling")
-    //     )
-    //         ->whereYear('created_at', Carbon::now()->year)
-    //         ->groupBy('month')
-    //         ->orderBy('month')
-    //         ->get();
-
-
-    //     $totalBuyingAndSelling = ProductTransactions::select(
-    //         'product_id',
-    //         DB::raw("SUM(CASE WHEN transaction_type = 'buy' THEN total_price ELSE 0 END) as total_buying"),
-    //         DB::raw("SUM(CASE WHEN transaction_type = 'sell' THEN total_price ELSE 0 END) as total_selling")
-    //     )
-    //         ->groupBy('product_id')
-    //         ->orderBy(DB::raw('SUM(CASE WHEN transaction_type = "sell" THEN total_price ELSE 0 END)'), 'desc')
-    //         ->take(8)
-    //         ->with('products')
-    //         ->get();
-
-    //     return response()->json([
-    //         'perMonth' => $perMonth,
-    //         'totalBuyingAndSelling' => $totalBuyingAndSelling
-    //     ], 200);
-    // }
 }

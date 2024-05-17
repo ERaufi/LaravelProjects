@@ -10,7 +10,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <button onclick="askForPermission()">Enable Notification</button>
+            <button onclick="askForPermission()" class="btn btn-success">Enable Notification</button>
         </div>
         <div class="card-body">
             <div class="row">
@@ -27,7 +27,8 @@
                     <input type='text' class='form-control' id='idOfProduct' name='idOfProduct'>
                 </div>
                 <div class="col-md-3">
-                    <input type="button" value="{{ 'Send Notification' }}" onclick="sendNotification()" />
+                    <input type="button" value="{{ 'Send Notification' }}" onclick="sendNotification()" class="btn btn-info" />
+                    <p>Please Enable Push notification before sending</p>
                 </div>
             </div>
         </div>

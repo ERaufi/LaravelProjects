@@ -13,8 +13,6 @@
             Buy/Sell
         </button>
 
-
-
         <div class="row mt-5">
             <!-- Total Users Card -->
             <div class="col-md-3 mb-3">
@@ -82,9 +80,6 @@
     </div>
 
 
-
-
-
     <!-- Modal -->
     <div class="modal fade" id="buySellModal" tabindex="-1" aria-labelledby="buySellModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -141,7 +136,6 @@
 
             sseSource.onmessage = function(event) {
                 let eventData = JSON.parse(event.data);
-                console.log(eventData);
                 if (eventData.randomNumber != randomNumber) {
                     randomNumber = eventData.randomNumber;
                     $("#totalUsers").text(eventData.totalUsers);
@@ -166,9 +160,6 @@
 
         // End SEE Connection=================================================
 
-
-
-
         $('#buySellForm').submit(function(e) {
             e.preventDefault();
             var formData = $(this).serialize();
@@ -177,8 +168,6 @@
                 type: 'POST',
                 data: formData,
                 success: function(response) {
-                    console.log(response);
-                    // Optionally, close the modal after successful submission
                     $('#buySellModal').modal('hide');
                 },
                 error: function(xhr) {
@@ -188,25 +177,12 @@
         });
 
 
-
-        // Function to convert month numbers to month names
-        function getMonthName(monthNumber) {
-            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            return months[monthNumber - 1];
-        }
-
         function totalBuyingAndSellingChart(data) {
 
             // Extracting buying and selling data
             var buyingData = data.map(item => parseInt(item.total_buying));
             var sellingData = data.map(item => parseInt(item.total_selling));
-
-            // Extracting months and converting month numbers to month names
-            var months = data.map(item => {
-                const [year, month] = item.month.split('-');
-                return `${getMonthName(parseInt(month))} ${year}`;
-            });
-
+            var months = data.map(item => item.monthName);
 
             var totalBuyingAndSellingChartOptions = {
                 series: [{
@@ -281,7 +257,6 @@
             var totalBuyingAndSellingChart = new ApexCharts(document.querySelector("#totalBuyingAndSellingChart"), totalBuyingAndSellingChartOptions);
             totalBuyingAndSellingChart.render();
         }
-
 
         function topProductsBuyAndSellChart(data) {
             // Extracting product IDs, buying data, and selling data

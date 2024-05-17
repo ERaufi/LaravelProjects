@@ -47,8 +47,6 @@ class SSEController extends Controller
 
 
 
-
-
     public function sseForDashboard()
     {
 
@@ -72,12 +70,13 @@ class SSEController extends Controller
 
             Cache::rememberForever('perMonth', function () {
                 return ProductTransactions::select(
-                    DB::raw("DATE_FORMAT(created_at, '%Y-%m') as month"),
                     DB::raw("SUM(CASE WHEN transaction_type = 'buy' THEN total_price ELSE 0 END) as total_buying"),
                     DB::raw("SUM(CASE WHEN transaction_type = 'sell' THEN total_price ELSE 0 END) as total_selling")
                 )
+                    ->selectRaw('month(created_at) month')
+                    ->selectRaw('monthname(created_at) monthName')
                     ->whereYear('created_at', Carbon::now()->year)
-                    ->groupBy('month')
+                    ->groupBy('month', 'monthName')
                     ->orderBy('month')
                     ->get();
             });
@@ -97,7 +96,6 @@ class SSEController extends Controller
 
 
 
-
             Cache::rememberForever('totalUsers', function () {
                 return User::count();
             });
@@ -107,8 +105,6 @@ class SSEController extends Controller
             Cache::rememberForever('totalCountries', function () {
                 return Countries::count();
             });
-
-
             Cache::rememberForever('randomNumber', function () {
                 return rand(0000, 999999);
             });
@@ -119,6 +115,6 @@ class SSEController extends Controller
         ob_flush();
         flush();
 
-        sleep(20);
+        // sleep(20);
     }
 }
