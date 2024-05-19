@@ -19,7 +19,7 @@ class Products extends Model
     ];
 
 
-    protected $appends = ['buyingPriceWithCurrency'];
+    // protected $appends = ['buyingPriceWithCurrency'];
     public function getbuyingPriceWithCurrencyAttribute()
     {
         return formatCurrency($this->attributes['buyingPrice'], 'AFN', 6);
