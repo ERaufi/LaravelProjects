@@ -272,3 +272,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::post('product-transaction-add', [ProductTransactionsController::class, 'store']);
 Route::get('dashboard-sse', [SSEController::class, 'sseForDashboard']);
 // end Live Dashboard============================================================
+
+// Start Kanban Board===============================================================
+Route::view('kanban-board', 'KanbanBoard.Index');
+// End Kanban Board===================================================================
