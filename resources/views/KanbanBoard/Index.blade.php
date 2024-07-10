@@ -12,7 +12,7 @@
                                 To Do
                             </div>
                             <div class="col-md-6" style="text-align: right">
-                                <button id="add-task-todo" class="btn btn-info" onclick="showTaskModal('#todo')">+</button>
+                                <button id="add-task-todo" class="btn btn-info" onclick="showTaskModal('todo')">+</button>
                             </div>
                         </div>
                     </div>
@@ -30,14 +30,14 @@
                                 In Progress
                             </div>
                             <div class="col-md-6" style="text-align: right">
-                                <button id="add-task-in-progress" class="btn btn-info" onclick="showTaskModal('#in-progress')">+</button>
+                                <button id="add-task-in_progress" class="btn btn-info" onclick="showTaskModal('in_progress')">+</button>
                             </div>
                         </div>
                     </div>
 
 
 
-                    <div class="card-body connectedSortable" id="in-progress">
+                    <div class="card-body connectedSortable" id="in_progress">
                         <!-- Kanban Items for In Progress -->
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                 Done
                             </div>
                             <div class="col-md-6" style="text-align: right">
-                                <button id="add-task-done" class="btn btn-info" onclick="showTaskModal('#done')">+</button>
+                                <button id="add-task-done" class="btn btn-info" onclick="showTaskModal('done')">+</button>
                             </div>
                         </div>
                     </div>
@@ -96,16 +96,46 @@
         var addOrUpdate = null;
         var selectedTask = null;
 
-        function updateKanbanOrder() {
-            // var todo = $("#todo").sortable("toArray");
-            // var inProgress = $("#in-progress").sortable("toArray");
-            // var done = $("#done").sortable("toArray");
+        $(function() {
+            $.ajax({
+                type: 'get',
+                url: '{{ URL('kanban-board/get-all') }}',
+                success: function(data) {
+                    console.log(data);
+                    data.map(x => {
+                        appendItem(x);
+                    })
+
+                }
+            });
+        });
+
+
+        function appendItem(item) {
+            var newItem = `
+                <div class="card mb-2 kanban-item">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p id="taskName" item_id="${item.id}">${item.name}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-sm btn-warning edit-task"><i class='bx bx-comment-edit'></i></button>
+                                <button class="btn btn-sm btn-danger delete-task"><i class='bx bx-comment-x'></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            $("#" + item.status).append(newItem);
+        }
+
+        function reOrderKanbanOrder() {
             var tasks = [];
             $('.connectedSortable').each(function() {
                 var sectionId = $(this).attr('id');
                 $(this).children('.kanban-item').each(function(index) {
                     tasks.push({
-                        id: $(this).data('id'),
+                        id: $(this).find("#taskName").attr('item_id'),
                         name: $(this).find("#taskName").text(),
                         status: sectionId,
                         order: index
@@ -113,13 +143,9 @@
                 });
             });
 
-            console.log(tasks);
-
-            $.post("{{ url('kanban.update') }}", {
+            $.post("{{ url('kanban-board/reorder') }}", {
                 _token: "{{ csrf_token() }}",
-                todo: todo,
-                inProgress: inProgress,
-                done: done
+                tasks: tasks
             }, function(response) {
                 console.log(response);
             });
@@ -129,7 +155,7 @@
             connectWith: ".connectedSortable",
             items: "> .kanban-item",
             placeholder: "ui-state-highlight",
-            update: updateKanbanOrder,
+            update: reOrderKanbanOrder,
         }).disableSelection();
 
         function showTaskModal(section) {
@@ -145,23 +171,21 @@
 
             if (taskName) {
                 if (addOrUpdate == 'add') {
-                    var newItem = `
-                <div class="card mb-2 kanban-item">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <p id="taskName">${taskName}</p>
-                            </div>
-                            <div class="col-md-4">
-                                <button class="btn btn-sm btn-warning edit-task"><i class='bx bx-comment-edit'></i></button>
-                                <button class="btn btn-sm btn-danger delete-task"><i class='bx bx-comment-x'></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-                    $(currentSection).append(newItem);
+                    $.post("{{ url('kanban-board/store') }}", {
+                        _token: "{{ csrf_token() }}",
+                        name: taskName,
+                        status: currentSection,
+                    }, function(response) {
+                        appendItem(response.item);
+                    });
                 } else {
-                    selectedTask.text(taskName);
+                    $.post("{{ url('kanban-board/update') }}", {
+                        _token: "{{ csrf_token() }}",
+                        name: taskName,
+                        id: selectedTask.attr('item_id'),
+                    }, function(response) {
+                        selectedTask.text(taskName);
+                    });
                 }
 
                 $('#taskModal').modal('hide');
@@ -178,7 +202,13 @@
 
         $(document).on('click', '.delete-task', function() {
             if (confirm('Are you sure you want to delete this task?')) {
-                $(this).parent().parent().parent().remove();
+                let item = $(this);
+                $.post("{{ url('kanban-board/delete') }}", {
+                    _token: "{{ csrf_token() }}",
+                    id: item.parent().parent().find("#taskName").attr('item_id'),
+                }, function(response) {
+                    item.parent().parent().parent().remove();
+                });
             }
         });
     </script>

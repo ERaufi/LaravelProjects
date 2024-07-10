@@ -7,31 +7,35 @@ use Illuminate\Http\Request;
 
 class KanbanController extends Controller
 {
+    public function getItems()
+    {
+        $items = Kanban::orderBy('order')->get();
+        return $items;
+    }
     public function store(Request $request)
     {
-        $lastOrder = Kanban::where('status', $request->input('status'))->max('order');
-        $task = new Kanban();
-        $task->name = $request->input('name');
-        $task->status = $request->input('status', 'todo');
-        $task->order = $lastOrder + 1;
-        $task->save();
+        $lastOrder = Kanban::where('status', $request->status)->max('order');
+        $item = new Kanban();
+        $item->name = $request->name;
+        $item->status = $request->status;
+        $item->order = $lastOrder + 1;
+        $item->save();
 
-        return response()->json(['task' => $task], 201);
+        return response()->json(['item' => $item]);
     }
 
-    public function update(Request $request, Kanban $task)
+    public function update(Request $request)
     {
-        $task->name = $request->input('name');
-        $task->status = $request->input('status');
-        $task->order = $request->input('order');
-        $task->save();
+        $task = Kanban::findOrfail($request->id);
+        $task->name = $request->name;
+        $task->update();
 
         return response()->json(['task' => $task]);
     }
 
-    public function updateOrder(Request $request)
+    public function reorder(Request $request)
     {
-        $tasks = $request->input('tasks');
+        $tasks = $request->tasks;
         foreach ($tasks as $task) {
             $t = Kanban::find($task['id']);
             $t->order = $task['order'];
@@ -42,9 +46,9 @@ class KanbanController extends Controller
         return response()->json(['message' => 'Tasks order updated successfully']);
     }
 
-    public function destroy(Kanban $task)
+    public function destroy(Request $request)
     {
-        $task->delete();
+        Kanban::where('id', $request->id)->delete();
 
         return response()->json(['message' => 'Task deleted successfully']);
     }

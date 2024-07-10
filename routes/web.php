@@ -8,6 +8,7 @@ use App\Http\Controllers\FileManagementController;
 use App\Http\Controllers\FormBuilderController;
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KanbanController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationsController;
@@ -274,5 +275,13 @@ Route::get('dashboard-sse', [SSEController::class, 'sseForDashboard']);
 // end Live Dashboard============================================================
 
 // Start Kanban Board===============================================================
-Route::view('kanban-board', 'KanbanBoard.Index');
+Route::prefix('kanban-board')->controller(KanbanController::class)->group(function () {
+    Route::view('/', 'KanbanBoard.Index');
+    Route::get('get-all', 'getItems');
+    Route::post('store', 'store');
+    Route::post('update', 'update');
+    Route::post('reorder', 'reorder');
+    Route::post('delete', 'destroy');
+
+});
 // End Kanban Board===================================================================
