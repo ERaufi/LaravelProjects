@@ -165,5 +165,12 @@
                         </a>
                     </li>
 
+                    <li class="menu-item">
+                        <a href="{{ URL('kanban-board') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-test-tube"></i>
+                            {{ __('Kanban Board') }}
+                        </a>
+                    </li>
+
                 </ul>
             </aside>
