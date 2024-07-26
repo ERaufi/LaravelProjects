@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChatsController;
+use App\Http\Controllers\CitiesController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\CustomHelperController;
 use App\Http\Controllers\DropZoneController;
@@ -269,11 +270,13 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+// Video Link https://youtu.be/QPD3CRqSpPM
 // Start Live Dashboard============================================================
 Route::post('product-transaction-add', [ProductTransactionsController::class, 'store']);
 Route::get('dashboard-sse', [SSEController::class, 'sseForDashboard']);
 // end Live Dashboard============================================================
 
+// Video Link https://youtu.be/VLsnsLz4iwU
 // Start Kanban Board===============================================================
 Route::prefix('kanban-board')->controller(KanbanController::class)->group(function () {
     Route::view('/', 'KanbanBoard.Index');
@@ -282,6 +285,16 @@ Route::prefix('kanban-board')->controller(KanbanController::class)->group(functi
     Route::post('update', 'update');
     Route::post('reorder', 'reorder');
     Route::post('delete', 'destroy');
-
 });
 // End Kanban Board===================================================================
+
+
+// Start Select2======================================================================
+Route::prefix('select2')->group(function () {
+    Route::get('/', [CountriesController::class, 'select2']);
+    Route::get('search-countries', [CountriesController::class, 'searchSelect2']);
+    Route::get('get-cities', [CitiesController::class, 'getCityBasedOnCountry']);
+    Route::get('search-cities', [CitiesController::class, 'searchCities']);
+});
+
+// End Select2======================================================================

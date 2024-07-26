@@ -172,5 +172,11 @@
                         </a>
                     </li>
 
+                    <li class="menu-item">
+                        <a href="{{ URL('select2') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-test-tube"></i>
+                            {{ __('Select2') }}
+                        </a>
+                    </li>
                 </ul>
             </aside>

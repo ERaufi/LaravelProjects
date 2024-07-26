@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
         Products::factory(100)->create();
         Schedule::factory(20)->create();
         $this->call([
-            CountriesSeeder::class
+            CountriesSeeder::class,
+            CitiesSeeder::class,
         ]);
         ProductTransactions::factory()->count(500)->create();
 
