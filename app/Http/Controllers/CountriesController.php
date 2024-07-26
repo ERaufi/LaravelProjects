@@ -59,4 +59,16 @@ class CountriesController extends Controller
             ->where('name', 'LIKE', '%' . $query . '%')
             ->get();
     }
+
+    public function select2()
+    {
+        $countries = Countries::all();
+        return view('select2.Index', compact('countries'));
+    }
+
+    public function searchSelect2(Request $request)
+    {
+        return Countries::where('name', 'LIKE', '%' . $request->search . '%')
+            ->get();
+    }
 }

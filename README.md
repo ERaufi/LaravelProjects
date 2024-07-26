@@ -27,4 +27,6 @@ Welcome to my collection of Laravel projects! Below is a table of the projects I
 | 21     | Roles And Permission                    | [Video](https://youtu.be/EiZPls4UcH4) |
 | 22     | File Management                         | [Video](https://youtu.be/tt4HOOQ-rCc) |
 | 23     | Auto Complete Search                    | [Video](https://youtu.be/s362UfaMKtg) |
-
+| 23     | Live Dashboard                          | [Video](https://youtu.be/QPD3CRqSpPM) |
+| 24     | Kanban Board                            | [Video](https://youtu.be/VLsnsLz4iwU) |
+| 25     | Select2                                 |                                       |
