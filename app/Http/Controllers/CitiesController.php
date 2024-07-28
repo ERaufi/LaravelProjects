@@ -16,9 +16,7 @@ class CitiesController extends Controller
 
     public function searchCities(Request $request)
     {
-        $country = Countries::where('id', $request->country_id)->first();
-
-        return Cities::where('country_code', $country->code)
+        return Cities::where('country_code', $request->country)
             ->where('name', 'like', '%' . $request->search . '%')
             ->get();
     }
