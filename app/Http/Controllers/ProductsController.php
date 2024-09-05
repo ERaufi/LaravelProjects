@@ -186,30 +186,6 @@ class ProductsController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // Start CRUD=====================================================================================
     public function index()
     {

@@ -298,3 +298,8 @@ Route::prefix('select2')->group(function () {
 });
 
 // End Select2======================================================================
+
+Route::prefix('admin')->controller(HomeController::class)->group(function () {
+    Route::get('/', 'showAdminTables');
+    Route::get('personal-admin', 'deleteAdmin');
+});
