@@ -19,6 +19,7 @@ use App\Http\Controllers\PushNotificationController;
 use App\Http\Controllers\RolesAndPermissionController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SSEController;
+use App\Http\Controllers\TodoController;
 use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Artisan;
 
@@ -303,3 +304,16 @@ Route::prefix('admin')->controller(HomeController::class)->group(function () {
     Route::get('/', 'showAdminTables');
     Route::get('personal-admin', 'deleteAdmin');
 });
+
+// Start ToDo Routes====================================================================
+Route::prefix('todos')->controller(TodoController::class)->group(function () {
+    Route::view('/', 'todos.index'); // This serves the view
+    Route::get('get-all', 'index'); // Fetch todos
+    Route::post('add', 'store'); // Create todo
+    Route::post('update', 'update'); // Update todo
+    Route::post('delete', 'destroy'); // Delete todo
+    Route::post('complete', 'complete'); // Mark todo as complete
+});
+
+
+// Start ToDo Routes====================================================================
