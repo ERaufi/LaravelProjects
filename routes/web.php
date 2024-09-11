@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArrayValidationController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\CitiesController;
 use App\Http\Controllers\CountriesController;
@@ -315,5 +316,23 @@ Route::prefix('todos')->controller(TodoController::class)->group(function () {
     Route::post('complete', 'complete'); // Mark todo as complete
 });
 
-
 // Start ToDo Routes====================================================================
+
+
+// Start Array Validations=============================================================
+Route::controller(ArrayValidationController::class)->prefix('validate')->group(function () {
+    Route::get('emails-array', 'validateEmailsArray');
+    Route::get('unique-emails-array', 'validateUniqueEmailsArray');
+    Route::get('emails-custom-messages', 'validateEmailsCustomMessages');
+    Route::get('items-with-position', 'validateItemsWithPosition');
+    Route::get('settings', 'validateSettings');
+    Route::get('products', 'validateProducts');
+    Route::get('tags-array', 'validateTagsArray');
+    Route::get('files', 'validateFiles');
+    Route::get('nested-arrays', 'validateNestedArrays');
+    Route::get('dynamic-nested-arrays', 'validateDynamicNestedArrays');
+    Route::get('conditional-nested-arrays', 'validateConditionalNestedArrays');
+    Route::get('deeply-nested-arrays', 'validateDeeplyNestedArrays');
+    Route::get('custom-rules-for-nested-arrays', 'validateCustomRulesForNestedArrays');
+});
+// End Array Validations===============================================================
