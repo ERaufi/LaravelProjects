@@ -29,4 +29,6 @@ Welcome to my collection of Laravel projects! Below is a table of the projects I
 | 23     | Auto Complete Search                    | [Video](https://youtu.be/s362UfaMKtg) |
 | 23     | Live Dashboard                          | [Video](https://youtu.be/QPD3CRqSpPM) |
 | 24     | Kanban Board                            | [Video](https://youtu.be/VLsnsLz4iwU) |
-| 25     | Select2                                 |                                       |
+| 25     | Select2                                 | [Video](https://youtu.be/fXdbiTIcXpw) |
+| 26     | Multi Database Connection               | [Video](https://youtu.be/kj-SjBFcxl4) |
+| 27     | Array And Object Validations            | [Video](https://youtu.be/1B66fjZvGEE) |

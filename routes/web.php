@@ -290,7 +290,7 @@ Route::prefix('kanban-board')->controller(KanbanController::class)->group(functi
 });
 // End Kanban Board===================================================================
 
-
+// Video Link https://youtu.be/fXdbiTIcXpw
 // Start Select2======================================================================
 Route::prefix('select2')->group(function () {
     Route::get('/', [CountriesController::class, 'select2']);
@@ -318,21 +318,9 @@ Route::prefix('todos')->controller(TodoController::class)->group(function () {
 
 // Start ToDo Routes====================================================================
 
-
+// Video Link https://youtu.be/1B66fjZvGEE
 // Start Array Validations=============================================================
 Route::controller(ArrayValidationController::class)->prefix('validate')->group(function () {
     Route::get('emails-array', 'validateEmailsArray');
-    Route::get('unique-emails-array', 'validateUniqueEmailsArray');
-    Route::get('emails-custom-messages', 'validateEmailsCustomMessages');
-    Route::get('items-with-position', 'validateItemsWithPosition');
-    Route::get('settings', 'validateSettings');
-    Route::get('products', 'validateProducts');
-    Route::get('tags-array', 'validateTagsArray');
-    Route::get('files', 'validateFiles');
-    Route::get('nested-arrays', 'validateNestedArrays');
-    Route::get('dynamic-nested-arrays', 'validateDynamicNestedArrays');
-    Route::get('conditional-nested-arrays', 'validateConditionalNestedArrays');
-    Route::get('deeply-nested-arrays', 'validateDeeplyNestedArrays');
-    Route::get('custom-rules-for-nested-arrays', 'validateCustomRulesForNestedArrays');
 });
 // End Array Validations===============================================================
