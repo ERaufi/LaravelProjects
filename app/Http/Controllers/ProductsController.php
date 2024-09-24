@@ -7,6 +7,7 @@ use App\Http\Requests\ProductRequest;
 use App\Imports\ProductsImport;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -221,4 +222,27 @@ class ProductsController extends Controller
         return redirect()->route('products.index')->with('success', 'Product deleted successfully');
     }
     // Start CRUD=====================================================================================
+
+
+    public function rawSQLQueries(Request $request)
+    {
+        // return Products::wherein('id', [1, 2, 3])
+        //     ->with('transactions')
+        //     ->limit(10)
+        //     ->tosql();
+
+
+        // return Products::wherein('id', [1, 2, 3])
+        //     ->with('transactions')
+        //     ->limit(10)
+        //     ->torawsql();
+
+
+        DB::enableQueryLog();
+        Products::wherein('id', [1, 2, 3])
+            ->with('transactions')
+            ->limit(10)
+            ->get();
+        return DB::getQueryLog();
+    }
 }

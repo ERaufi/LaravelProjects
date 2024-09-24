@@ -324,3 +324,5 @@ Route::controller(ArrayValidationController::class)->prefix('validate')->group(f
     Route::get('emails-array', 'validateEmailsArray');
 });
 // End Array Validations===============================================================
+
+Route::get('raw-sql', [ProductsController::class, 'rawSQLQueries']);

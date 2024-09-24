@@ -3,7 +3,7 @@
                     <a href="index.html" class="app-brand-link">
                         <span class="app-brand-logo demo">
                             <img style="width: 25%" src="{{ URL::asset('images/logo.png') }}" />
-                            <span class="app-brand-text demo menu-text fw-bold ms-2">Stack Tips</span>
+                            <span class="app-brand-text demo menu-text fw-bold ms-2">ERaufi</span>
                         </span>
                     </a>
 

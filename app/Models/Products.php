@@ -24,4 +24,9 @@ class Products extends Model
     {
         return formatCurrency($this->attributes['buyingPrice'], 'AFN', 6);
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(ProductTransactions::class, 'product_id');
+    }
 }
