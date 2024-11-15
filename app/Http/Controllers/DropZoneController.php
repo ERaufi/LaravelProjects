@@ -20,6 +20,10 @@ class DropZoneController extends Controller
 
     public function upload(Request $request)
     {
+        $request->validate([
+            'images' => 'array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:1024',
+        ]);
         try {
             if ($request->hasFile('images')) {
                 $filename = [];
@@ -40,6 +44,9 @@ class DropZoneController extends Controller
 
     public function uploadCroppedImage(Request $request)
     {
+        $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:1024',
+        ]);
         $imageData = $request->input('image');
 
         // Decode the base64 image data

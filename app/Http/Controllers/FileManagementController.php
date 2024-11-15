@@ -154,6 +154,10 @@ class FileManagementController extends Controller
         // if ($validator->fails()) {
         //     return response()->json(['error' => $validator->errors()->first()], 400);
         // }
+        $request->validate([
+            'files' => 'array',
+            'files.*' => 'required|mimes:jpeg,jpg,png,gif,pdf,doc,docx,xls,xlsx|max:2048'
+        ]);
 
         if ($request->hasFile('files')) {
             $files = $request->file('files');
