@@ -32,3 +32,4 @@ Welcome to my collection of Laravel projects! Below is a table of the projects I
 | 25     | Select2                                 | [Video](https://youtu.be/fXdbiTIcXpw) |
 | 26     | Multi Database Connection               | [Video](https://youtu.be/kj-SjBFcxl4) |
 | 27     | Array And Object Validations            | [Video](https://youtu.be/1B66fjZvGEE) |
+| 28     | Log and Debug SQL Queries in Laravel    | [Video](https://youtu.be/9dDLp7uISjU) |

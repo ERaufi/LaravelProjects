@@ -325,4 +325,7 @@ Route::controller(ArrayValidationController::class)->prefix('validate')->group(f
 });
 // End Array Validations===============================================================
 
+//Video Link https://youtu.be/9dDLp7uISjU
+// Start Log and Debug SQL Queries in Laravel=======================================
 Route::get('raw-sql', [ProductsController::class, 'rawSQLQueries']);
+// End Log and Debug SQL Queries in Laravel=======================================
