@@ -16,7 +16,7 @@ class WeatherController extends Controller
             'query' => [
                 'q' => $request->city,
                 'units' => $request->unit,
-                'appid' => env('WEATHER_API')
+                'appid' => "dfgsfgsdf"
             ]
         ]);
 
