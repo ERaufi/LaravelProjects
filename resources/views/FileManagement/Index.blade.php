@@ -262,8 +262,47 @@
             getAllFilesAndFolders();
         }
 
+        // function displayFilesAndFolders(data, type, path) {
+        //     // Define mapping of file extensions to icon classes
+        //     const iconMappings = {
+        //         'jpg': 'fas fa-image',
+        //         'png': 'fas fa-image',
+        //         'gif': 'fas fa-image',
+        //         'bmp': 'fas fa-image',
+        //         'zip': 'fas fa-file-archive',
+        //         'doc': 'fas fa-file-word',
+        //         'docx': 'fas fa-file-word',
+        //         'xls': 'fas fa-file-excel',
+        //         'xlsx': 'fas fa-file-excel'
+        //         // Add more mappings as needed
+        //     };
+
+        //     var html = '';
+        //     data.map(item => {
+        //         var iconClass = 'fas fa-folder';
+        //         let name = item.replace(currentPath + '/', '');
+
+        //         if (type != 'folder') {
+        //             iconClass = iconMappings[item.split('.').pop().toLowerCase()] || 'fas fa-file'; // Default to file icon
+        //         }
+
+        //         html += `<div class="file-item" data-name="${item}" data-type="${type}" data-path="${path}">
+    //     <i style="cursor:pointer" ${type=='folder'?`onclick="changePath('${item}')"`:""} class="${iconClass}" oncontextmenu="showContextMenu(event)"></i>
+    //     <span style="cursor:pointer" oncontextmenu="showContextMenu(event)">${name}</span>
+    //     </div>`;
+        //     });
+        //     $('.files').append(html);
+        // }
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
         function displayFilesAndFolders(data, type, path) {
-            // Define mapping of file extensions to icon classes
             const iconMappings = {
                 'jpg': 'fas fa-image',
                 'png': 'fas fa-image',
@@ -274,24 +313,29 @@
                 'docx': 'fas fa-file-word',
                 'xls': 'fas fa-file-excel',
                 'xlsx': 'fas fa-file-excel'
-                // Add more mappings as needed
             };
 
-            var html = '';
             data.map(item => {
-                var iconClass = 'fas fa-folder';
-                let name = item.replace(currentPath + '/', '');
+                const sanitizedItem = escapeHtml(item);
+                const sanitizedName = escapeHtml(item.replace(currentPath + '/', ''));
+                let iconClass = type === 'folder' ? 'fas fa-folder' : (iconMappings[item.split('.').pop().toLowerCase()] || 'fas fa-file');
 
-                if (type != 'folder') {
-                    iconClass = iconMappings[item.split('.').pop().toLowerCase()] || 'fas fa-file'; // Default to file icon
+                const $fileItem = $(`<div class="file-item" data-name="${sanitizedItem}" data-type="${type}" data-path="${path}">
+            <i class="${iconClass}"></i>
+            <span>${sanitizedName}</span>
+        </div>`);
+
+                if (type === 'folder') {
+                    $fileItem.find('i').on('click', () => changePath(sanitizedItem));
                 }
 
-                html += `<div class="file-item" data-name="${item}" data-type="${type}" data-path="${path}">
-            <i style="cursor:pointer" ${type=='folder'?`onclick="changePath('${item}')"`:""} class="${iconClass}" oncontextmenu="showContextMenu(event)"></i>
-            <span style="cursor:pointer" oncontextmenu="showContextMenu(event)">${name}</span>
-            </div>`;
+                $fileItem.find('i, span').on('contextmenu', event => {
+                    showContextMenu(event);
+                    return false;
+                });
+
+                $('.files').append($fileItem);
             });
-            $('.files').append(html);
         }
 
         function changePath(path) {
