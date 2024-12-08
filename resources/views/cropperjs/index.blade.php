@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('head')
     <link rel="stylesheet" href="{{ asset('assets/cropperjs/cropper.min.css') }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -9,11 +6,9 @@
             cursor: pointer;
         }
     </style>
-@endsection
 
-@section('content')
     <div class="container my-5">
-        <h1>{{__('Upload cropped image to server')}}</h1>
+        <h1>{{ __('Upload cropped image to server') }}</h1>
 
         <div class="img-container">
             <img class="rounded" id="profile-img">
@@ -21,14 +16,12 @@
 
         <label class="label custom-file-upload btn btn-primary ml-3">
             <input type="file" class="d-none" id="file-input" name="image" accept="image/*">
-            {{__('Select Image')}}
+            {{ __('Select Image') }}
         </label>
 
-        <button type="button" class="btn btn-primary" id="saveAndUpload">{{__('Save And Upload')}}</button>
+        <button type="button" class="btn btn-primary" id="saveAndUpload">{{ __('Save And Upload') }}</button>
     </div>
-@endsection
 
-@section('script')
     <script src="{{ asset('assets/cropperjs/cropper.min.js') }}"></script>
     <script>
         $(function() {
@@ -111,4 +104,3 @@
             });
         })
     </script>
-@endsection

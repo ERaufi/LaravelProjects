@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('head')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Upload</title>
@@ -57,15 +54,13 @@
             margin-bottom: 10px;
         }
     </style>
-@endsection
 
-@section('content')
     <div class="container mt-5">
         <div class="card">
             <div class="card-body">
-                <h2 class="text-center">{{__('Image Upload')}}</h2>
+                <h2 class="text-center">{{ __('Image Upload') }}</h2>
                 <div id="drop-zone" class="drop-zone border">
-                    <span class="drop-text">{{__('Drag and drop files here or click to select files')}}</span>
+                    <span class="drop-text">{{ __('Drag and drop files here or click to select files') }}</span>
                 </div>
             </div>
         </div>
@@ -142,4 +137,3 @@
             }
         });
     </script>
-@endsection

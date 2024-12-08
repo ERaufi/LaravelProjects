@@ -1,8 +1,3 @@
-@extends('layouts.app')
-
-@section('head')
-@endsection
-@section('content')
     <div class="container">
 
         <form action="{{ URL('admin/personal-admin') }}">
@@ -105,4 +100,3 @@
         </div>
 
     </div>
-@endsection

@@ -1,5 +1,3 @@
-@extends('layouts.app')
-@section('head')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         .files {
@@ -64,26 +62,6 @@
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         .modal {
             display: none;
             position: fixed;
@@ -119,8 +97,8 @@
             cursor: pointer;
         }
     </style>
-@endsection
-@section('content')
+
+
     <div class="container">
         <h2 class="text-center mb-4">File Management Demo</h2>
         <div class="row">
@@ -164,24 +142,7 @@
             </ul>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
-
-
 
     <!-- Create File Modal -->
     <div id="createFileModal" class="modal">
@@ -214,12 +175,9 @@
             <button onclick="rename()" class="btn btn-success">Save</button>
         </div>
     </div>
-@endsection
 
 
 
-
-@section('script')
     <script src="{{ asset('assets/notify.min.js') }}"></script>
 
     <script>
@@ -477,4 +435,3 @@
             });
         });
     </script>
-@endsection

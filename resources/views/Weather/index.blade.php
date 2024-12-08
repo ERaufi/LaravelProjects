@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('head')
+<head>
     <title>Weather Information</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -76,89 +74,86 @@
             background-color: #0056b3;
         }
     </style>
-@endsection
-
-@section('content')
-    <div class="container">
-        <h1>{{__('Weather Information')}}</h1>
-        <div class="weather-info">
-            <div class="label">{{__('Description:')}}</div>
-            <div class="value" id="description"></div>
-        </div>
-        <div class="weather-info">
-            <div class="label">{{__('Temperature:')}}</div>
-            <div class="value">
-                <i class="fas fa-thermometer-half weather-icon temperature-icon"></i>
-                <span id="temperature"></span>
-            </div>
-        </div>
-        <div class="weather-info">
-            <div class="label">{{__('Feels Like:')}}</div>
-            <div class="value">
-                <i class="fas fa-temperature-low weather-icon feels-like-icon"></i>
-                <span id="feels-like"></span>
-            </div>
-        </div>
-        <div class="weather-info">
-            <div class="label">{{__('Pressure:')}}</div>
-            <div class="value">
-                <i class="fas fa-tachometer-alt weather-icon pressure-icon"></i>
-                <span id="pressure"></span>
-            </div>
-        </div>
-        <div class="weather-info">
-            <div class="label">{{__('Humidity:')}}</div>
-            <div class="value">
-                <i class="fas fa-tint weather-icon humidity-icon"></i>
-                <span id="humidity"></span>
-            </div>
-        </div>
-        <div class="weather-info">
-            <div class="label">{{__('Wind Speed:')}}</div>
-            <div class="value">
-                <i class="fas fa-wind weather-icon wind-speed-icon"></i>
-                <span id="wind-speed"></span>
-            </div>
-        </div>
-        <div class="select-container">
-            <label for="city-select">{{__('Select City:')}} </label>
-            <select id="city-select">
-                <option value="London">{{__('London')}}</option>
-                <option value="New York">{{__('New York')}}</option>
-                <option value="Tokyo">{{__('Tokyo')}}</option>
-            </select>
-            <label for="unit-select">{{__('Select Unit:')}} </label>
-            <select id="unit-select">
-                <option value="metric">{{__('Celsius')}}</option>
-                <option value="imperial">{{__('Fahrenheit')}}</option>
-            </select>
-            <button id="update-weather-btn">{{__('Update Weather')}}</button>
+</head>
+<div class="container">
+    <h1>{{ __('Weather Information') }}</h1>
+    <div class="weather-info">
+        <div class="label">{{ __('Description:') }}</div>
+        <div class="value" id="description"></div>
+    </div>
+    <div class="weather-info">
+        <div class="label">{{ __('Temperature:') }}</div>
+        <div class="value">
+            <i class="fas fa-thermometer-half weather-icon temperature-icon"></i>
+            <span id="temperature"></span>
         </div>
     </div>
+    <div class="weather-info">
+        <div class="label">{{ __('Feels Like:') }}</div>
+        <div class="value">
+            <i class="fas fa-temperature-low weather-icon feels-like-icon"></i>
+            <span id="feels-like"></span>
+        </div>
+    </div>
+    <div class="weather-info">
+        <div class="label">{{ __('Pressure:') }}</div>
+        <div class="value">
+            <i class="fas fa-tachometer-alt weather-icon pressure-icon"></i>
+            <span id="pressure"></span>
+        </div>
+    </div>
+    <div class="weather-info">
+        <div class="label">{{ __('Humidity:') }}</div>
+        <div class="value">
+            <i class="fas fa-tint weather-icon humidity-icon"></i>
+            <span id="humidity"></span>
+        </div>
+    </div>
+    <div class="weather-info">
+        <div class="label">{{ __('Wind Speed:') }}</div>
+        <div class="value">
+            <i class="fas fa-wind weather-icon wind-speed-icon"></i>
+            <span id="wind-speed"></span>
+        </div>
+    </div>
+    <div class="select-container">
+        <label for="city-select">{{ __('Select City:') }} </label>
+        <select id="city-select">
+            <option value="London">{{ __('London') }}</option>
+            <option value="New York">{{ __('New York') }}</option>
+            <option value="Tokyo">{{ __('Tokyo') }}</option>
+        </select>
+        <label for="unit-select">{{ __('Select Unit:') }} </label>
+        <select id="unit-select">
+            <option value="metric">{{ __('Celsius') }}</option>
+            <option value="imperial">{{ __('Fahrenheit') }}</option>
+        </select>
+        <button id="update-weather-btn">{{ __('Update Weather') }}</button>
+    </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(function() {
-            $('#update-weather-btn').on('click', function() {
-                const city = $('#city-select').val();
-                const unit = $('#unit-select').val();
-                $.ajax({
-                    type: 'GET',
-                    url: '{{ URL('get-weather') }}',
-                    data: {
-                        'city': city,
-                        'unit': unit
-                    },
-                    success: function(data) {
-                        $('#description').text(data.weather[0].description);
-                        $('#temperature').text(data.main.temp + ' °' + (unit === 'imperial' ? 'F' : 'C'));
-                        $('#feels-like').text(data.main.feels_like + ' °' + (unit === 'imperial' ? 'F' : 'C'));
-                        $('#pressure').text(data.main.pressure + ' hPa');
-                        $('#humidity').text(data.main.humidity + '%');
-                        $('#wind-speed').text(data.wind.speed + ' m/s');
-                    }
-                });
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(function() {
+        $('#update-weather-btn').on('click', function() {
+            const city = $('#city-select').val();
+            const unit = $('#unit-select').val();
+            $.ajax({
+                type: 'GET',
+                url: '{{ URL('get-weather') }}',
+                data: {
+                    'city': city,
+                    'unit': unit
+                },
+                success: function(data) {
+                    $('#description').text(data.weather[0].description);
+                    $('#temperature').text(data.main.temp + ' °' + (unit === 'imperial' ? 'F' : 'C'));
+                    $('#feels-like').text(data.main.feels_like + ' °' + (unit === 'imperial' ? 'F' : 'C'));
+                    $('#pressure').text(data.main.pressure + ' hPa');
+                    $('#humidity').text(data.main.humidity + '%');
+                    $('#wind-speed').text(data.wind.speed + ' m/s');
+                }
             });
         });
-    </script>
-@endsection
+    });
+</script>

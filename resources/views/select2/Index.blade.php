@@ -234,4 +234,3 @@
             })
         });
     </script>
-@endsection

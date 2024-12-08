@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('head')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Application</title>
@@ -117,9 +114,7 @@
             white-space: normal;
         }
     </style>
-@endsection
 
-@section('content')
     <div class="container">
         <br>
         <div class="row">
@@ -153,10 +148,7 @@
             </div>
         </div>
     </div>
-@endsection
 
-
-@section('script')
     <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
     <script>
         var userID = null;
@@ -300,4 +292,3 @@
             }
         }
     </script>
-@endsection

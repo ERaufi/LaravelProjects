@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('head')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/bootstrap-5.3.2-dist/css/bootstrap.min.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/DataTables/datatables.min.css') }}">
@@ -11,30 +8,26 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/DataTables/RowReorder-1.4.1/css/rowReorder.dataTables.min.css') }}">
     {{-- End Row ReOrdering------------------------------------------------------------------------------------------------------ --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
-@endsection
 
-@section('content')
-    <h2>{{__('Countries DataTable')}}</h2>
+    <h2>{{ __('Countries DataTable') }}</h2>
     <div class="card">
         <div class="card-body">
             <table id="countries-table" class="table">
                 <thead>
                     <tr>
-                        <th>{{__('ID')}}</th>
-                        <th>{{__('Name')}}</th>
-                        <th>{{__('Order Number')}}</th>
-                        <th>{{__('Created At')}}</th>
-                        <th>{{__('Updated At')}}</th>
-                        <th>{{__('Action')}}</th>
+                        <th>{{ __('ID') }}</th>
+                        <th>{{ __('Name') }}</th>
+                        <th>{{ __('Order Number') }}</th>
+                        <th>{{ __('Created At') }}</th>
+                        <th>{{ __('Updated At') }}</th>
+                        <th>{{ __('Action') }}</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
         </div>
     </div>
-@endsection
 
-@section('script')
     <script type="text/javascript" charset="utf8" src="{{ asset('assets/DataTables/datatables.min.js') }}"></script>
     {{-- Start Adding Button ------------------------------------------------------------------------------------------------------- --}}
     <script type="text/javascript" charset="utf8" src="{{ asset('assets/DataTables/Buttons-2.4.2/js/dataTables.buttons.min.js') }}"></script>
@@ -197,4 +190,3 @@
             // End Reordering Rows
         });
     </script>
-@endsection

@@ -1,5 +1,3 @@
-@extends('layouts.app')
-@section('content')
     <div class="card">
         <div class="card-header">
             <h1>{{ 'Roles And Permissions' }}</h1>
@@ -24,4 +22,3 @@
             </table>
         </div>
     </div>
-@endsection

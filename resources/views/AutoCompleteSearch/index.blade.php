@@ -1,26 +1,22 @@
-@extends('layouts.app')
-
-@section('head')
+<head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css">
-@endsection
-
-@section('content')
-    <div class="container">
-        <div class="card">
-            <div class="card-body text-center">
-                <h1>{{ __('Auto Complete Search') }}</h1>
-
-                <h4>{{ __('Type a Country Name') }}</h4>
-                <input type="text" id="autoComplete">
-            </div>
-        </div>
-
-    </div>
-@endsection
-
-@section('script')
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
-    <script>
+</head>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body text-center">
+            <h1>{{ __('Auto Complete Search') }}</h1>
+
+            <h4>{{ __('Type a Country Name') }}</h4>
+            <input type="text" id="autoComplete">
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(function() {
         const autoCompleteJS = new autoComplete({
             selector: "#autoComplete",
             placeHolder: "Search for Food...",
@@ -59,11 +55,11 @@
                 highlight: true,
             }
         });
+    })
 
-        document.querySelector("#autoComplete").addEventListener("selection", function(event) {
-            // "event.detail" carries the autoComplete.js "feedback" object
-            console.log(event.detail);
-            $("#autoComplete").val(event.detail.selection.value.name);
-        });
-    </script>
-@endsection
+    document.querySelector("#autoComplete").addEventListener("selection", function(event) {
+        // "event.detail" carries the autoComplete.js "feedback" object
+        console.log(event.detail);
+        $("#autoComplete").val(event.detail.selection.value.name);
+    });
+</script>

@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="{{ URL::asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
         <script src="{{ URL::asset('assets/vendor/js/helpers.js') }}"></script>
         <script src="{{ URL::asset('assets/js/config.js') }}"></script>
+        <script src="{{ URL::asset('assets/js/jquery-3.7.1.min.js') }}"></script>
+
         <style>
             .notifyjs-corner {
                 position: fixed;
@@ -74,7 +76,7 @@
             </div>
             <div class="layout-overlay layout-menu-toggle"></div>
         </div>
-        <script src="{{ URL::asset('assets/js/jquery-3.7.1.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery-spa.js') }}"></script>
         <script src="{{ URL::asset('assets/bootstrap-5.3.2-dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ URL::asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
         <script src="{{ URL::asset('assets/vendor/js/menu.js') }}"></script>

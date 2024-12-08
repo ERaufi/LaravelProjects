@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
     <div class="container">
         <h2 class="text-center">Kanban Board</h2>
         <div class="row" id="kanban-board">
@@ -87,9 +84,7 @@
             </div>
         </div>
     </div>
-@endsection
 
-@section('script')
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script>
         var currentSection = '';
@@ -212,4 +207,3 @@
             }
         });
     </script>
-@endsection
