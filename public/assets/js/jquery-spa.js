@@ -5,9 +5,7 @@ $(function () {
         'content': '.content-wrapper', //Add your main content section div id or className
         'links': ".menu-link", //add your links id or className
     }
-
-    //keeping track of the url changes
-    let browserHistory = ['/'];
+    let customHistory = [];
 
 
     //Prevent the default functionality of the items
@@ -22,6 +20,7 @@ $(function () {
     // handling the browser back and forward button
     $(window).on('popstate', function (event) {
         console.log("User pressed back or forward button!");
+        changePage(window.location.href);
     });
 
 
@@ -49,7 +48,10 @@ $(function () {
                 //pushing the new link to the history of the browser so the
                 // user can go back by pressing the browser back button
                 history.pushState(null, '', url);
-                browserHistory.push(url);
+                customHistory.push(url);         // Maintain custom history
+
+                console.log(customHistory);
+
             }
         });
     }

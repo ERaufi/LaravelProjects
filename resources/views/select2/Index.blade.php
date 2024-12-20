@@ -1,79 +1,65 @@
-@extends('layouts.app')
-@section('head')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <style>
-        /* Basic styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-            /* Light gray background */
-        }
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <style>
+            .card {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                padding: 20px;
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+                /* Add a subtle shadow */
+            }
 
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-        }
+            .card-header {
+                background-color: #f5f5f5;
+                padding: 10px;
+                border-bottom: 1px solid #ccc;
+            }
 
-        .card {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            padding: 20px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            /* Add a subtle shadow */
-        }
+            .card-header h2,
+            .card-header h3 {
+                margin: 0;
+                color: #333;
+                /* Darker header text */
+            }
 
-        .card-header {
-            background-color: #f5f5f5;
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-        }
+            .card-body {
+                padding: 20px;
+            }
 
-        .card-header h2,
-        .card-header h3 {
-            margin: 0;
-            color: #333;
-            /* Darker header text */
-        }
+            .row {
+                display: flex;
+                flex-wrap: wrap;
+            }
 
-        .card-body {
-            padding: 20px;
-        }
+            .col-md-6 {
+                flex: 0 0 50%;
+                padding: 0 15px;
+            }
 
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-        }
+            /* Additional styling for select elements */
+            select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                appearance: none;
+                background-repeat: no-repeat;
+                background-position-x: right 10px;
+                background-position-y: center;
+            }
 
-        .col-md-6 {
-            flex: 0 0 50%;
-            padding: 0 15px;
-        }
+            /* Label styling */
+            label {
+                font-weight: bold;
+                display: block;
+                margin-bottom: 5px;
+            }
+        </style>
+    </head>
 
-        /* Additional styling for select elements */
-        select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            appearance: none;
-            background-repeat: no-repeat;
-            background-position-x: right 10px;
-            background-position-y: center;
-        }
 
-        /* Label styling */
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-    </style>
-@endsection
-@section('content')
     <div class="container">
         <div class="card">
             <div class="card-header">
@@ -150,8 +136,7 @@
             </div>
         </div>
     </div>
-@endsection
-@section('script')
+
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(document).ready(function() {
