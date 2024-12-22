@@ -4,6 +4,7 @@ use App\Http\Controllers\ArrayValidationController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\CitiesController;
 use App\Http\Controllers\CountriesController;
+use App\Http\Controllers\CurrencyConverterController;
 use App\Http\Controllers\CustomHelperController;
 use App\Http\Controllers\DropZoneController;
 use App\Http\Controllers\FileManagementController;
@@ -329,3 +330,14 @@ Route::controller(ArrayValidationController::class)->prefix('validate')->group(f
 // Start Log and Debug SQL Queries in Laravel=======================================
 Route::get('raw-sql', [ProductsController::class, 'rawSQLQueries']);
 // End Log and Debug SQL Queries in Laravel=======================================
+
+
+// Start Currency Converter=======================================================
+
+Route::controller(CurrencyConverterController::class)->prefix('currency-converter')->group(function () {
+    Route::view('/', 'CurrencyCoverter.index');
+    Route::get('exchange-rate', 'fetchExchangeRate');
+    Route::get('sse',  'sse');
+});
+
+// End Currency Converter=======================================================
