@@ -178,5 +178,12 @@
                             {{ __('Select2') }}
                         </a>
                     </li>
+
+                    <li class="menu-item">
+                        <a href="{{ URL('currency-converter') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-test-tube"></i>
+                            {{ __('Currency Converter') }}
+                        </a>
+                    </li>
                 </ul>
             </aside>

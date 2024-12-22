@@ -335,7 +335,7 @@ Route::get('raw-sql', [ProductsController::class, 'rawSQLQueries']);
 // Start Currency Converter=======================================================
 
 Route::controller(CurrencyConverterController::class)->prefix('currency-converter')->group(function () {
-    Route::view('/', 'CurrencyCoverter.index');
+    Route::view('/', 'CurrencyConverter.index');
     Route::get('exchange-rate', 'fetchExchangeRate');
     Route::get('sse',  'sse');
 });
